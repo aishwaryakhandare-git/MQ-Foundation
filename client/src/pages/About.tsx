@@ -647,7 +647,7 @@ function FinalCta() {
 
 export default function About() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 pb-20">
       <Hero />
       <OurStory />
       <MissionVision />

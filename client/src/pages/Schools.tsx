@@ -361,7 +361,7 @@ const faqs = [
 /* ─── MAIN PAGE ─── */
 export default function Schools() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 pb-20">
       {/* ═══════ WHY SPORT MATTERS ═══════ */}
       <section
         id="why-sport-matters"

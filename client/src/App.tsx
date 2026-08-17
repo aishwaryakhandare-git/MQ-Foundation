@@ -9,6 +9,8 @@ import About from "./pages/About";
 import Schools from "./pages/Schools";
 import Contact from "./pages/Contact";
 import ImpactPage from "./pages/ImpactPage";
+import CSRPage from "./pages/CSRPage";
+import GalleryPage from "./pages/GalleryPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -20,6 +22,8 @@ function Router() {
       <Route path="/schools" component={Schools} />
       <Route path="/contact" component={Contact} />
       <Route path="/impact" component={ImpactPage} />
+      <Route path="/csr" component={CSRPage} />
+      <Route path="/gallery" component={GalleryPage} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

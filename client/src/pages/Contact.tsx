@@ -121,7 +121,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 pb-20">
       {/* ═══════ HERO ═══════ */}
       <section className="relative py-20 md:py-28 bg-[#F7FAFC]">
         <div className="container">

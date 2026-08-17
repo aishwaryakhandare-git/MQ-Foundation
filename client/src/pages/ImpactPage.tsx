@@ -157,7 +157,7 @@ const TESTIMONIALS = [
 
 export default function ImpactPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white pb-20">
       {/* ═══════════════════════════════════════════════════
           HERO + IMPACTING SCHOOLS — Combined
       ═══════════════════════════════════════════════════ */}
