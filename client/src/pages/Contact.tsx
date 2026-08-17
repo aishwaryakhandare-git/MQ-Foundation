@@ -66,13 +66,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 98765 43210",
-    href: "tel:+919876543210",
+    value: "+91 75068 43435",
+    href: "tel:+9175068 43435",
   },
   {
     icon: MapPin,
     label: "Office",
-    value: "New Delhi, India",
+    value: "Mumbai, India",
     href: "#",
   },
   {
