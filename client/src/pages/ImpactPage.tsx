@@ -155,6 +155,8 @@ const TESTIMONIALS = [
   },
 ];
 
+const SERIF = "'DM Serif Display', serif";
+
 export default function ImpactPage() {
   return (
     <main className="min-h-screen bg-white pb-20">
@@ -164,130 +166,177 @@ export default function ImpactPage() {
       <section className="relative bg-gradient-to-b from-[#F4F7FF] via-white to-[#F8FAFF] overflow-hidden">
         {/* ── Background decorations ── */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Large faint football outline — right */}
-          <svg className="absolute top-16 right-[4%] w-[340px] h-[340px] text-[#165DFF]/[0.04] rotate-[15deg]" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="0.8">
-            <circle cx="50" cy="50" r="46" />
-            <path d="M50 4 L50 18 M50 82 L50 96 M4 50 L18 50 M82 50 L96 50" />
-            <path d="M50 4 C 64 18, 64 36, 50 50 C 36 64, 36 82, 50 96" />
-            <path d="M4 50 C 18 36, 36 36, 50 50 C 64 64, 82 64, 96 50" />
+          {/* Dotted grid — top left */}
+          <div className="absolute top-[14%] left-[3%] w-36 h-36 opacity-[0.1]" style={{ backgroundImage: "radial-gradient(#165DFF 1.2px, transparent 1.2px)", backgroundSize: "14px 14px" }} />
+          {/* Concentric circles — top right */}
+          <svg className="absolute top-[8%] right-[4%] w-60 h-60 text-[#165DFF]/[0.06]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="92" />
+            <circle cx="100" cy="100" r="70" />
+            <circle cx="100" cy="100" r="48" />
           </svg>
-          {/* Dotted pattern — top left */}
-          <div
-            className="absolute top-24 left-[6%] w-40 h-40 opacity-[0.10]"
-            style={{
-              backgroundImage: "radial-gradient(#165DFF 1px, transparent 1px)",
-              backgroundSize: "16px 16px",
-            }}
-          />
-          {/* Curved field lines */}
-          <svg className="absolute bottom-0 left-0 w-full h-48 text-[#165DFF]/[0.04]" viewBox="0 0 1440 192" fill="none" preserveAspectRatio="none">
-            <path d="M0 96 C 360 30, 720 162, 1080 72 S 1440 120, 1440 96" stroke="currentColor" strokeWidth="1.2" />
-            <path d="M0 140 C 400 70, 800 190, 1200 96 S 1440 144, 1440 120" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 10" />
+          {/* Curved lines — left edge */}
+          <svg className="absolute top-[20%] -left-4 w-48 h-[400px] text-[#165DFF]/[0.05]" viewBox="0 0 180 400" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
+            <path d="M60 0 C 20 80, 80 160, 40 240 S 70 340, 30 400" />
+            <path d="M100 0 C 60 100, 120 180, 80 280 S 110 360, 70 400" />
           </svg>
-          {/* Blue gradient blobs */}
+          {/* Dotted grid + arcs — bottom right */}
+          <div className="absolute bottom-[10%] right-[5%] w-28 h-28 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(#3F7CFF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
+          <svg className="absolute bottom-[5%] right-[-2%] w-44 h-44 text-[#3F7CFF]/[0.05]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="60" />
+          </svg>
+          {/* Radial glows */}
           <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-[#165DFF]/[0.04] rounded-full blur-3xl" />
           <div className="absolute bottom-0 -left-32 w-[360px] h-[360px] bg-[#3F7CFF]/[0.03] rounded-full blur-3xl" />
         </div>
 
-        <div className="container relative z-10 pt-20 sm:pt-28 pb-16 md:pb-24">
+        {/* SVG Clip Path for organic image mask */}
+        <svg className="absolute w-0 h-0" aria-hidden="true">
+          <defs>
+            <clipPath id="organicMask" clipPathUnits="objectBoundingBox">
+              <path d="
+                M 0.04 0.06
+                C 0.04 0.03, 0.06 0.0, 0.10 0.0
+                L 0.90 0.0
+                C 0.94 0.0, 0.96 0.03, 0.96 0.06
+                L 0.98 0.88
+                C 0.98 0.92, 0.96 0.95, 0.93 0.97
+                L 0.10 0.98
+                C 0.06 0.98, 0.04 0.95, 0.04 0.92
+                Z
+              " />
+            </clipPath>
+            <clipPath id="organicBorder" clipPathUnits="objectBoundingBox">
+              <path d="
+                M 0.035 0.055
+                C 0.035 0.025, 0.055 -0.005, 0.095 -0.005
+                L 0.905 -0.005
+                C 0.945 -0.005, 0.965 0.025, 0.965 0.055
+                L 0.985 0.875
+                C 0.985 0.915, 0.965 0.945, 0.935 0.965
+                L 0.095 0.975
+                C 0.055 0.975, 0.035 0.945, 0.035 0.915
+                Z
+              " />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <div className="container relative z-10 pt-16 sm:pt-24 pb-16 md:pb-20">
           {/* ── Hero heading block ── */}
           <motion.div {...fade(0)} className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
-            <div className="relative mb-8">
-              <h1
-                className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold uppercase tracking-[0.1em] select-none leading-none"
-                style={{
-                  WebkitTextStroke: "2px transparent",
-                  backgroundImage: "linear-gradient(180deg, #0A1E4F 0%, #165DFF 50%, #3F7CFF 100%)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent",
-                }}
-              >
-                Our Impact
-              </h1>
-              <h1
-                className="absolute inset-0 text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold uppercase tracking-[0.1em] select-none pointer-events-none leading-none"
-                style={{
-                  WebkitTextStroke: "1.5px #165DFF",
-                  color: "transparent",
-                }}
-              >
-                Our Impact
-              </h1>
-            </div>
-
-            <h2 className="font-heading font-bold text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] text-[#0A1E4F] leading-snug mb-4">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-3">
+              Our Impact
+            </p>
+            <h2
+              className="text-[1.6rem] sm:text-[2rem] md:text-[2.4rem] text-[#0A1E4F] mb-3"
+              style={{ fontFamily: SERIF }}
+            >
               Stronger Schools. Confident Students. Thriving Communities.
             </h2>
-
           </motion.div>
 
-          {/* ── Two-column: Impacting Schools content + Image ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-8">
-            {/* Left: Content */}
-            <motion.div {...fade(0.1)} className="-mt-10">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-[10px] bg-[#165DFF]/10 flex items-center justify-center">
-                  <Building2 className="w-5 h-5 text-[#165DFF]" />
-                </div>
-                <span className="font-heading font-bold text-xs tracking-widest uppercase text-[#165DFF]">
-                  Impacting Schools
-                </span>
-              </div>
-
-              <h3 className="font-heading font-extrabold text-[4rem] sm:text-[4.5rem] lg:text-[3.4rem] text-[#0A1E4F] leading-tight mb-5">
-                Transforming Sports
-                <br />
-                <span className="text-[#165DFF]">Infrastructure</span> Across India
+          {/* ── Two-column layout ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-14 items-center mb-8">
+            {/* LEFT — Content */}
+            <motion.div {...fade(0.1)}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
+                Impacing Schools
+              </p>
+              <h3
+                className="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.2rem] text-[#0A1E4F] leading-[1.08] mb-5"
+                style={{ fontFamily: SERIF }}
+              >
+                Transforming Sports{" "}
+                <span className="text-[#165DFF]">Infrastructure</span>{" "}
+                Across India
               </h3>
-
-              <p className="text-[#6B7280] text-[1.05rem] sm:text-[1.1rem] leading-relaxed mb-6 max-w-md">
+              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed max-w-md">
                 Marcos Quay Foundation partners with schools to create world-class sports
                 environments — combining modern infrastructure, certified coaching, and
                 structured programmes that deliver lasting results.
               </p>
-
-              
             </motion.div>
 
-            {/* Right: Image with organic curved left edge */}
+            {/* RIGHT — Organic masked image */}
             <motion.div {...fade(0.15)} className="relative">
-              <div className="relative overflow-hidden rounded-[20px] rounded-bl-[60px] sm:rounded-bl-[80px]">
-                <img
-                  src="/images/Ground img.png"
-                  alt="School sports ground with students practicing"
-                  className="w-full h-[280px] sm:h-[360px] lg:h-[400px] object-cover"
+              {/* The organic image container */}
+              <div className="relative">
+                {/* Blue border shape behind image */}
+                <div
+                  className="absolute -inset-[3px] bg-gradient-to-br from-[#165DFF] via-[#3F7CFF] to-[#165DFF]/60 opacity-40"
+                  style={{ clipPath: "url(#organicBorder)" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/20 to-transparent" />
+                {/* Image with organic mask */}
+                <div
+                  className="relative overflow-hidden"
+                  style={{ clipPath: "url(#organicMask)", aspectRatio: "1.7 / 1" }}
+                >
+                  <img
+                    src="/images/Ground img.png"
+                    alt="School sports ground with students practicing"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/15 to-transparent" />
+                </div>
+
+                {/* Curved blue line overlay following the left edge */}
+                <svg className="absolute -left-6 top-[4%] w-16 h-[92%] text-[#165DFF]/[0.2] pointer-events-none" viewBox="0 0 60 600" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                  <path d="M40 0 C 10 80, 50 160, 20 280 S 40 420, 10 560 L 10 600" />
+                </svg>
+              </div>
+
+              {/* Circular badge — overlapping lower right */}
+              <div className="absolute -bottom-6 -right-4 sm:-right-8 w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-full bg-[#165DFF] text-white flex items-center justify-center shadow-[0_8px_30px_-6px_rgba(22,93,255,0.4)] z-10 border-4 border-white">
+                <div className="text-center px-2">
+                  <p
+                    className="text-[8px] sm:text-[9px] font-bold uppercase tracking-wider leading-tight opacity-90"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    Building Better
+                  </p>
+                  <p
+                    className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider leading-tight"
+                    style={{ fontFamily: SERIF }}
+                  >
+                    Futures Together
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>
 
-          {/* ── Overlapping Statistics Panel ── */}
+          {/* ── Floating Statistics Panel ── */}
           <motion.div
             {...fade(0.25)}
-            className="relative max-w-5xl mx-auto -mt-8 sm:-mt-12 lg:-mt-16 z-20"
+            className="relative max-w-5xl mx-auto -mt-4 sm:-mt-8 lg:-mt-10 z-20"
           >
-            <div className="bg-white rounded-[16px] border border-[#E5E9F2] shadow-[0_8px_40px_-12px_rgba(10,30,79,0.10),0_2px_12px_-4px_rgba(10,30,79,0.06)]">
+            <div className="bg-white rounded-[18px] border border-[#E6EEF9] shadow-[0_8px_40px_-12px_rgba(10,30,79,0.10),0_2px_12px_-4px_rgba(10,30,79,0.06)] overflow-hidden">
               <div className="grid grid-cols-2 md:grid-cols-4">
-                {IMPACT_SCHOOLS_STATS.map((s, i) => (
+                {[
+                  { value: "450+", label: "Schools Transformed" },
+                  { value: "125,000+", label: "Students Impacted" },
+                  { value: "96%", label: "School Satisfaction" },
+                  { value: "100%", label: "Safety Compliant" },
+                ].map((s, i) => (
                   <div
                     key={s.label}
-                    className={`flex flex-col items-center text-center py-7 sm:py-8 px-4 ${
-                      i < IMPACT_SCHOOLS_STATS.length - 1
-                        ? "md:border-r border-[#E5E9F2]"
-                        : ""
-                    } ${i === 0 ? "rounded-tl-[16px] rounded-bl-[16px]" : ""} ${
-                      i === IMPACT_SCHOOLS_STATS.length - 1 ? "rounded-tr-[16px] rounded-br-[16px]" : ""
+                    className={`flex flex-col items-center text-center py-6 sm:py-7 px-4 ${
+                      i < 3 ? "md:border-r border-[#E6EEF9]" : ""
+                    } ${i === 0 ? "rounded-tl-[18px] rounded-bl-[18px]" : ""} ${
+                      i === 3 ? "rounded-tr-[18px] rounded-br-[18px]" : ""
                     }`}
                   >
-                    <s.icon className="w-5 h-5 text-[#165DFF] mb-3" />
-                    <p className="font-heading font-extrabold text-[1.6rem] sm:text-[1.9rem] text-[#0A1E4F] leading-none">
-                      <Counter to={s.value} suffix={s.suffix} />
+                    <p
+                      className="text-[1.4rem] sm:text-[1.7rem] text-[#0A1E4F] leading-none"
+                      style={{ fontFamily: SERIF }}
+                    >
+                      {s.value}
                     </p>
-                    <p className="text-[11px] sm:text-xs text-[#6B7280] mt-2 leading-tight max-w-[140px]">
+                    <p className="text-[11px] sm:text-[12px] text-[#6B7280] mt-1.5 leading-tight max-w-[140px]">
                       {s.label}
                     </p>
+                    <div className="mt-2.5 h-[2px] w-8 rounded-full bg-[#165DFF]/25" />
                   </div>
                 ))}
               </div>

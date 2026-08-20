@@ -34,6 +34,8 @@ import {
   Users,
 } from "lucide-react";
 
+const SERIF = "'DM Serif Display', serif";
+
 /* ─── Scroll Reveal Wrapper ─── */
 function Reveal({
   children,
@@ -151,8 +153,6 @@ const WHY_BENEFITS = [
     stat: "25%",
     statLabel: "Better academic performance",
     color: "#165DFF",
-    from: "#7FA8FF",
-    to: "#0D3BB8",
   },
   {
     icon: HeartPulse,
@@ -160,9 +160,7 @@ const WHY_BENEFITS = [
     desc: "Creates healthier, stronger and more active children.",
     stat: "40%",
     statLabel: "Better fitness improvement",
-    color: "#27AE60",
-    from: "#6FD69B",
-    to: "#1E8A4C",
+    color: "#3F7CFF",
   },
   {
     icon: Users,
@@ -170,9 +168,7 @@ const WHY_BENEFITS = [
     desc: "Builds respect, teamwork and confidence.",
     stat: "60%",
     statLabel: "Reduction in disciplinary issues",
-    color: "#F4B400",
-    from: "#FFD25E",
-    to: "#D99E00",
+    color: "#0D3BB8",
   },
   {
     icon: Trophy,
@@ -180,9 +176,7 @@ const WHY_BENEFITS = [
     desc: "Develops leadership through sport.",
     stat: "70%",
     statLabel: "Improvement in leadership skills",
-    color: "#8B5CF6",
-    from: "#B39DFF",
-    to: "#6D28D9",
+    color: "#165DFF",
   },
   {
     icon: CalendarCheck,
@@ -190,9 +184,7 @@ const WHY_BENEFITS = [
     desc: "Keeps students engaged in school.",
     stat: "35%",
     statLabel: "Increase in attendance",
-    color: "#FF8A00",
-    from: "#FFB45E",
-    to: "#E07600",
+    color: "#3F7CFF",
   },
   {
     icon: Award,
@@ -200,9 +192,7 @@ const WHY_BENEFITS = [
     desc: "Strengthens school branding and parent trust.",
     stat: "3×",
     statLabel: "Higher school visibility",
-    color: "#14B8A6",
-    from: "#5EEAD4",
-    to: "#0F9488",
+    color: "#0D3BB8",
   },
 ];
 
@@ -367,16 +357,81 @@ export default function Schools() {
         id="why-sport-matters"
         className="relative overflow-hidden bg-white pt-4 sm:pt-6 lg:pt-8 pb-10 sm:pb-12 lg:pb-14 scroll-mt-24"
       >
-        {/* background decor */}
-        <div className="absolute -top-40 -right-44 w-[34rem] h-[34rem] rounded-full bg-[#165DFF]/[0.05] blur-3xl pointer-events-none" />
-        <div className="absolute top-[30%] -left-52 w-[32rem] h-[32rem] rounded-full bg-[#27AE60]/[0.06] blur-3xl pointer-events-none" />
-        <div className="absolute left-[3%] top-[8%] w-56 h-56 rounded-full border border-[#165DFF]/[0.08] pointer-events-none" />
-        <div className="absolute left-[3%] top-[8%] w-40 h-40 rounded-full border border-[#165DFF]/[0.08] pointer-events-none" />
-        <div className="absolute right-[10%] bottom-[6%] w-44 h-44 rounded-[60%_40%_55%_45%/45%_58%_42%_55%] bg-[#F4B400]/[0.12] blur-2xl animate-blob pointer-events-none" />
-        <Dots className="absolute right-[6%] top-[14%] w-24 opacity-[0.05] pointer-events-none" />
-        <Dots className="absolute left-[44%] bottom-[2%] w-20 opacity-[0.04] pointer-events-none" />
-        <CurvedLines className="absolute left-[2%] top-[52%] w-40 opacity-[0.06] pointer-events-none" />
-        <SportsSilhouettes className="absolute left-0 right-0 bottom-0 h-32 text-[#165DFF]/[0.03] pointer-events-none" />
+        {/* background decor — blue/indigo/cyan palette */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Radial glows */}
+          <div className="absolute -top-40 -right-44 w-[34rem] h-[34rem] rounded-full bg-[#165DFF]/[0.08] blur-[100px]" />
+          <div className="absolute top-[30%] -left-52 w-[32rem] h-[32rem] rounded-full bg-[#3F7CFF]/[0.07] blur-[90px]" />
+          <div className="absolute bottom-0 left-[40%] w-[28rem] h-[28rem] rounded-full bg-[#0EA5E9]/[0.06] blur-[80px]" />
+
+          {/* Oversized circular arcs — left */}
+          <svg className="absolute top-[5%] left-[-3%] w-72 h-72 text-[#165DFF]/[0.12]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.8">
+            <circle cx="100" cy="100" r="92" />
+            <circle cx="100" cy="100" r="70" />
+            <circle cx="100" cy="100" r="48" />
+          </svg>
+
+          {/* Oversized circular arcs — right */}
+          <svg className="absolute bottom-[8%] right-[-2%] w-56 h-56 text-[#3F7CFF]/[0.1]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="62" />
+          </svg>
+
+          {/* Flowing curved line from left edge */}
+          <svg className="absolute top-[18%] -left-6 w-[500px] h-[300px] text-[#165DFF]/[0.14]" viewBox="0 0 500 300" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <defs>
+              <linearGradient id="flowLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#165DFF" stopOpacity="0" />
+                <stop offset="30%" stopColor="#165DFF" stopOpacity="1" />
+                <stop offset="60%" stopColor="#6366F1" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M0 120 C 80 60, 180 180, 300 100 S 460 140, 500 90" stroke="url(#flowLeft)" />
+          </svg>
+
+          {/* Flowing curved line from right edge */}
+          <svg className="absolute bottom-[22%] -right-8 w-[500px] h-[300px] text-[#3F7CFF]/[0.14]" viewBox="0 0 500 300" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <defs>
+              <linearGradient id="flowRight" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#06B6D4" stopOpacity="0" />
+                <stop offset="30%" stopColor="#3F7CFF" stopOpacity="0.8" />
+                <stop offset="65%" stopColor="#6366F1" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="#165DFF" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M500 180 C 420 100, 300 220, 180 140 S 40 180, 0 130" stroke="url(#flowRight)" />
+          </svg>
+
+          {/* Second flowing line — top right */}
+          <svg className="absolute top-[8%] right-[-2%] w-[400px] h-[250px] text-[#0EA5E9]/[0.1]" viewBox="0 0 400 250" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
+            <path d="M400 40 C 320 100, 200 20, 80 80 S -20 120, 0 160" />
+          </svg>
+
+          {/* Dotted grid — top right corner */}
+          <div className="absolute top-[6%] right-[4%] w-36 h-36 opacity-[0.14]" style={{ backgroundImage: "radial-gradient(#165DFF 1.2px, transparent 1.2px)", backgroundSize: "14px 14px" }} />
+
+          {/* Dotted grid — bottom left corner */}
+          <div className="absolute bottom-[8%] left-[3%] w-28 h-28 opacity-[0.12]" style={{ backgroundImage: "radial-gradient(#3F7CFF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
+
+          {/* Dotted grid — top left small */}
+          <div className="absolute top-[35%] left-[1%] w-16 h-16 opacity-[0.1]" style={{ backgroundImage: "radial-gradient(#0EA5E9 0.8px, transparent 0.8px)", backgroundSize: "10px 10px" }} />
+
+          {/* Translucent geometric shapes — near edges */}
+          <div className="absolute top-[12%] right-[8%] w-20 h-20 border border-[#165DFF]/[0.12] rotate-12 rounded-lg" />
+          <div className="absolute bottom-[15%] left-[6%] w-14 h-14 border border-[#3F7CFF]/[0.1] -rotate-6 rounded-md" />
+          <div className="absolute top-[55%] right-[2%] w-10 h-10 border border-[#0EA5E9]/[0.1] rotate-45 rounded-sm" />
+
+          {/* Faint cross marks */}
+          <svg className="absolute top-[40%] left-[2%] w-5 h-5 text-[#165DFF]/[0.16]" viewBox="0 0 20 20" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <line x1="10" y1="2" x2="10" y2="18" />
+            <line x1="2" y1="10" x2="18" y2="10" />
+          </svg>
+          <svg className="absolute bottom-[20%] right-[5%] w-4 h-4 text-[#3F7CFF]/[0.14]" viewBox="0 0 20 20" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <line x1="10" y1="3" x2="10" y2="17" />
+            <line x1="3" y1="10" x2="17" y2="10" />
+          </svg>
+        </div>
 
         <div className="container relative">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 lg:gap-10 xl:gap-14 items-start">
@@ -384,13 +439,13 @@ export default function Schools() {
             <div className="lg:col-span-3">
               <div className="relative mx-auto max-w-[620px] h-[560px] sm:h-[600px] lg:h-[620px] lg:max-w-none">
                 {/* organic gradient shapes */}
-                <div className="absolute -top-8 -left-6 w-72 h-72 rounded-full bg-gradient-to-br from-[#165DFF]/[0.12] to-[#27AE60]/[0.1] blur-3xl pointer-events-none" />
-                <div className="absolute top-[42%] -right-10 w-80 h-80 rounded-full bg-[#27AE60]/[0.12] blur-3xl pointer-events-none" />
-                <div className="absolute bottom-4 left-8 w-44 h-44 rounded-[62%_38%_55%_45%/45%_56%_44%_55%] bg-[#F4B400]/[0.18] blur-xl animate-blob pointer-events-none" />
-                <div className="absolute -top-10 right-[4%] w-56 h-56 rounded-full border-[1.5px] border-[#165DFF]/[0.1] pointer-events-none" />
-                <div className="absolute -top-6 right-[7%] w-40 h-40 rounded-full border-[1.5px] border-[#27AE60]/[0.12] pointer-events-none" />
-                <Dots className="absolute left-[2%] top-[2%] w-24 opacity-[0.06] pointer-events-none" />
-                <CurvedLines className="absolute right-[0%] bottom-[2%] w-40 opacity-[0.07] pointer-events-none" />
+                <div className="absolute -top-8 -left-6 w-72 h-72 rounded-full bg-gradient-to-br from-[#165DFF]/[0.14] to-[#6366F1]/[0.12] blur-3xl pointer-events-none" />
+                <div className="absolute top-[42%] -right-10 w-80 h-80 rounded-full bg-[#3F7CFF]/[0.14] blur-3xl pointer-events-none" />
+                <div className="absolute bottom-4 left-8 w-44 h-44 rounded-[62%_38%_55%_45%/45%_56%_44%_55%] bg-[#0EA5E9]/[0.14] blur-xl animate-blob pointer-events-none" />
+                <div className="absolute -top-10 right-[4%] w-56 h-56 rounded-full border-[1.5px] border-[#165DFF]/[0.15] pointer-events-none" />
+                <div className="absolute -top-6 right-[7%] w-40 h-40 rounded-full border-[1.5px] border-[#3F7CFF]/[0.14] pointer-events-none" />
+                <Dots className="absolute left-[2%] top-[2%] w-24 opacity-[0.12] pointer-events-none" />
+                <CurvedLines className="absolute right-[0%] bottom-[2%] w-40 opacity-[0.14] pointer-events-none" />
 
                 {/* layered photo cards */}
                 {COLLAGE_PHOTOS.map((p) => (
@@ -424,81 +479,79 @@ export default function Schools() {
               </div>
             </div>
 
-            {/* ═══ Right — Headline + benefits (40%) ═══ */}
-            <div className="lg:col-span-2">
+            {/* ═══ Right — Headline + 2×3 benefit grid (40%) ═══ */}
+            <div className="lg:col-span-2 relative">
+              {/* Background decorations */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 opacity-[0.06] pointer-events-none" style={{ backgroundImage: "radial-gradient(#165DFF 1.2px, transparent 1.2px)", backgroundSize: "14px 14px" }} />
+              <svg className="absolute top-[20%] -right-4 w-28 h-48 text-[#165DFF]/[0.06] pointer-events-none" viewBox="0 0 100 200" fill="none" stroke="currentColor" strokeWidth="1.2">
+                <path d="M80 0 C 20 60, 20 140, 80 200" />
+              </svg>
+
               <Reveal>
-                <p className="eyebrow !text-[#165DFF]">
-                  <span className="inline-block h-px w-8 bg-[#165DFF]/60" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-1.5 flex items-center gap-2">
+                  <span className="inline-block h-[2px] w-6 bg-[#165DFF] rounded-full" />
                   Why Sport Matters
                 </p>
-                <h1 className="mt-5 font-heading font-extrabold text-[#0A1E4F] text-[1.7rem] leading-[1.16] tracking-[-0.02em] sm:text-[2.05rem] sm:leading-[1.12] lg:text-[2.1rem] xl:text-[2.4rem] xl:leading-[1.1]">
-                  Sport Builds Better Students, Better Schools, and Better Futures.
+                <h1 className="font-extrabold text-[#0A1E4F] text-[1.4rem] leading-[1.1] tracking-[-0.02em] sm:text-[1.65rem] lg:text-[1.8rem] xl:text-[2rem] mb-4" style={{ fontFamily: SERIF }}>
+                  Sport Builds Better Students, Better Schools, and{" "}
+                  <span className="text-[#165DFF]">Better Futures.</span>
                 </h1>
               </Reveal>
 
-              {/* benefit panels */}
-              <div className="mt-8 space-y-3.5">
+              {/* 2×3 Benefit Grid */}
+              <div className="grid grid-cols-2 gap-2">
                 {WHY_BENEFITS.map((b, i) => (
                   <motion.div
                     key={b.title}
-                    initial={{ opacity: 0, x: 24 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    transition={{ duration: 0.55, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] as const }}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.5, delay: 0.06 * i, ease: [0.22, 1, 0.36, 1] as const }}
                   >
-                    <div className="group relative overflow-hidden rounded-[24px] bg-white border border-[#E9EFF8] shadow-[0_10px_30px_-14px_rgba(20,33,61,0.16)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_54px_-24px_rgba(20,33,61,0.28)]">
-                      {/* left accent border */}
-                      <span
-                        className="absolute left-0 top-5 bottom-5 w-1 rounded-full"
-                        style={{ background: `linear-gradient(180deg, ${b.color}, ${b.color}40)` }}
-                      />
-                      {/* gradient glow on hover */}
+                    <div className="group relative h-full rounded-[14px] bg-white border border-[#E6EEF9] shadow-[0_4px_16px_-6px_rgba(20,33,61,0.1)] p-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(22,93,255,0.18)]">
                       <div
-                        className="absolute -top-12 -right-12 w-36 h-36 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
-                        style={{ background: `radial-gradient(circle, ${b.color}30, transparent 70%)` }}
-                      />
-                      <div className="relative flex items-center gap-4 py-4 pl-6 pr-5">
-                        <span
-                          className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
-                          style={{
-                            background: `radial-gradient(circle at 32% 28%, ${b.from} 0%, ${b.color} 58%, ${b.to} 100%)`,
-                            boxShadow: `0 10px 20px -8px ${b.color}99`,
-                          }}
-                        >
-                          <b.icon className="w-5.5 h-5.5 text-white" strokeWidth={2.2} />
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <p className="font-heading font-bold text-[15px] text-[#0A1E4F] leading-snug">
-                            {b.title}
-                          </p>
-                          <p className="mt-0.5 text-[12.5px] leading-snug text-[#6B7280]">
-                            {b.desc}
-                          </p>
-                        </div>
-                        <div className="shrink-0 text-right">
-                          <p className="font-heading font-extrabold text-[20px] leading-none" style={{ color: b.color }}>
-                            {b.stat}
-                          </p>
-                          <p className="mt-1 text-[10px] font-semibold text-[#6B7280] max-w-[84px] ml-auto leading-tight">
-                            {b.statLabel}
-                          </p>
-                        </div>
+                        className="w-8 h-8 rounded-full flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110"
+                        style={{
+                          background: `${b.color}12`,
+                          border: `1.5px solid ${b.color}25`,
+                        }}
+                      >
+                        <b.icon className="w-3.5 h-3.5" style={{ color: b.color }} strokeWidth={2.2} />
                       </div>
+                      <h3 className="font-heading font-bold text-[14px] text-[#0A1E4F] leading-snug mb-0.5">
+                        {b.title}
+                      </h3>
+                      <p className="text-[12px] leading-snug text-[#6B7280] mb-1.5">
+                        {b.desc}
+                      </p>
+                      <p className="text-[12px] font-bold" style={{ color: b.color }}>
+                        {b.stat}{" "}
+                        <span className="font-normal text-[#9CA3AF]">{b.statLabel}</span>
+                      </p>
                     </div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* CTA */}
-              <div className="mt-8">
-                <Button
-                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#165DFF] to-[#3F7CFF] text-white font-heading font-bold text-[14.5px] px-7 py-3.5 shadow-[0_18px_40px_-16px_rgba(22,93,255,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_-18px_rgba(22,93,255,0.65)]"
-                  onClick={() => (window.location.href = "/contact")}
-                >
-                  Book a Consultation
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </div>
+              {/* CTAs */}
+              <Reveal delay={300}>
+                <div className="mt-3.5 flex items-center gap-4">
+                  <Button
+                    className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#165DFF] to-[#3F7CFF] text-white font-heading font-bold text-[14px] px-6 py-3 shadow-[0_14px_32px_-12px_rgba(22,93,255,0.5)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-14px_rgba(22,93,255,0.6)]"
+                    onClick={() => (window.location.href = "/contact")}
+                  >
+                    Book a Consultation
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Button>
+                  <a
+                    href="/impact"
+                    className="inline-flex items-center gap-1.5 text-[14px] font-heading font-semibold text-[#165DFF] hover:text-[#0D3BB8] transition-colors duration-300"
+                  >
+                    Learn More
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </Reveal>
             </div>
           </div>
 
@@ -512,9 +565,9 @@ export default function Schools() {
           >
             <div className="relative overflow-hidden rounded-[36px] sm:rounded-[44px] border border-[#E3EEFB] bg-gradient-to-br from-[#EEF5FF] via-[#F5F9FF] to-[#EAF3FF] px-5 sm:px-8 lg:px-12 py-9 sm:py-12 shadow-[0_50px_110px_-55px_rgba(20,33,61,0.3)]">
               {/* decor */}
-              <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[#165DFF]/[0.08] blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-24 -left-16 w-80 h-80 rounded-full bg-[#27AE60]/[0.08] blur-3xl pointer-events-none" />
-              <div className="absolute left-[45%] top-[6%] w-28 h-28 rounded-[60%_40%_55%_45%/45%_58%_42%_55%] bg-[#F4B400]/[0.18] blur-sm animate-blob pointer-events-none" />
+              <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[#165DFF]/[0.1] blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -left-16 w-80 h-80 rounded-full bg-[#3F7CFF]/[0.08] blur-3xl pointer-events-none" />
+              <div className="absolute left-[45%] top-[6%] w-28 h-28 rounded-[60%_40%_55%_45%/45%_58%_42%_55%] bg-[#0EA5E9]/[0.12] blur-sm animate-blob pointer-events-none" />
               <Dots className="absolute right-[4%] top-[14%] w-20 opacity-[0.05] pointer-events-none" />
               <CurvedLines className="absolute left-[3%] bottom-[10%] w-36 opacity-[0.06] pointer-events-none" />
 
@@ -530,11 +583,11 @@ export default function Schools() {
                     >
                       <s.icon className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </span>
-                    <p className="mt-3 font-heading font-extrabold text-[26px] sm:text-[30px] lg:text-[32px] text-[#0A1E4F] leading-none">
+                    <p className="mt-2 font-heading font-extrabold text-[22px] sm:text-[26px] lg:text-[28px] text-[#0A1E4F] leading-none">
                       <Counter to={s.value} suffix={s.suffix} />
                     </p>
-                    <p className="mt-2 text-[12px] font-semibold text-[#5B6B8C]">{s.label}</p>
-                    <span className="mt-3 h-[3px] w-9 rounded-full" style={{ background: s.color }} />
+                    <p className="mt-1.5 text-[11px] font-semibold text-[#5B6B8C]">{s.label}</p>
+                    <span className="mt-2 h-[2px] w-8 rounded-full" style={{ background: s.color }} />
                   </div>
                 ))}
               </div>
@@ -544,40 +597,154 @@ export default function Schools() {
       </section>
 
       {/* ═══════ OUR PROCESS ═══════ */}
-      <section className="section-padding bg-[#F7FAFC]">
-        <div className="container">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#F4F8FF] to-[#EEF5FF] py-20 md:py-28">
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-[#165DFF]/[0.05] rounded-full blur-[90px]" />
+          <div className="absolute -bottom-28 -right-28 w-[350px] h-[350px] bg-[#3F7CFF]/[0.04] rounded-full blur-[80px]" />
+          <svg className="absolute top-[10%] left-[-4%] w-64 h-64 text-[#165DFF]/[0.06]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.8">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="68" />
+            <circle cx="100" cy="100" r="46" />
+          </svg>
+          <svg className="absolute bottom-[8%] right-[-2%] w-48 h-48 text-[#3F7CFF]/[0.05]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="60" />
+          </svg>
+          <div className="absolute top-[15%] right-[5%] w-28 h-28 opacity-[0.08]" style={{ backgroundImage: "radial-gradient(#165DFF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
+          <div className="absolute bottom-[12%] left-[3%] w-24 h-24 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(#3F7CFF 0.8px, transparent 0.8px)", backgroundSize: "14px 14px" }} />
+          <svg className="absolute top-0 left-0 w-full h-full text-[#165DFF]/[0.025]" viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
+            <path d="M0 200 C 400 120, 800 280, 1440 180" stroke="currentColor" strokeWidth="0.8" />
+            <path d="M0 400 C 500 340, 960 460, 1440 380" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 14" />
+          </svg>
+
+          {/* Flowing gradient line from left */}
+          <svg className="absolute top-[25%] -left-8 w-[550px] h-[280px] opacity-[0.58] pointer-events-none" viewBox="0 0 550 280" fill="none" strokeLinecap="round">
+            <defs>
+              <linearGradient id="processFlowLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#165DFF" stopOpacity="0" />
+                <stop offset="25%" stopColor="#165DFF" stopOpacity="0.9" />
+                <stop offset="55%" stopColor="#6366F1" stopOpacity="0.7" />
+                <stop offset="85%" stopColor="#06B6D4" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M0 140 C 90 70, 200 200, 340 110 S 480 160, 550 100" stroke="url(#processFlowLeft)" strokeWidth="1.5" />
+          </svg>
+
+          {/* Flowing gradient line from right */}
+          <svg className="absolute bottom-[18%] -right-10 w-[500px] h-[260px] opacity-[0.78] pointer-events-none" viewBox="0 0 500 260" fill="none" strokeLinecap="round">
+            <defs>
+              <linearGradient id="processFlowRight" x1="100%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#06B6D4" stopOpacity="0" />
+                <stop offset="20%" stopColor="#3F7CFF" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#6366F1" stopOpacity="0.6" />
+                <stop offset="80%" stopColor="#165DFF" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#165DFF" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M500 120 C 410 190, 280 60, 150 140 S 20 100, 0 150" stroke="url(#processFlowRight)" strokeWidth="1.2" />
+          </svg>
+        </div>
+
+        <div className="container relative z-10">
+          {/* Heading */}
           <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-[#32B768] font-semibold text-sm uppercase tracking-widest mb-3">
+            <div className="text-center mb-16 md:mb-20">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-3">
                 Our Process
               </p>
-              <h2 className="heading-2 text-[#1F2937]">
+              <h2
+                className="text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] text-[#0A1E4F] mb-4"
+                style={{ fontFamily: SERIF }}
+              >
                 How We Partner With Your School
               </h2>
-              <p className="body-lg mt-4 max-w-2xl mx-auto">
+              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed max-w-xl mx-auto">
                 A proven five-step process that ensures seamless integration and
                 measurable results.
               </p>
             </div>
           </Reveal>
 
-          <div className="max-w-3xl mx-auto">
-            {processSteps.map((step, i) => (
-              <Reveal key={step.title} delay={i * 100}>
-                <div className="flex gap-6 mb-8 last:mb-0">
-                  <div className="flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-xl bg-[#1E5AA8] text-white flex items-center justify-center shrink-0">
-                      <step.icon className="w-6 h-6" />
+          {/* Desktop — horizontal flowing journey */}
+          <div className="hidden lg:block max-w-5xl mx-auto relative">
+            {/* Curved connecting line */}
+            <svg className="absolute top-[36px] left-[6%] right-[6%] h-[2px] w-[88%]" viewBox="0 0 1000 4" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="processLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#165DFF" stopOpacity="0.15" />
+                  <stop offset="30%" stopColor="#3F7CFF" stopOpacity="0.35" />
+                  <stop offset="70%" stopColor="#6366F1" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#165DFF" stopOpacity="0.15" />
+                </linearGradient>
+              </defs>
+              <path d="M0 2 Q 250 0, 500 2 T 1000 2" stroke="url(#processLine)" strokeWidth="1.5" fill="none" />
+            </svg>
+
+            <div className="grid grid-cols-5 gap-6">
+              {processSteps.map((step, i) => (
+                <Reveal key={step.title} delay={i * 80}>
+                  <div className="flex flex-col items-center text-center">
+                    {/* Number circle */}
+                    <div className="relative mb-5">
+                      <div className="w-[72px] h-[72px] rounded-full bg-white border-2 border-[#165DFF]/15 flex items-center justify-center relative z-10 shadow-[0_4px_20px_-6px_rgba(22,93,255,0.15)] transition-all duration-300 hover:border-[#165DFF]/30 hover:shadow-[0_8px_28px_-8px_rgba(22,93,255,0.25)]">
+                        <step.icon className="w-6 h-6 text-[#165DFF]" strokeWidth={1.8} />
+                      </div>
+                      {/* Step number badge */}
+                      <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#165DFF] text-white text-[10px] font-bold flex items-center justify-center z-20">
+                        {i + 1}
+                      </div>
                     </div>
+
+                    {/* Arrow between steps */}
                     {i < processSteps.length - 1 && (
-                      <div className="w-0.5 h-8 bg-[#1E5AA8]/20" />
+                      <div className="hidden lg:block absolute top-[34px] -right-3 z-20">
+                        <ArrowRight className="w-3.5 h-3.5 text-[#165DFF]/25" />
+                      </div>
                     )}
-                  </div>
-                  <div className="pt-2">
-                    <h3 className="font-heading font-semibold text-lg text-[#1F2937] mb-2">
+
+                    <h3
+                      className="text-[1rem] text-[#0A1E4F] mb-1.5"
+                      style={{ fontFamily: SERIF }}
+                    >
                       {step.title}
                     </h3>
-                    <p className="text-[#6B7280] text-sm leading-relaxed">
+                    <p className="text-[0.8rem] text-[#6B7280] leading-relaxed max-w-[160px]">
+                      {step.desc}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile — vertical timeline */}
+          <div className="lg:hidden max-w-md mx-auto">
+            {processSteps.map((step, i) => (
+              <Reveal key={step.title} delay={i * 80}>
+                <div className="flex gap-5 mb-8 last:mb-0">
+                  <div className="flex flex-col items-center">
+                    <div className="relative">
+                      <div className="w-12 h-12 rounded-full bg-white border-2 border-[#165DFF]/15 flex items-center justify-center shrink-0 shadow-[0_4px_16px_-4px_rgba(22,93,255,0.12)]">
+                        <step.icon className="w-5 h-5 text-[#165DFF]" strokeWidth={1.8} />
+                      </div>
+                      <div className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#165DFF] text-white text-[9px] font-bold flex items-center justify-center">
+                        {i + 1}
+                      </div>
+                    </div>
+                    {i < processSteps.length - 1 && (
+                      <div className="w-[1px] h-8 bg-gradient-to-b from-[#165DFF]/20 to-[#165DFF]/5" />
+                    )}
+                  </div>
+                  <div className="pt-1">
+                    <h3
+                      className="text-[1.05rem] text-[#0A1E4F] mb-1"
+                      style={{ fontFamily: SERIF }}
+                    >
+                      {step.title}
+                    </h3>
+                    <p className="text-[0.82rem] text-[#6B7280] leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
@@ -589,52 +756,149 @@ export default function Schools() {
       </section>
 
       {/* ═══════ CASE STUDIES ═══════ */}
-      <section className="section-padding bg-white">
-        <div className="container">
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-28 -right-28 w-[350px] h-[350px] bg-[#165DFF]/[0.04] rounded-full blur-[80px]" />
+          <div className="absolute -bottom-24 -left-20 w-[300px] h-[300px] bg-[#3F7CFF]/[0.035] rounded-full blur-[70px]" />
+          <svg className="absolute top-[8%] right-[-2%] w-52 h-52 text-[#165DFF]/[0.06]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="62" />
+          </svg>
+          <div className="absolute top-[12%] left-[4%] w-24 h-24 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(#165DFF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
+          <div className="absolute bottom-[10%] right-[6%] w-20 h-20 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(#3F7CFF 0.8px, transparent 0.8px)", backgroundSize: "14px 14px" }} />
+
+          {/* Flowing gradient line */}
+          <svg className="absolute top-[30%] -left-8 w-[480px] h-[220px] opacity-[0.12] pointer-events-none" viewBox="0 0 480 220" fill="none" strokeLinecap="round">
+            <defs>
+              <linearGradient id="caseFlowLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#165DFF" stopOpacity="0" />
+                <stop offset="30%" stopColor="#165DFF" stopOpacity="0.8" />
+                <stop offset="60%" stopColor="#6366F1" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M0 110 C 80 50, 180 170, 300 90 S 420 130, 480 80" stroke="url(#caseFlowLeft)" strokeWidth="1.2" />
+          </svg>
+        </div>
+
+        <div className="container relative z-10">
           <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-[#F4B400] font-semibold text-sm uppercase tracking-widest mb-3">
+            <div className="text-center mb-16 md:mb-20">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-3">
                 Case Studies
               </p>
-              <h2 className="heading-2 text-[#1F2937]">
+              <h2
+                className="text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] text-[#0A1E4F] mb-4"
+                style={{ fontFamily: SERIF }}
+              >
                 School Transformation Stories
               </h2>
+              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed max-w-xl mx-auto">
+                Real results from schools that partnered with us to transform their
+                sports programmes.
+              </p>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               {
                 school: "Delhi Public School, Gurgaon",
-                before: "Limited sports activity, 15% participation",
+                before: "Limited sports activity, 15% student participation",
                 after: "85% participation, district-level champions",
                 detail: "From neglecting sports to becoming a multi-sport powerhouse in just one academic year.",
+                metrics: [
+                  { label: "Participation", value: "15% → 85%" },
+                  { label: "Programme", value: "Multi-Sport" },
+                  { label: "Timeline", value: "1 Year" },
+                ],
               },
               {
                 school: "The Heritage School, Noida",
                 before: "No structured PE, teacher-led games only",
-                after: "Full multi-sport programme, NEP compliant",
-                detail: "Complete transformation of their sports education with certified coaching and curriculum.",
+                after: "Full multi-sport programme, NEP 2020 compliant",
+                detail: "Complete transformation of their sports education with certified coaching and structured curriculum.",
+                metrics: [
+                  { label: "NEP Status", value: "Compliant" },
+                  { label: "Coaches", value: "8 Certified" },
+                  { label: "Sports", value: "6 Disciplines" },
+                ],
+              },
+              {
+                school: "Ryan International, Mumbai",
+                before: "Outdated facilities, no sports tracking",
+                after: "Modern infrastructure, data-driven coaching",
+                detail: "Upgraded entire sports infrastructure and introduced performance tracking for 2,000+ students.",
+                metrics: [
+                  { label: "Students", value: "2,000+" },
+                  { label: "Infrastructure", value: "Upgraded" },
+                  { label: "Tracking", value: "Data-Driven" },
+                ],
               },
             ].map((caseStudy, i) => (
               <Reveal key={caseStudy.school} delay={i * 100}>
-                <div className="bg-[#F7FAFC] rounded-2xl p-6 border border-[#E5E7EB] h-full">
-                  <h3 className="font-heading font-semibold text-[#1F2937] mb-4">
-                    {caseStudy.school}
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                      <p className="text-xs text-red-500 font-semibold uppercase mb-1">Before</p>
-                      <p className="text-sm text-[#6B7280]">{caseStudy.before}</p>
+                <div className="group relative h-full rounded-[22px] bg-white border border-[#D6E4F7] shadow-[0_8px_30px_-10px_rgba(22,93,255,0.12),0_2px_8px_-2px_rgba(20,33,61,0.06)] p-5 transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-14px_rgba(22,93,255,0.25),0_8px_20px_-6px_rgba(20,33,61,0.1)]">
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-8 right-8 h-[3px] rounded-full bg-gradient-to-r from-[#165DFF]/0 via-[#165DFF]/50 to-[#165DFF]/0 group-hover:via-[#165DFF]/70 transition-all duration-500" />
+
+                  {/* Corner glow on hover */}
+                  <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-[#165DFF]/[0.08] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                  {/* School name */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-[#165DFF] to-[#3F7CFF] flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(22,93,255,0.35)] shrink-0">
+                      <Building2 className="w-4.5 h-4.5 text-white" strokeWidth={2} />
                     </div>
-                    <div>
-                      <p className="text-xs text-[#32B768] font-semibold uppercase mb-1">After</p>
-                      <p className="text-sm text-[#6B7280]">{caseStudy.after}</p>
+                    <h3
+                      className="text-[1.05rem] text-[#0A1E4F] leading-snug"
+                      style={{ fontFamily: SERIF }}
+                    >
+                      {caseStudy.school}
+                    </h3>
+                  </div>
+
+                  {/* Before → After flow */}
+                  <div className="flex items-stretch gap-2.5 mb-3">
+                    <div className="flex-1 rounded-[12px] bg-gradient-to-br from-[#FEF2F2] to-[#FFF5F5] border border-[#FECACA]/60 p-2.5 shadow-[inset_0_1px_2px_rgba(220,38,38,0.06)]">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-[#DC2626]/80 mb-1 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626]/50" />
+                        Before
+                      </p>
+                      <p className="text-[11px] text-[#6B7280] leading-snug font-medium">{caseStudy.before}</p>
+                    </div>
+                    <div className="flex items-center shrink-0">
+                      <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#165DFF] to-[#3F7CFF] flex items-center justify-center shadow-[0_4px_12px_-2px_rgba(22,93,255,0.3)] group-hover:scale-110 transition-transform duration-300">
+                        <ArrowRight className="w-3.5 h-3.5 text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1 rounded-[12px] bg-gradient-to-br from-[#EFF6FF] to-[#F0F7FF] border border-[#BFDBFE]/60 p-2.5 shadow-[inset_0_1px_2px_rgba(22,93,255,0.06)]">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-[#165DFF]/80 mb-1 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#165DFF]/50" />
+                        After
+                      </p>
+                      <p className="text-[11px] text-[#6B7280] leading-snug font-medium">{caseStudy.after}</p>
                     </div>
                   </div>
-                  <p className="text-sm text-[#6B7280] leading-relaxed">
+
+                  {/* Detail */}
+                  <p className="text-[0.8rem] text-[#6B7280] leading-relaxed mb-3">
                     {caseStudy.detail}
                   </p>
+
+                  {/* Metrics strip */}
+                  <div className="flex gap-2 pt-3 border-t border-[#E6EEF9]">
+                    {caseStudy.metrics.map((m, mi) => (
+                      <div key={m.label} className="flex-1 text-center py-1.5 rounded-[8px] bg-[#F4F8FF]/80 border border-[#E6EEF9]/60">
+                        <p className="text-[8px] font-bold text-[#9CA3AF] uppercase tracking-wider mb-0">
+                          {m.label}
+                        </p>
+                        <p className="text-[11px] font-extrabold text-[#0A1E4F]">
+                          {m.value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -643,33 +907,82 @@ export default function Schools() {
       </section>
 
       {/* ═══════ DOWNLOADS ═══════ */}
-      <section className="section-padding bg-[#F7FAFC]">
-        <div className="container">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F4F8FF] via-[#F8FAFF] to-white py-20 md:py-28">
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-28 -left-24 w-[320px] h-[320px] bg-[#165DFF]/[0.04] rounded-full blur-[80px]" />
+          <div className="absolute -bottom-20 -right-20 w-[280px] h-[280px] bg-[#3F7CFF]/[0.035] rounded-full blur-[70px]" />
+          <svg className="absolute bottom-[10%] left-[-2%] w-48 h-48 text-[#165DFF]/[0.06]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="62" />
+          </svg>
+          <div className="absolute top-[10%] right-[4%] w-24 h-24 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(#165DFF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
+        </div>
+
+        <div className="container relative z-10">
           <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-[#1E5AA8] font-semibold text-sm uppercase tracking-widest mb-3">
+            <div className="text-center mb-14 md:mb-18">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-3">
                 Resources
               </p>
-              <h2 className="heading-2 text-[#1F2937]">
+              <h2
+                className="text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] text-[#0A1E4F] mb-4"
+                style={{ fontFamily: SERIF }}
+              >
                 Download Our Materials
               </h2>
+              <p className="text-[#6B7280] text-[0.92rem] leading-relaxed max-w-lg mx-auto">
+                Everything you need to understand and share our programme with your school community.
+              </p>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
-              { title: "School Brochure", desc: "Complete programme overview for schools" },
-              { title: "Impact Report 2024", desc: "Annual results and transformation data" },
-              { title: "NEP 2020 Alignment Guide", desc: "How our programme meets NEP requirements" },
+              { title: "School Brochure", desc: "Complete programme overview for schools", tag: "PDF · 2.4 MB", color: "#165DFF", from: "#EBF2FF", to: "#F0F7FF", borderColor: "#BFDBFE" },
+              { title: "Impact Report 2024", desc: "Annual results and transformation data", tag: "PDF · 3.1 MB", color: "#3F7CFF", from: "#EEF4FF", to: "#F4F8FF", borderColor: "#C7D9F7" },
+              { title: "NEP 2020 Alignment Guide", desc: "How our programme meets NEP requirements", tag: "PDF · 1.8 MB", color: "#6366F1", from: "#EEF0FF", to: "#F5F5FF", borderColor: "#D4D4F7" },
             ].map((doc, i) => (
               <Reveal key={doc.title} delay={i * 80}>
-                <div className="bg-white rounded-xl p-5 border border-[#E5E7EB] flex items-center gap-4 card-hover">
-                  <Download className="w-6 h-6 text-[#1E5AA8] shrink-0" />
-                  <div>
-                    <p className="font-heading font-semibold text-sm text-[#1F2937]">
-                      {doc.title}
-                    </p>
-                    <p className="text-[#6B7280] text-xs">{doc.desc}</p>
+                <div className="group relative rounded-[18px] border shadow-[0_4px_16px_-6px_rgba(20,33,61,0.08)] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_-10px_rgba(22,93,255,0.15)] cursor-pointer"
+                  style={{
+                    background: `linear-gradient(135deg, ${doc.from} 0%, ${doc.to} 100%)`,
+                    borderColor: `${doc.borderColor}80`,
+                  }}
+                >
+                  {/* Top accent */}
+                  <div className="absolute top-0 left-6 right-6 h-[2.5px] rounded-full group-hover:opacity-100 opacity-60 transition-all duration-500"
+                    style={{ background: `linear-gradient(to right, transparent, ${doc.color}60, transparent)` }}
+                  />
+
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 group-hover:scale-105 transition-all duration-300"
+                      style={{
+                        background: `linear-gradient(135deg, ${doc.color}18, ${doc.color}10)`,
+                        border: `1.5px solid ${doc.color}25`,
+                        boxShadow: `0 4px 12px -2px ${doc.color}20`,
+                      }}
+                    >
+                      <Download className="w-5 h-5" style={{ color: doc.color }} strokeWidth={2} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3
+                        className="text-[1rem] text-[#0A1E4F] mb-1"
+                        style={{ fontFamily: SERIF }}
+                      >
+                        {doc.title}
+                      </h3>
+                      <p className="text-[0.8rem] text-[#6B7280] leading-snug mb-2">
+                        {doc.desc}
+                      </p>
+                      <div className="flex items-center gap-1.5">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: `${doc.color}60` }} />
+                        <span className="text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider">
+                          {doc.tag}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -679,27 +992,66 @@ export default function Schools() {
       </section>
 
       {/* ═══════ FAQs ═══════ */}
-      <section className="section-padding bg-white">
-        <div className="container max-w-3xl">
+      <section className="relative overflow-hidden bg-white py-20 md:py-28">
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-24 -right-24 w-[300px] h-[300px] bg-[#165DFF]/[0.04] rounded-full blur-[80px]" />
+          <div className="absolute -bottom-20 -left-16 w-[260px] h-[260px] bg-[#3F7CFF]/[0.03] rounded-full blur-[70px]" />
+          <svg className="absolute top-[8%] right-[-1%] w-44 h-44 text-[#165DFF]/[0.05]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
+            <circle cx="100" cy="100" r="90" />
+            <circle cx="100" cy="100" r="60" />
+          </svg>
+          <div className="absolute bottom-[12%] left-[3%] w-20 h-20 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(#3F7CFF 0.8px, transparent 0.8px)", backgroundSize: "12px 12px" }} />
+
+          {/* Flowing gradient line */}
+          <svg className="absolute top-[35%] -left-6 w-[400px] h-[200px] opacity-[0.1] pointer-events-none" viewBox="0 0 400 200" fill="none" strokeLinecap="round">
+            <defs>
+              <linearGradient id="faqFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#165DFF" stopOpacity="0" />
+                <stop offset="30%" stopColor="#165DFF" stopOpacity="0.7" />
+                <stop offset="70%" stopColor="#6366F1" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d="M0 100 C 80 40, 180 160, 300 80 S 380 120, 400 70" stroke="url(#faqFlow)" strokeWidth="1.2" />
+          </svg>
+        </div>
+
+        <div className="container relative z-10 max-w-3xl">
           <Reveal>
-            <div className="text-center mb-14">
-              <p className="text-[#32B768] font-semibold text-sm uppercase tracking-widest mb-3">
+            <div className="text-center mb-14 md:mb-18">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-3">
                 FAQs
               </p>
-              <h2 className="heading-2 text-[#1F2937]">
+              <h2
+                className="text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] text-[#0A1E4F] mb-4"
+                style={{ fontFamily: SERIF }}
+              >
                 Frequently Asked Questions
               </h2>
+              <p className="text-[#6B7280] text-[0.92rem] leading-relaxed max-w-lg mx-auto">
+                Everything you need to know about partnering with us.
+              </p>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full space-y-2.5">
               {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border-b border-[#E5E7EB]">
-                  <AccordionTrigger className="text-left font-heading font-medium text-[#1F2937] text-base hover:text-[#1E5AA8]">
-                    {faq.q}
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="rounded-[14px] border border-[#E6EEF9] bg-gradient-to-b from-[#F8FAFF] to-white px-5 py-0 shadow-[0_2px_8px_-4px_rgba(20,33,61,0.06)] data-[state=open]:border-[#165DFF]/20 data-[state=open]:shadow-[0_4px_16px_-6px_rgba(22,93,255,0.1)] transition-all duration-300"
+                >
+                  <AccordionTrigger className="text-left font-heading font-semibold text-[#0A1E4F] text-[0.95rem] hover:text-[#165DFF] py-4 gap-3">
+                    <span className="flex items-center gap-3">
+                      <span className="w-7 h-7 rounded-full bg-[#165DFF]/[0.08] flex items-center justify-center shrink-0 text-[11px] font-bold text-[#165DFF]/60">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {faq.q}
+                    </span>
                   </AccordionTrigger>
-                  <AccordionContent className="text-[#6B7280] text-sm leading-relaxed">
+                  <AccordionContent className="text-[#6B7280] text-[0.88rem] leading-relaxed pl-10 pb-4">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>

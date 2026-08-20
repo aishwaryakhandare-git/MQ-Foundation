@@ -23,6 +23,8 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
+const SERIF = "'DM Serif Display', serif";
+
 /* ─── Gallery Data ─── */
 
 type Category = "All" | "Events" | "Schools" | "Infrastructure" | "Coaches";
@@ -270,8 +272,9 @@ export default function GalleryPage() {
           <motion.div {...fade(0)} className="max-w-4xl mx-auto text-center">
             <div className="relative mb-8">
               <h1
-                className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold uppercase tracking-[0.1em] select-none leading-none"
+                className="text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold uppercase tracking-[0.1em] select-none leading-none"
                 style={{
+                  fontFamily: SERIF,
                   WebkitTextStroke: "2px transparent",
                   backgroundImage: "linear-gradient(180deg, #0A1E4F 0%, #165DFF 50%, #3F7CFF 100%)",
                   WebkitBackgroundClip: "text",
@@ -282,8 +285,9 @@ export default function GalleryPage() {
                 Our Gallery
               </h1>
               <h1
-                className="absolute inset-0 text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold uppercase tracking-[0.1em] select-none pointer-events-none leading-none"
+                className="absolute inset-0 text-[2.2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold uppercase tracking-[0.1em] select-none pointer-events-none leading-none"
                 style={{
+                  fontFamily: SERIF,
                   WebkitTextStroke: "1.5px #165DFF",
                   color: "transparent",
                 }}
@@ -292,7 +296,7 @@ export default function GalleryPage() {
               </h1>
             </div>
 
-            <h2 className="font-heading font-bold text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] text-[#0A1E4F] leading-snug mb-4">
+            <h2 className="font-bold text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] text-[#0A1E4F] leading-snug mb-4" style={{ fontFamily: SERIF }}>
               A Visual Journey Through Our Impact
             </h2>
 
