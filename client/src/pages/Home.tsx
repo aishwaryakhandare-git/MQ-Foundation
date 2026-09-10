@@ -4,8 +4,8 @@
  * Sections: Hero, Feature Strip, Impact, Problems, Journey, Stories, Philosophy, CTA
  */
 import Hero from "@/components/home/Hero";
-import AboutUsSection from "@/components/home/AboutUsSection";
 import FeatureStrip from "@/components/home/FeatureStrip";
+import WhySportMatters from "@/components/home/WhySportMatters";
 import ImpactSection from "@/components/home/ImpactSection";
 import ProblemsSection from "@/components/home/ProblemsSection";
 import JourneySection from "@/components/home/JourneySection";
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white pb-20">
       <Hero />
-      <AboutUsSection />
+      <WhySportMatters />
       <FeatureStrip />
       <ImpactSection />
 

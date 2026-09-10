@@ -17,15 +17,31 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      if (location === "/") {
+        const hero = document.getElementById("home-hero");
+        if (hero) {
+          const rect = hero.getBoundingClientRect();
+          setOverHero(rect.bottom > 60);
+        }
+      } else {
+        setOverHero(false);
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [location]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -37,10 +53,12 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        scrolled
-          ? "bg-white border-b border-[#E7EBF3] shadow-[0_10px_40px_-18px_rgba(10,30,79,0.18)]"
-          : "bg-white border-b border-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-500",
+        overHero
+          ? "bg-transparent"
+          : scrolled
+            ? "bg-white border-b border-[#E7EBF3] shadow-[0_10px_40px_-18px_rgba(10,30,79,0.18)]"
+            : "bg-white border-b border-transparent",
       )}
     >
       <div className="container flex items-center justify-between h-[76px] lg:h-20">
@@ -58,8 +76,10 @@ export default function Navbar() {
               className={cn(
                 "relative font-heading font-semibold text-[14px] transition-colors duration-300 py-2",
                 isActive(link.href)
-                  ? "text-[#FF6B35]"
-                  : "text-[#0A1E4F] hover:text-[#FF6B35]",
+                  ? overHero ? "text-white" : "text-[#FF6B35]"
+                  : overHero
+                    ? "text-white hover:text-white/80"
+                    : "text-[#0A1E4F] hover:text-[#FF6B35]",
               )}
             >
               {link.label}
@@ -78,16 +98,19 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/schools"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] text-white font-heading font-bold text-[13.5px] px-6 py-3 shadow-[0_14px_30px_-12px_rgba(255,107,53,0.55)] transition-all duration-300 hover:shadow-[0_18px_40px_-12px_rgba(255,107,53,0.65)] hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full bg-[#0066B3] text-white font-heading font-bold text-[13.5px] px-6 py-3 shadow-[0_14px_30px_-12px_rgba(0,102,179,0.55)] transition-all duration-300 hover:bg-[#E31B23] hover:shadow-[0_18px_40px_-12px_rgba(227,27,35,0.45)] hover:-translate-y-0.5"
           >
-            Book a Free School Assessment
+            Partner With US
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden p-2 rounded-xl text-[#0A1E4F] hover:bg-[#FFF9E9] transition-colors"
+          className={cn(
+            "lg:hidden p-2 rounded-xl transition-colors",
+            overHero ? "text-white" : "text-[#0A1E4F] hover:bg-[#FFF9E9]",
+          )}
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}

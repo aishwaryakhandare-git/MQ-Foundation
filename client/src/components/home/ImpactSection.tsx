@@ -65,7 +65,7 @@ const fade = (delay: number) => ({
 
 export default function ImpactSection() {
   return (
-    <section className="relative overflow-hidden pt-12 sm:pt-14 lg:pt-16 pb-12 sm:pb-14 lg:pb-16">
+    <section id="impact" className="relative overflow-hidden pt-12 sm:pt-14 lg:pt-16 pb-12 sm:pb-14 lg:pb-16">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
