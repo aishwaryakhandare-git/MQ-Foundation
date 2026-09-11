@@ -1,21 +1,8 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import {
-  Building2,
-  Users,
-  TrendingUp,
-  Target,
-  Dumbbell,
-  LineChart,
-  Heart,
-  Trophy,
-  Shield,
-  ChevronRight,
-  Quote,
-  Zap,
-  Check,
-  ArrowRight,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "wouter";
+import { ArrowRight, ArrowDown } from "lucide-react";
+import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 const fade = (delay = 0) => ({
   initial: { y: 30 },
@@ -24,613 +11,594 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
-function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
+/* ─── Shared editorial bits ─── */
+
+function HandLine() {
   return (
-    <span ref={ref}>
-      {inView ? (
-        <CountUp target={to} />
-      ) : (
-        "0"
-      )}
-      {suffix}
-    </span>
+    <svg
+      className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+      viewBox="0 0 200 12"
+      preserveAspectRatio="none"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
+        stroke="#E31B23"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+    </svg>
   );
 }
 
-function CountUp({ target }: { target: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-
-  if (typeof window !== "undefined" && ref.current && !started.current) {
-    started.current = true;
-    let start = 0;
-    const duration = 2000;
-    const startTime = performance.now();
-    const step = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      start = Math.round(eased * target);
-      if (ref.current) ref.current.textContent = String(start);
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
-
-  return <span ref={ref}>0</span>;
+function Eyebrow({ children, center = false }: { children: ReactNode; center?: boolean }) {
+  return (
+    <p
+      className={cn(
+        "flex items-center gap-4 font-heading text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23]",
+        center && "justify-center",
+      )}
+    >
+      <span className="h-px w-10 bg-[#E31B23]" />
+      {children}
+      {center && <span className="h-px w-10 bg-[#E31B23]" />}
+    </p>
+  );
 }
 
-const IMPACT_SCHOOLS_STATS = [
-  { value: 250, suffix: "+", label: "Schools Partnered", icon: Building2, color: "#165DFF" },
-  { value: 500, suffix: "+", label: "Infrastructure Upgrades", icon: Zap, color: "#0A1E4F" },
-  { value: 92, suffix: "%", label: "Improved Participation", icon: TrendingUp, color: "#3F7CFF" },
-  { value: 85, suffix: "%", label: "Long-Term Continuation", icon: Shield, color: "#165DFF" },
+/* ─── Data ─── */
+
+const STATS_STRIP = [
+  { value: "450+", label: "Schools Transformed" },
+  { value: "125,000+", label: "Students Impacted" },
+  { value: "96%", label: "School Satisfaction" },
+  { value: "100%", label: "Safety Compliant" },
 ];
 
-const IMPACT_FLOW = [
+const BAND_STATS = [
+  { value: "125,000+", label: "Students Impacted" },
+  { value: "450+", label: "Schools Transformed" },
+  { value: "96%", label: "School Satisfaction" },
+  { value: "100%", label: "Safety Compliant" },
+];
+
+const EFFECT_STAGES = [
   {
-    icon: Building2,
-    title: "Infrastructure",
-    desc: "Modern playing surfaces, equipment, and facilities",
-    color: "#0A1E4F",
+    num: "01",
+    title: "Before",
+    red: false,
+    points: ["Limited infrastructure", "Irregular practice", "Limited coaching", "Low participation"],
   },
   {
-    icon: Users,
-    title: "Skilled Coaches",
-    desc: "Certified professionals with multi-sport expertise",
-    color: "#165DFF",
+    num: "02",
+    title: "Marcos Quay Transformation",
+    red: true,
+    points: ["Ground development", "Structured curriculum", "Coach training", "Regular sessions"],
   },
   {
-    icon: Target,
-    title: "Consistent Practice",
-    desc: "Structured sessions that build skill over time",
-    color: "#3F7CFF",
-  },
-  {
-    icon: LineChart,
-    title: "Performance Tracking",
-    desc: "Data-driven insights to measure growth",
-    color: "#165DFF",
-  },
-  {
-    icon: Trophy,
-    title: "Student Growth",
-    desc: "Confident, fit, and skilled young athletes",
-    color: "#0A1E4F",
+    num: "03",
+    title: "After",
+    red: false,
+    points: ["Active school grounds", "Confident students", "Consistent participation", "Better sporting pathways"],
   },
 ];
 
-const STUDENT_OUTCOMES = [
-  { value: 94, suffix: "%", label: "Improved Fitness & Stamina" },
-  { value: 88, suffix: "%", label: "Increased Confidence" },
-  { value: 91, suffix: "%", label: "Better Sporting Skills" },
-  { value: 96, suffix: "%", label: "Teamwork & Discipline" },
+const TRANSFORM_AREAS = [
+  { title: "Infrastructure", desc: "Better playing surfaces, equipment and sporting spaces." },
+  { title: "Grassroots Development", desc: "Creating opportunities for children to discover and develop sporting ability." },
+  { title: "Structured Programmes", desc: "Consistent sport sessions instead of occasional activity." },
+  { title: "Coach Development", desc: "Skilled coaches delivering safe and purposeful training." },
+  { title: "Student Participation", desc: "Making sport accessible to more children across the school." },
 ];
 
-const BEFORE_AFTER = [
-  {
-    before: "Limited infrastructure",
-    after: "Better sports facilities",
-  },
-  {
-    before: "Irregular practice",
-    after: "Structured regular practice",
-  },
-  {
-    before: "Limited coaching support",
-    after: "Certified coaches on-site",
-  },
-  {
-    before: "Low participation",
-    after: "Measurable student development",
-  },
+const SCOREBOARD_CARDS = [
+  { label: "Health", img: "/images/solutions/fitness.jpg", desc: "More active children and better physical fitness." },
+  { label: "Confidence", img: "/images/solutions/multisport.jpg", desc: "Sport gives students the confidence to participate, compete and lead." },
+  { label: "Discipline", img: "/images/solutions/curriculum.jpg", desc: "Regular practice builds consistency, responsibility and teamwork." },
+  { label: "Opportunity", img: "/images/solutions/transformation.jpg", desc: "More children get the chance to discover what they can do through sport." },
+];
+
+const JOURNEY = [
+  { num: "01", title: "Discover", desc: "First opportunity to experience structured sport." },
+  { num: "02", title: "Participate", desc: "Regular sessions make sport part of school life." },
+  { num: "03", title: "Develop", desc: "Coaching builds skills progressively." },
+  { num: "04", title: "Compete", desc: "Students gain opportunities to test themselves." },
+  { num: "05", title: "Grow", desc: "Sport develops confidence and life skills beyond the field." },
 ];
 
 const TESTIMONIALS = [
   {
     quote:
-      "Marcos Quay transformed our sports programme entirely. Our students now have access to world-class coaching and infrastructure they never had before.",
-    initials: "RK",
+      "Marcos Quay transformed our sports programme entirely. Our students are more active, confident and motivated than ever before.",
     name: "Rajesh Kumar",
-    role: "PE Coordinator, Delhi Public School",
-    color: "#165DFF",
+    role: "PE Coordinator",
   },
   {
     quote:
-      "I've seen students who had never touched a football become passionate athletes. The structured curriculum makes all the difference.",
-    initials: "AS",
+      "The structured coaching and regular sessions have made a real difference. Sport is now a key part of our school culture.",
     name: "Anil Sharma",
-    role: "Sports Coach, Ryan International",
-    color: "#0A1E4F",
+    role: "Principal",
   },
   {
     quote:
-      "Before Marcos Quay, I didn't enjoy sports. Now I play football every day and want to represent my school in competitions.",
-    initials: "PJ",
+      "I used to just watch other people play. Now I feel confident and I love being part of the team.",
     name: "Priya Joshi",
-    role: "Student, Age 12 — Football Program",
-    color: "#3F7CFF",
+    role: "Student, Class 8",
   },
 ];
 
-const SERIF = "'DM Serif Display', serif";
+/* ══════════════════════════════════════════════════════════════
+   1 · HERO — photographic editorial statement
+   ══════════════════════════════════════════════════════════════ */
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-[#0A1E4F]">
+      <img
+        src="/images/hero-sports.jpg"
+        alt="Indian school children actively playing football on a school sports ground"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      {/* Soft white fades for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+      <div className="absolute inset-y-0 right-0 hidden lg:block w-[34%] bg-gradient-to-l from-white/75 to-transparent" />
+
+      <div className="container relative z-10 flex min-h-[620px] lg:min-h-[680px] items-center pt-28 pb-16 lg:pt-32 lg:pb-20">
+        <div className="grid w-full grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] items-center gap-10">
+          {/* Left — message */}
+          <motion.div {...fade(0)}>
+            <Eyebrow>Our Impact</Eyebrow>
+
+            <h1 className="mt-6 font-heading font-extrabold leading-none tracking-[-0.03em] text-[#0A1E4F] text-6xl sm:text-7xl lg:text-8xl">
+              125,000+
+            </h1>
+            <p className="mt-3 font-serif text-[2rem] sm:text-[2.6rem] lg:text-[3rem] leading-[1.1] text-[#0A1E4F]">
+              Students Impacted
+            </p>
+
+            <p className="mt-7 max-w-[520px] text-[15.5px] sm:text-[16px] leading-[1.75] text-[#6B7280]">
+              From better grounds to better coaching, Marcos Quay Foundation is
+              helping schools create a more meaningful part of every
+              child&apos;s education.
+            </p>
+
+            <Link
+              href="/contact"
+              className="mt-9 inline-flex items-center gap-2.5 rounded-full bg-[#E31B23] px-8 py-4 font-heading font-bold text-[14.5px] text-white shadow-[0_18px_40px_-16px_rgba(227,27,35,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#c8171f]"
+            >
+              A Stronger, More Active India
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+
+          {/* Right — handwritten phrase */}
+          <motion.div {...fade(0.15)} className="hidden lg:flex flex-col items-end justify-center self-stretch">
+            <p className="font-serif italic text-right text-[1.7rem] leading-[1.35] text-[#0A1E4F]/90">
+              Play
+              <br />
+              Learn
+              <br />
+              Grow
+              <br />
+              Belong
+            </p>
+            <div className="mt-4 h-[2px] w-[70%] rounded-full bg-[#E31B23]" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2 · IMPACT BY NUMBERS — horizontal statistics strip
+   ══════════════════════════════════════════════════════════════ */
+
+function StatsStrip() {
+  return (
+    <section className="bg-white py-14 lg:py-16">
+      <div className="container">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-[20px] border border-[#E7EBF3] bg-[#E7EBF3]">
+          {STATS_STRIP.map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center justify-center gap-3 bg-white px-6 py-9 text-center"
+            >
+              <p className="font-serif text-[2.5rem] sm:text-[3rem] leading-none text-[#0A1E4F]">
+                {s.value}
+              </p>
+              <div className="h-[2px] w-7 rounded-full bg-[#E31B23]" />
+              <p className="font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-[#0A1E4F]">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3 · THE MARCOS QUAY EFFECT — editorial + 3-stage flow
+   ══════════════════════════════════════════════════════════════ */
+
+function Effect() {
+  return (
+    <section className="bg-[#F3F7FC] py-16 lg:py-24">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left — editorial */}
+          <motion.div {...fade(0)} className="self-start lg:sticky lg:top-28">
+            <Eyebrow>The Marcos Quay Effect</Eyebrow>
+            <h2 className="mt-6 font-serif text-[2.1rem] sm:text-[2.7rem] lg:text-[3.2rem] leading-[1.12] text-[#0A1E4F]">
+              From limited opportunity
+              <br />
+              to{" "}
+              <span className="relative inline-block text-[#E31B23]">
+                a culture of sport.
+                <HandLine />
+              </span>
+            </h2>
+            <p className="mt-7 max-w-[500px] text-[15.5px] sm:text-[16px] leading-[1.75] text-[#6B7280]">
+              Many schools have the space for sport, but not always the
+              structure, coaching or consistency needed to make it work. Marcos
+              Quay works alongside schools to change that.
+            </p>
+          </motion.div>
+
+          {/* Right — 3-stage transformation flow */}
+          <div className="space-y-3">
+            {EFFECT_STAGES.map((stage, i) => (
+              <motion.div key={stage.num} {...fade(0.05 * i)}>
+                <div
+                  className={cn(
+                    "rounded-[18px] border p-6 sm:p-7",
+                    stage.red ? "border-[#F2D3D5] bg-[#FBEEEE]" : "border-[#E7EBF3] bg-white",
+                  )}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="font-heading text-[13px] font-extrabold text-[#E31B23]">
+                      {stage.num}
+                    </span>
+                    <span className="font-heading text-[12px] font-bold uppercase tracking-[0.18em] text-[#0A1E4F]">
+                      {stage.title}
+                    </span>
+                  </div>
+                  <ul className="mt-4 grid gap-2">
+                    {stage.points.map((p) => (
+                      <li key={p} className="flex items-start gap-2.5 text-[14px] text-[#4A5568]">
+                        <span className="mt-[8px] h-[2px] w-4 shrink-0 rounded-full bg-[#E31B23]/75" />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {i < EFFECT_STAGES.length - 1 && (
+                  <div className="flex justify-center py-2">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#E7EBF3] bg-white text-[#E31B23]">
+                      <ArrowDown className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4 · TRANSFORMING SCHOOL GROUNDS — photo + transformation list
+   ══════════════════════════════════════════════════════════════ */
+
+function Grounds() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] items-center gap-12 lg:gap-16">
+          {/* Left — photo with navy overlay */}
+          <motion.div {...fade(0)} className="relative min-h-[420px] lg:min-h-[560px] overflow-hidden rounded-[18px]">
+            <img
+              src="/images/hero-sports-1.jpg"
+              alt="Students playing on a transformed school football ground"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1E4F]/95 via-[#0A1E4F]/70 to-transparent px-8 pt-16 pb-8">
+              <div className="h-[3px] w-9 rounded-full bg-[#E31B23]" />
+              <p className="mt-4 max-w-[340px] font-serif text-[1.45rem] sm:text-[1.7rem] leading-[1.3] text-white">
+                Turning school grounds into places to play.
+              </p>
+              <p className="mt-5 font-heading text-[11px] font-bold uppercase tracking-[0.2em] text-white/85">
+                Better Schools.
+                <br />
+                Brighter Futures.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Right — transformation list */}
+          <motion.div {...fade(0.1)}>
+            <Eyebrow>Physical Transformation</Eyebrow>
+            <h2 className="mt-6 font-serif text-[1.95rem] sm:text-[2.4rem] leading-[1.15] text-[#0A1E4F]">
+              What{" "}
+              <span className="relative inline-block text-[#E31B23]">
+                changes
+                <HandLine />
+              </span>{" "}
+              on the ground
+            </h2>
+
+            <div className="mt-8">
+              {TRANSFORM_AREAS.map((area, i) => (
+                <div
+                  key={area.title}
+                  className={cn("flex items-start gap-5 py-6", i > 0 && "border-t border-[#E7EBF3]")}
+                >
+                  <div className="mt-1.5 h-[3px] w-6 shrink-0 rounded-full bg-[#E31B23]" />
+                  <div>
+                    <h3 className="font-heading text-[13px] font-bold uppercase tracking-[0.16em] text-[#0A1E4F]">
+                      {area.title}
+                    </h3>
+                    <p className="mt-1.5 text-[14.5px] leading-[1.7] text-[#6B7280]">
+                      {area.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5 · IMPACT BY THE NUMBERS — pale-blue band + handwritten tail
+   ══════════════════════════════════════════════════════════════ */
+
+function NumbersBand() {
+  return (
+    <section className="relative overflow-hidden bg-[#F3F7FC] py-16 lg:py-24">
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-16">
+          <motion.div {...fade(0)} className="lg:col-span-7">
+            <Eyebrow>Our Impact — By the Numbers</Eyebrow>
+
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-9">
+              {BAND_STATS.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={cn("pl-6 border-l-[3px]", i % 2 === 0 ? "border-[#E31B23]" : "border-[#0A1E4F]")}
+                >
+                  <p className="font-serif text-[2.6rem] sm:text-[3rem] leading-none text-[#0A1E4F]">
+                    {s.value}
+                  </p>
+                  <p className="mt-2 font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-[#0A1E4F]/80">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Faded monochrome + handwritten phrase */}
+          <motion.div
+            {...fade(0.15)}
+            className="relative flex h-[300px] items-center justify-center lg:col-span-5 sm:h-[360px] lg:h-[420px]"
+          >
+            <img
+              src="/images/sport-brighter-tomorrow.jpg"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover grayscale"
+              style={{
+                opacity: 0.16,
+                maskImage:
+                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
+              }}
+            />
+            <div
+              className="absolute inset-0 bg-[#0A1E4F]/[0.04]"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
+              }}
+            />
+            <div className="relative z-10 flex flex-col items-center">
+              <p className="font-serif text-center italic text-[1.8rem] sm:text-[2.1rem] leading-[1.3] text-[#0A1E4F]">
+                More Than
+                <br />
+                A Game
+              </p>
+              <div className="mt-4 h-[2px] w-24 rounded-full bg-[#E31B23]" />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6 · IMPACT BEYOND THE SCOREBOARD — editorial + image cards
+   ══════════════════════════════════════════════════════════════ */
+
+function Scoreboard() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
+          <motion.div {...fade(0)} className="self-start lg:sticky lg:top-28">
+            <Eyebrow>Beyond the Scoreboard</Eyebrow>
+            <h2 className="mt-6 font-serif text-[2.1rem] sm:text-[2.7rem] lg:text-[3.1rem] leading-[1.12] text-[#0A1E4F]">
+              The impact goes
+              <br />
+              beyond{" "}
+              <span className="relative inline-block text-[#E31B23]">
+                the scoreboard.
+                <HandLine />
+              </span>
+            </h2>
+            <p className="mt-7 max-w-[400px] text-[15.5px] sm:text-[16px] leading-[1.75] text-[#6B7280]">
+              Sport shapes healthier, happier and more confident children. The
+              benefits last a lifetime.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {SCOREBOARD_CARDS.map((card, i) => (
+              <motion.div
+                key={card.label}
+                {...fade(0.06 * i)}
+                className="overflow-hidden rounded-[16px] border border-[#E7EBF3] bg-white"
+              >
+                <div className="relative h-40 sm:h-44 overflow-hidden">
+                  <img src={card.img} alt={card.label} loading="lazy" className="h-full w-full object-cover" />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2.5">
+                    <span className="h-[3px] w-5 rounded-full bg-[#E31B23]" />
+                    <h3 className="font-heading text-[12px] font-bold uppercase tracking-[0.18em] text-[#0A1E4F]">
+                      {card.label}
+                    </h3>
+                  </div>
+                  <p className="mt-2.5 text-[14px] leading-[1.7] text-[#6B7280]">{card.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7 · THE STUDENT JOURNEY — five-step horizontal flow
+   ══════════════════════════════════════════════════════════════ */
+
+function Journey() {
+  return (
+    <section className="bg-[#F3F7FC] py-16 lg:py-24">
+      <div className="container">
+        <motion.div {...fade(0)} className="mx-auto max-w-2xl text-center">
+          <Eyebrow center>The Student Journey</Eyebrow>
+          <h2 className="mt-6 font-serif text-[2.1rem] sm:text-[2.7rem] lg:text-[3.1rem] leading-[1.12] text-[#0A1E4F]">
+            From first play
+            <br />
+            to a brighter tomorrow.
+          </h2>
+          <p className="mt-6 text-[15.5px] sm:text-[16px] leading-[1.75] text-[#6B7280]">
+            A structured journey that helps every child find their potential
+            through sport.
+          </p>
+        </motion.div>
+
+        <div className="relative mt-16 lg:mt-20">
+          {/* Connecting line */}
+          <div className="absolute top-[26px] left-[9%] right-[9%] hidden h-px bg-[#C9D6F0] lg:block" />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
+            {JOURNEY.map((step, i) => (
+              <motion.div
+                key={step.num}
+                {...fade(0.06 * i)}
+                className="relative flex flex-col items-center px-2 text-center"
+              >
+                <span className="relative z-10 mt-[20px] hidden h-[14px] w-[14px] rounded-full border-2 border-[#E31B23] bg-[#F3F7FC] lg:block" />
+                <p className="mt-0 font-heading text-[15px] font-extrabold text-[#E31B23] lg:mt-6">
+                  {step.num}
+                </p>
+                <h3 className="mt-2 font-heading text-[1.05rem] font-bold text-[#0A1E4F]">
+                  {step.title}
+                </h3>
+                <p className="mt-2 max-w-[210px] text-[13.5px] leading-[1.7] text-[#6B7280]">
+                  {step.desc}
+                </p>
+
+                {i < JOURNEY.length - 1 && (
+                  <span className="absolute top-[21px] -right-[26px] z-10 hidden text-[#E31B23] lg:flex">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   8 · REAL VOICES — testimonials
+   ══════════════════════════════════════════════════════════════ */
+
+function Voices() {
+  return (
+    <section className="bg-white py-16 lg:py-24">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
+          <motion.div {...fade(0)} className="self-start lg:sticky lg:top-28">
+            <Eyebrow>Real Voices. Real Change.</Eyebrow>
+            <h2 className="mt-6 font-serif text-[2.1rem] sm:text-[2.6rem] lg:text-[3rem] leading-[1.12] text-[#0A1E4F]">
+              What People Are{" "}
+              <span className="relative inline-block text-[#E31B23]">
+                Saying
+                <HandLine />
+              </span>
+            </h2>
+            <p className="mt-7 max-w-[400px] text-[15.5px] sm:text-[16px] leading-[1.75] text-[#6B7280]">
+              Hear from the people who see the impact every day — students,
+              teachers and school leaders.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div
+                key={t.name}
+                {...fade(0.06 * i)}
+                className="flex h-full flex-col rounded-[16px] border border-[#E7EBF3] bg-[#FDFDFB] p-6"
+              >
+                <span className="font-serif text-[2.2rem] leading-none text-[#E31B23]">“</span>
+                <p className="mt-2 flex-1 text-[13.5px] leading-[1.75] text-[#0A1E4F]">{t.quote}</p>
+                <div className="mt-6 h-px w-8 bg-[#E7EBF3]" />
+                <p className="mt-3 font-heading text-[13px] font-bold text-[#0A1E4F]">{t.name}</p>
+                <p className="mt-0.5 text-[11px] uppercase tracking-[0.14em] text-[#9AA5B8]">{t.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE
+   ══════════════════════════════════════════════════════════════ */
 
 export default function ImpactPage() {
   return (
-    <main className="min-h-screen bg-white pb-20">
-      {/* ═══════════════════════════════════════════════════
-          HERO + IMPACTING SCHOOLS — Combined
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-gradient-to-b from-[#F4F7FF] via-white to-[#F8FAFF] overflow-hidden">
-        {/* ── Background decorations ── */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Dotted grid — top left */}
-          <div className="absolute top-[14%] left-[3%] w-36 h-36 opacity-[0.1]" style={{ backgroundImage: "radial-gradient(#165DFF 1.2px, transparent 1.2px)", backgroundSize: "14px 14px" }} />
-          {/* Concentric circles — top right */}
-          <svg className="absolute top-[8%] right-[4%] w-60 h-60 text-[#165DFF]/[0.06]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
-            <circle cx="100" cy="100" r="92" />
-            <circle cx="100" cy="100" r="70" />
-            <circle cx="100" cy="100" r="48" />
-          </svg>
-          {/* Curved lines — left edge */}
-          <svg className="absolute top-[20%] -left-4 w-48 h-[400px] text-[#165DFF]/[0.05]" viewBox="0 0 180 400" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
-            <path d="M60 0 C 20 80, 80 160, 40 240 S 70 340, 30 400" />
-            <path d="M100 0 C 60 100, 120 180, 80 280 S 110 360, 70 400" />
-          </svg>
-          {/* Dotted grid + arcs — bottom right */}
-          <div className="absolute bottom-[10%] right-[5%] w-28 h-28 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(#3F7CFF 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
-          <svg className="absolute bottom-[5%] right-[-2%] w-44 h-44 text-[#3F7CFF]/[0.05]" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="0.7">
-            <circle cx="100" cy="100" r="90" />
-            <circle cx="100" cy="100" r="60" />
-          </svg>
-          {/* Radial glows */}
-          <div className="absolute -top-40 -right-40 w-[520px] h-[520px] bg-[#165DFF]/[0.04] rounded-full blur-3xl" />
-          <div className="absolute bottom-0 -left-32 w-[360px] h-[360px] bg-[#3F7CFF]/[0.03] rounded-full blur-3xl" />
-        </div>
-
-        {/* SVG Clip Path for organic image mask */}
-        <svg className="absolute w-0 h-0" aria-hidden="true">
-          <defs>
-            <clipPath id="organicMask" clipPathUnits="objectBoundingBox">
-              <path d="
-                M 0.04 0.06
-                C 0.04 0.03, 0.06 0.0, 0.10 0.0
-                L 0.90 0.0
-                C 0.94 0.0, 0.96 0.03, 0.96 0.06
-                L 0.98 0.88
-                C 0.98 0.92, 0.96 0.95, 0.93 0.97
-                L 0.10 0.98
-                C 0.06 0.98, 0.04 0.95, 0.04 0.92
-                Z
-              " />
-            </clipPath>
-            <clipPath id="organicBorder" clipPathUnits="objectBoundingBox">
-              <path d="
-                M 0.035 0.055
-                C 0.035 0.025, 0.055 -0.005, 0.095 -0.005
-                L 0.905 -0.005
-                C 0.945 -0.005, 0.965 0.025, 0.965 0.055
-                L 0.985 0.875
-                C 0.985 0.915, 0.965 0.945, 0.935 0.965
-                L 0.095 0.975
-                C 0.055 0.975, 0.035 0.945, 0.035 0.915
-                Z
-              " />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <div className="container relative z-10 pt-16 sm:pt-24 pb-16 md:pb-20">
-          {/* ── Hero heading block ── */}
-          <motion.div {...fade(0)} className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-3">
-              Our Impact
-            </p>
-            <h2
-              className="text-[1.6rem] sm:text-[2rem] md:text-[2.4rem] text-[#0A1E4F] mb-3"
-              style={{ fontFamily: SERIF }}
-            >
-              Stronger Schools. Confident Students. Thriving Communities.
-            </h2>
-          </motion.div>
-
-          {/* ── Two-column layout ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-[42%_58%] gap-10 lg:gap-14 items-center mb-8">
-            {/* LEFT — Content */}
-            <motion.div {...fade(0.1)}>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
-                Impacing Schools
-              </p>
-              <h3
-                className="text-[2.2rem] sm:text-[2.8rem] lg:text-[3.2rem] text-[#0A1E4F] leading-[1.08] mb-5"
-                style={{ fontFamily: SERIF }}
-              >
-                Transforming Sports{" "}
-                <span className="text-[#165DFF]">Infrastructure</span>{" "}
-                Across India
-              </h3>
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed max-w-md">
-                Marcos Quay Foundation partners with schools to create world-class sports
-                environments — combining modern infrastructure, certified coaching, and
-                structured programmes that deliver lasting results.
-              </p>
-            </motion.div>
-
-            {/* RIGHT — Organic masked image */}
-            <motion.div {...fade(0.15)} className="relative">
-              {/* The organic image container */}
-              <div className="relative">
-                {/* Blue border shape behind image */}
-                <div
-                  className="absolute -inset-[3px] bg-gradient-to-br from-[#165DFF] via-[#3F7CFF] to-[#165DFF]/60 opacity-40"
-                  style={{ clipPath: "url(#organicBorder)" }}
-                />
-                {/* Image with organic mask */}
-                <div
-                  className="relative overflow-hidden"
-                  style={{ clipPath: "url(#organicMask)", aspectRatio: "1.7 / 1" }}
-                >
-                  <img
-                    src="/images/Ground img.png"
-                    alt="School sports ground with students practicing"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/15 to-transparent" />
-                </div>
-
-                {/* Curved blue line overlay following the left edge */}
-                <svg className="absolute -left-6 top-[4%] w-16 h-[92%] text-[#165DFF]/[0.2] pointer-events-none" viewBox="0 0 60 600" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                  <path d="M40 0 C 10 80, 50 160, 20 280 S 40 420, 10 560 L 10 600" />
-                </svg>
-              </div>
-
-              {/* Circular badge — overlapping lower right */}
-              <div className="absolute -bottom-6 -right-4 sm:-right-8 w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-full bg-[#165DFF] text-white flex items-center justify-center shadow-[0_8px_30px_-6px_rgba(22,93,255,0.4)] z-10 border-4 border-white">
-                <div className="text-center px-2">
-                  <p
-                    className="text-[8px] sm:text-[9px] font-bold uppercase tracking-wider leading-tight opacity-90"
-                    style={{ fontFamily: SERIF }}
-                  >
-                    Building Better
-                  </p>
-                  <p
-                    className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider leading-tight"
-                    style={{ fontFamily: SERIF }}
-                  >
-                    Futures Together
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* ── Floating Statistics Panel ── */}
-          <motion.div
-            {...fade(0.25)}
-            className="relative max-w-5xl mx-auto -mt-4 sm:-mt-8 lg:-mt-10 z-20"
-          >
-            <div className="bg-white rounded-[18px] border border-[#E6EEF9] shadow-[0_8px_40px_-12px_rgba(10,30,79,0.10),0_2px_12px_-4px_rgba(10,30,79,0.06)] overflow-hidden">
-              <div className="grid grid-cols-2 md:grid-cols-4">
-                {[
-                  { value: "450+", label: "Schools Transformed" },
-                  { value: "125,000+", label: "Students Impacted" },
-                  { value: "96%", label: "School Satisfaction" },
-                  { value: "100%", label: "Safety Compliant" },
-                ].map((s, i) => (
-                  <div
-                    key={s.label}
-                    className={`flex flex-col items-center text-center py-6 sm:py-7 px-4 ${
-                      i < 3 ? "md:border-r border-[#E6EEF9]" : ""
-                    } ${i === 0 ? "rounded-tl-[18px] rounded-bl-[18px]" : ""} ${
-                      i === 3 ? "rounded-tr-[18px] rounded-br-[18px]" : ""
-                    }`}
-                  >
-                    <p
-                      className="text-[1.4rem] sm:text-[1.7rem] text-[#0A1E4F] leading-none"
-                      style={{ fontFamily: SERIF }}
-                    >
-                      {s.value}
-                    </p>
-                    <p className="text-[11px] sm:text-[12px] text-[#6B7280] mt-1.5 leading-tight max-w-[140px]">
-                      {s.label}
-                    </p>
-                    <div className="mt-2.5 h-[2px] w-8 rounded-full bg-[#165DFF]/25" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          SECTION 2 — HOW WE CREATE IMPACT (Flow)
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-[#F0F4FF] overflow-hidden">
-        <div className="container py-16 md:py-24">
-          <motion.div {...fade(0)} className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-            <span className="inline-block font-heading font-bold text-xs tracking-widest uppercase text-[#165DFF] mb-4">
-              Our Process
-            </span>
-            <h2 className="heading-2 text-[#0A1E4F] text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem]">
-              How We Create Impact
-            </h2>
-          </motion.div>
-
-          {/* Connected flow */}
-          <div className="relative">
-            {/* Connecting line */}
-            <div className="hidden lg:block absolute top-[42px] left-[10%] right-[10%] h-[2px]">
-              <div className="w-full h-full bg-gradient-to-r from-[#0A1E4F] via-[#165DFF] to-[#3F7CFF] opacity-20" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A1E4F] via-[#165DFF] to-[#3F7CFF] opacity-20" style={{ backgroundSize: "8px 2px", backgroundImage: "repeating-linear-gradient(90deg, #165DFF 0px, #165DFF 4px, transparent 4px, transparent 8px)" }} />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-0">
-              {IMPACT_FLOW.map((step, i) => (
-                <motion.div
-                  key={step.title}
-                  {...fade(i * 0.08)}
-                  className="relative flex flex-col items-center text-center lg:px-4"
-                >
-                  {/* Icon circle */}
-                  <div
-                    className="w-[72px] h-[72px] rounded-full flex items-center justify-center mb-4 relative z-10 transition-transform duration-300 hover:scale-110"
-                    style={{
-                      background: `linear-gradient(135deg, ${step.color}15, ${step.color}08)`,
-                      border: `2px solid ${step.color}25`,
-                    }}
-                  >
-                    <step.icon className="w-7 h-7" style={{ color: step.color }} />
-                  </div>
-
-                  {/* Arrow (mobile only) */}
-                  {i < IMPACT_FLOW.length - 1 && (
-                    <div className="lg:hidden flex justify-center my-2">
-                      <ChevronRight className="w-5 h-5 text-[#165DFF]/30 rotate-90" />
-                    </div>
-                  )}
-
-                  {/* Arrow (desktop) */}
-                  {i < IMPACT_FLOW.length - 1 && (
-                    <div className="hidden lg:block absolute top-[42px] -right-2 z-20">
-                      <ChevronRight className="w-4 h-4 text-[#165DFF]/40" />
-                    </div>
-                  )}
-
-                  <h3 className="font-heading font-bold text-[0.95rem] text-[#0A1E4F] mb-1.5">
-                    {step.title}
-                  </h3>
-                  <p className="text-[0.8rem] text-[#6B7280] leading-relaxed max-w-[180px]">
-                    {step.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          SECTION 3 — IMPACTING STUDENTS
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-white overflow-hidden">
-        <div className="container py-16 md:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Image grid */}
-            <motion.div {...fade(0)} className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-[16px] overflow-hidden h-[200px] sm:h-[240px]">
-                  <img src="/images/solutions/curriculum.jpg" alt="Students playing" className="w-full h-full object-cover" />
-                </div>
-                <div className="rounded-[16px] overflow-hidden h-[160px] sm:h-[200px]">
-                  <img src="/images/solutions/multisport.jpg" alt="Multi-sport activity" className="w-full h-full object-cover" />
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="rounded-[16px] overflow-hidden h-[160px] sm:h-[200px]">
-                  <img src="/images/solutions/fitness.jpg" alt="Fitness training" className="w-full h-full object-cover" />
-                </div>
-                <div className="rounded-[16px] overflow-hidden h-[200px] sm:h-[240px]">
-                  <img src="/images/hero-sports.jpg" alt="Students in action" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right: Content + Stats */}
-            <motion.div {...fade(0.1)}>
-              <span className="inline-block font-heading font-bold text-xs tracking-widest uppercase text-[#165DFF] mb-4">
-                Impacting Students
-              </span>
-              <h2 className="heading-2 text-[#0A1E4F] text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem] leading-tight mb-6">
-                Every Child Deserves a
-                <br />
-                <span className="text-[#165DFF]">Chance to Play</span>
-              </h2>
-              <p className="text-[#6B7280] text-base leading-relaxed mb-8 max-w-lg">
-                Our programmes don&apos;t just teach sports — they build confidence, discipline,
-                and life skills that stay with students long after they leave the field.
-              </p>
-
-              {/* Outcome stats */}
-              <div className="grid grid-cols-2 gap-5">
-                {STUDENT_OUTCOMES.map((s) => (
-                  <div key={s.label} className="bg-[#F0F4FF] rounded-[14px] p-4 sm:p-5">
-                    <p className="font-heading font-extrabold text-2xl sm:text-3xl text-[#165DFF]">
-                      <Counter to={s.value} suffix={s.suffix} />
-                    </p>
-                    <p className="text-xs sm:text-sm text-[#6B7280] mt-1.5">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          SECTION 4 — BEFORE → AFTER
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-[#F0F4FF] overflow-hidden">
-        <div className="container py-16 md:py-24">
-          <motion.div {...fade(0)} className="text-center max-w-3xl mx-auto mb-14 md:mb-18">
-            <span className="inline-block font-heading font-bold text-xs tracking-widest uppercase text-[#165DFF] mb-4">
-              The Transformation
-            </span>
-            <h2 className="heading-2 text-[#0A1E4F] text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem]">
-              Before &amp; After Marcos Quay
-            </h2>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            {BEFORE_AFTER.map((item, i) => (
-              <motion.div
-                key={item.before}
-                {...fade(i * 0.08)}
-                className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-6 items-center mb-6 last:mb-0"
-              >
-                {/* Before */}
-                <div className="bg-white rounded-[14px] p-5 sm:p-6 border border-[#E5E7EB] flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center shrink-0">
-                    <span className="text-[#DC2626] text-lg font-bold">×</span>
-                  </div>
-                  <p className="text-[#6B7280] text-[0.95rem] line-through decoration-[#DC2626]/30">
-                    {item.before}
-                  </p>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden md:flex justify-center">
-                  <div className="w-10 h-10 rounded-full bg-[#165DFF] flex items-center justify-center">
-                    <ArrowRight className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-                <div className="md:hidden flex justify-center">
-                  <ArrowRight className="w-5 h-5 text-[#165DFF] rotate-90" />
-                </div>
-
-                {/* After */}
-                <div className="bg-[#165DFF] rounded-[14px] p-5 sm:p-6 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                    <Check className="w-5 h-5 text-white" />
-                  </div>
-                  <p className="text-white text-[0.95rem] font-medium">
-                    {item.after}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          SECTION 5 — REAL VOICES
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-white overflow-hidden">
-        {/* Background sports illustration */}
-        <svg className="absolute top-10 right-[5%] w-48 h-48 text-[#165DFF]/[0.04] rotate-6 pointer-events-none" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.2">
-          <circle cx="50" cy="50" r="40" />
-          <path d="M50 10 L50 30 M50 70 L50 90 M10 50 L30 50 M70 50 L90 50" />
-          <path d="M50 10 C 62 25, 62 38, 50 50 C 38 62, 38 75, 50 90" />
-          <path d="M10 50 C 25 38, 38 38, 50 50 C 62 62, 75 62, 90 50" />
-        </svg>
-
-        <div className="container py-16 md:py-24">
-          <motion.div {...fade(0)} className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-            <span className="inline-block font-heading font-bold text-xs tracking-widest uppercase text-[#165DFF] mb-4">
-              Real Voices
-            </span>
-            <h2 className="heading-2 text-[#0A1E4F] text-[1.6rem] sm:text-[1.9rem] lg:text-[2.2rem]">
-              What People Are Saying
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            {TESTIMONIALS.map((t, i) => (
-              <motion.div key={t.name} {...fade(i * 0.1)}>
-                <div className="relative bg-[#F8FBFF] rounded-[16px] p-7 sm:p-8 h-full border border-[#E8EEF7]">
-                  {/* Large quote mark */}
-                  <Quote className="w-8 h-8 mb-4" style={{ color: `${t.color}30` }} />
-
-                  <p className="text-[0.95rem] leading-relaxed text-[#374151] mb-6 flex-1">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-
-                  <div className="flex items-center gap-3 pt-5 border-t border-[#E8EEF7]">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white font-heading font-bold text-xs"
-                      style={{ background: t.color }}
-                    >
-                      {t.initials}
-                    </div>
-                    <div>
-                      <p className="font-heading font-bold text-[0.85rem] text-[#0A1E4F]">
-                        {t.name}
-                      </p>
-                      <p className="text-[0.7rem] text-[#6B7280] mt-0.5">
-                        {t.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════
-          FINAL CTA
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-[#0A1E4F] overflow-hidden">
-        {/* Sports silhouettes background */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.06]">
-          <svg className="absolute bottom-0 left-[5%] w-32 h-40 text-white" viewBox="0 0 80 100" fill="currentColor">
-            <circle cx="40" cy="15" r="8" />
-            <path d="M40 25 L30 55 L20 85 M40 25 L50 55 L60 85 M30 40 L15 35 M50 40 L65 35" stroke="currentColor" strokeWidth="3" fill="none" />
-          </svg>
-          <svg className="absolute bottom-0 left-[25%] w-28 h-36 text-white" viewBox="0 0 80 100" fill="currentColor">
-            <circle cx="40" cy="15" r="8" />
-            <path d="M40 25 L25 50 L15 85 M40 25 L55 50 L65 85 M25 38 L10 45 M55 38 L70 30" stroke="currentColor" strokeWidth="3" fill="none" />
-          </svg>
-          <svg className="absolute bottom-0 right-[20%] w-32 h-40 text-white" viewBox="0 0 80 100" fill="currentColor">
-            <circle cx="40" cy="15" r="8" />
-            <path d="M40 25 L35 55 L25 85 M40 25 L45 55 L55 85 M35 42 L20 38 M45 42 L60 38" stroke="currentColor" strokeWidth="3" fill="none" />
-          </svg>
-          <svg className="absolute bottom-0 right-[5%] w-28 h-36 text-white" viewBox="0 0 80 100" fill="currentColor">
-            <circle cx="40" cy="15" r="8" />
-            <path d="M40 25 L30 50 L20 80 M40 25 L50 50 L60 80 M30 38 L15 30 M50 38 L65 45" stroke="currentColor" strokeWidth="3" fill="none" />
-          </svg>
-        </div>
-
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A1E4F] via-[#0D2B6B] to-[#0A1E4F]" />
-
-        <div className="container relative z-10 py-16 md:py-24">
-          <motion.div {...fade(0)} className="max-w-3xl mx-auto text-center">
-            <h2 className="font-heading font-extrabold text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] text-white leading-tight mb-6">
-              Stronger Today.
-              <br />
-              <span className="text-[#3F7CFF]">Champions Tomorrow.</span>
-            </h2>
-
-            <p className="text-white/70 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-10">
-              Together with schools, coaches, and communities, we are building a healthier,
-              more confident and more active future for every child.
-            </p>
-
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#3F7CFF] text-white font-heading font-bold text-[14px] sm:text-[15px] px-8 sm:px-10 py-3.5 sm:py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(63,124,255,0.5)]"
-            >
-              Partner With Us
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
-          </motion.div>
-        </div>
-      </section>
+    <main className="min-h-screen bg-white">
+      <Hero />
+      <StatsStrip />
+      <Effect />
+      <Grounds />
+      <NumbersBand />
+      <Scoreboard />
+      <Journey />
+      <Voices />
     </main>
   );
 }

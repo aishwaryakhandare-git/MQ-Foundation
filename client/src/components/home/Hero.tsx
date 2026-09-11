@@ -21,15 +21,46 @@ export default function Hero() {
       <div className="container relative z-10 pt-36 pb-16 lg:pt-52 lg:pb-16">
         <div className="grid grid-cols-1 gap-10 lg:gap-16 items-center">
           {/* ── Headline + paragraph ── */}
-          <div className="text-left -translate-y-8 lg:-translate-y-14">
+          <div className="text-left -translate-y-20 lg:-translate-y-28">
             {/* ── Headline ── */}
-            <motion.h1 {...fade(0)} className="heading-1 font-extrabold text-white text-[2.7rem] sm:text-[3.4rem] md:text-[4.1rem] lg:text-[4.8rem] xl:text-[5.4rem] leading-[1.02]">
+            <motion.h1
+              {...fade(0)}
+              className="
+                heading-1
+                font-extrabold
+                text-white
+                text-[2.7rem]
+                sm:text-[3.4rem]
+                md:text-[4.1rem]
+                lg:text-[4.8rem]
+                xl:text-[5.4rem]
+                leading-[1.02]
+              "
+            >
               Ab Sirf Dekhega Nahi,
               <br />
-              <span className="relative inline-block mt-4 text-[#E31B23] whitespace-nowrap leading-none">
+
+              <span
+                className="
+                  relative
+                  inline-block
+                  mt-4
+                  text-[#E31B23]
+                  whitespace-nowrap
+                  leading-none
+                "
+              >
                 Khelega India.
+
                 <svg
-                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                  className="
+                    absolute
+                    -bottom-2
+                    sm:-bottom-3
+                    left-0
+                    w-full
+                    h-3
+                  "
                   viewBox="0 0 260 12"
                   preserveAspectRatio="none"
                   fill="none"
