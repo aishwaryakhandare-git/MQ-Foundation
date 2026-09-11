@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Download, Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/schools", label: "Schools" },
+  { href: "/problems", label: "The Problem" },
   { href: "/impact", label: "Impact" },
-  { href: "/csr", label: "CSR" },
-  { href: "/gallery", label: "Gallery" },
+  
   { href: "/contact", label: "Contact" },
 ];
 
@@ -97,12 +96,19 @@ export default function Navbar() {
         {/* Desktop CTAs */}
         <div className="hidden lg:flex items-center gap-3">
           <Link
-            href="/schools"
+            href="/impact"
+            className="inline-flex items-center gap-2 rounded-full border border-[#0066B3] bg-white text-[#0066B3] font-heading font-bold text-[13.5px] px-6 py-3 transition-all duration-300 hover:bg-[#EBF3FB] hover:-translate-y-0.5"
+          >
+            See Our Impact
+          </Link>
+          <a
+            href="/school-brochure.pdf"
+            download
             className="inline-flex items-center gap-2 rounded-full bg-[#0066B3] text-white font-heading font-bold text-[13.5px] px-6 py-3 shadow-[0_14px_30px_-12px_rgba(0,102,179,0.55)] transition-all duration-300 hover:bg-[#E31B23] hover:shadow-[0_18px_40px_-12px_rgba(227,27,35,0.45)] hover:-translate-y-0.5"
           >
-            Partner With US
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-          </Link>
+            <Download className="w-4 h-4" />
+            Download School Brochure
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -144,15 +150,6 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex flex-col gap-3 mt-4 px-1">
-                <Link
-                  href="/schools"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#FF8C42] text-white font-heading font-bold text-sm px-5 py-3 shadow-lg"
-                >
-                  Book a Free School Assessment
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
             </nav>
           </motion.div>
         )}

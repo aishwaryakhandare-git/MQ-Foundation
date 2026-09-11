@@ -1,10 +1,4 @@
-import { Link } from "wouter";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Download,
-  Trophy,
-} from "lucide-react";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 30 },
@@ -25,11 +19,11 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10 pt-36 pb-16 lg:pt-52 lg:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-16 items-center">
-          {/* ── Left column: headline + paragraph ── */}
-          <div className="text-left lg:pl-0 xl:pl-4">
+        <div className="grid grid-cols-1 gap-10 lg:gap-16 items-center">
+          {/* ── Headline + paragraph ── */}
+          <div className="text-left -translate-y-8 lg:-translate-y-14">
             {/* ── Headline ── */}
-            <motion.h1 {...fade(0)} className="heading-1 font-extrabold text-white text-[2.2rem] sm:text-[2.9rem] md:text-[3.4rem] lg:text-[3.8rem] xl:text-[4.3rem] leading-[1.05]">
+            <motion.h1 {...fade(0)} className="heading-1 font-extrabold text-white text-[2.7rem] sm:text-[3.4rem] md:text-[4.1rem] lg:text-[4.8rem] xl:text-[5.4rem] leading-[1.02]">
               Ab Sirf Dekhega Nahi,
               <br />
               <span className="relative inline-block mt-4 text-[#E31B23] whitespace-nowrap leading-none">
@@ -52,29 +46,11 @@ export default function Hero() {
             </motion.h1>
 
             {/* ── Supporting paragraph ── */}
-            <motion.p {...fade(0.2)} className="mt-6 max-w-[540px] text-white text-[14px] sm:text-[15px] lg:text-[17px] leading-[1.75] font-medium">
+            <motion.p {...fade(0.2)} className="mt-7 max-w-[620px] text-white text-[16px] sm:text-[17px] lg:text-[19px] leading-[1.75] font-medium">
               Transforming schools through structured sports education that
               improves health, participation, life skills and school culture.
             </motion.p>
           </div>
-
-          {/* ── Right column: CTA buttons ── */}
-          <motion.div {...fade(0.35)} className="flex flex-col gap-3 sm:gap-4 w-full max-w-[300px] justify-self-end lg:pr-4 xl:pr-8 self-center">
-            <a
-              href="#impact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0066B3] text-white font-heading font-bold text-[13px] sm:text-[14px] px-6 sm:px-7 py-3 sm:py-3.5 shadow-[0_14px_30px_-12px_rgba(0,102,179,0.55)] transition-all duration-300 hover:bg-[#E31B23] hover:shadow-[0_18px_40px_-12px_rgba(227,27,35,0.45)] hover:-translate-y-1"
-            >
-              See Our Impact
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-            <Link
-              href="/schools"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] border-white/60 bg-white/10 backdrop-blur-md text-white font-heading font-bold text-[13px] sm:text-[14px] px-6 sm:px-7 py-3 sm:py-3.5 transition-all duration-300 hover:-translate-y-1 hover:bg-white/20"
-            >
-              <Download className="w-4 h-4" />
-              Download School Brochure
-            </Link>
-          </motion.div>
         </div>
 
         

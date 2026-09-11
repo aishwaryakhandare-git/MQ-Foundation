@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import TrustedNetwork from "@/components/home/TrustedNetwork";
 import {
   ArrowRight,
-  Eye,
   Heart,
   Shield,
   TrendingUp,
@@ -21,8 +20,6 @@ const fade = (delay = 0) => ({
   viewport: { once: true, margin: "-60px" },
   transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
-
-const SERIF = "'DM Serif Display', serif";
 
 /* ══════════════════════════════════════════════════════════════
    HERO
@@ -47,16 +44,34 @@ function Hero() {
       <div className="container relative z-10">
         <motion.div {...fade(0)} className="max-w-4xl mx-auto text-center mb-10 lg:mb-14">
           <div className="flex justify-center mb-5">
-            <div className="w-10 h-[2.5px] rounded-full bg-[#165DFF]" />
+            <div className="w-10 h-[2.5px] rounded-full bg-[#E31B23]" />
           </div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23] mb-4">
             About Marcos Quay
           </p>
-          <h1
-            className="text-[2.4rem] sm:text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] leading-[1.02] text-[#0A1E4F] mb-6"
-            style={{ fontFamily: SERIF }}
-          >
-            Building a Healthier, Stronger India Through Sport
+          <h1 className="font-heading font-extrabold tracking-[-0.03em] text-[2.4rem] sm:text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] leading-[1.02] text-[#0A1E4F] mb-6">
+            Building a{" "}
+            <span
+              className="relative inline-block text-[#E31B23] leading-none text-[1.45em] italic"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              Healthier
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                viewBox="0 0 140 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 8 C 28 2, 55 10, 82 6 C 105 3, 120 8, 136 5"
+                  stroke="#165DFF"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+            , Stronger India Through Sport
           </h1>
           <p className="text-[0.95rem] sm:text-[1.05rem] text-[#6B7280] leading-relaxed max-w-2xl mx-auto">
             We partner with schools to build stronger sports programmes through
@@ -79,16 +94,371 @@ function Hero() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/20 via-transparent to-transparent" />
           </div>
-          {/* Overlapping title */}
-          <div className="absolute -bottom-6 sm:-bottom-4 left-0 right-0 sm:left-8 sm:right-auto">
-              <h2
-                className="text-[3rem] sm:text-[5rem] lg:text-[10.5rem] text-white leading-[0.85] drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]"
-                style={{ fontFamily: SERIF }}
-              >
-                About Us
-              </h2>
-          </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WHAT IS MARCOS QUAY — Who we are intro
+   ══════════════════════════════════════════════════════════════ */
+
+const JOURNEY = [
+  { tag: "FROM PLAY", desc: "Healthier children" },
+  { tag: "TO CONFIDENCE", desc: "Stronger individuals" },
+  { tag: "TO OPPORTUNITY", desc: "A brighter India" },
+];
+
+const OUTCOMES = [
+  { tag: "SCHOOLS", desc: "Stronger Programmes" },
+  { tag: "COACHES", desc: "Greater Opportunities" },
+  { tag: "CHILDREN", desc: "Better Futures" },
+  { tag: "COMMUNITIES", desc: "A Healthier, Stronger India" },
+];
+
+function WhatIsMarcosQuay() {
+  return (
+    <section id="who" className="relative bg-[#FDFDFB] py-16 md:py-24">
+      <div className="container relative z-10">
+        {/* Header */}
+        <motion.div {...fade(0)} className="max-w-4xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-5 mb-6">
+            <span className="h-px w-12 bg-[#E31B23]" />
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23]">
+              About Marcos Quay
+            </p>
+            <span className="h-px w-12 bg-[#E31B23]" />
+          </div>
+          <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2rem] sm:text-[2.8rem] lg:text-[3.4rem] text-[#0A1E4F] leading-[1.15] mb-7">
+            Sport should be a{" "}
+            <span className="relative inline-block text-[#E31B23]">
+              starting point
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                viewBox="0 0 200 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
+                  stroke="#E31B23"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>,{" "}
+            <span className="relative inline-block text-[#E31B23]">
+              not a privilege
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                viewBox="0 0 200 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
+                  stroke="#E31B23"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>.
+          </h2>
+          <p className="text-[#6B7280] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto">
+            Marcos Quay Foundation works with schools to make structured,
+            quality sports education accessible to more children across India.
+          </p>
+        </motion.div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto mt-14 md:mt-20">
+        {/* Card 01 — What we do */}
+        <motion.div
+          {...fade(0.08)}
+          className="rounded-[18px] border border-[#165DFF]/10 bg-[#F4F8FF] p-8 sm:p-12"
+        >
+          <p className="text-[13px] font-bold tracking-[0.18em] text-[#E31B23]">
+            01
+          </p>
+          <div className="mt-4 h-px w-10 bg-[#E31B23]" />
+          <h3 className="mt-6 font-heading font-bold text-[15px] tracking-[0.14em] text-[#0A1E4F]">
+            WHAT WE DO
+          </h3>
+          <p className="mt-4 text-[0.95rem] leading-relaxed text-[#4B5563]">
+            We help schools build stronger sports programmes through structured
+            curriculum, skilled coaching and consistent opportunities to play.
+          </p>
+        </motion.div>
+
+        {/* Card 02 — Why we exist */}
+        <motion.div
+          {...fade(0.14)}
+          className="rounded-[18px] border border-[#E31B23]/10 bg-[#FFF7F6] p-8 sm:p-12"
+        >
+          <p className="text-[13px] font-bold tracking-[0.18em] text-[#E31B23]">
+            02
+          </p>
+          <div className="mt-4 h-px w-10 bg-[#E31B23]" />
+          <h3 className="mt-6 font-heading font-bold text-[15px] tracking-[0.14em] text-[#0A1E4F]">
+            WHY WE EXIST
+          </h3>
+          <p className="mt-4 text-[0.95rem] leading-relaxed text-[#4B5563]">
+            For many children, access to sport is limited by a lack of
+            infrastructure, trained coaches and regular programmes. We work
+            with schools to remove these barriers and create environments
+            where children can play, learn and grow.
+          </p>
+        </motion.div>
+        </div>
+      </div>
+
+      {/* Timeline — blue rule with red nodes */}
+      <div className="container relative z-10 mt-16 md:mt-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative hidden md:block">
+            <div className="h-px w-full bg-[#165DFF]/40" />
+            {JOURNEY.map((item, i) => (
+              <span
+                key={item.tag}
+                className="absolute -top-[5px] h-[11px] w-[11px] rounded-full border-2 border-[#FDFDFB] bg-[#E31B23]"
+                style={{
+                  left: `${((i + 0.5) / JOURNEY.length) * 100}%`,
+                  transform: "translateX(-50%)",
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
+            {JOURNEY.map((item) => (
+              <div
+                key={item.tag}
+                className="flex flex-col items-center text-center"
+              >
+                <span className="md:hidden mb-4 h-[11px] w-[11px] rounded-full bg-[#E31B23]" />
+                <p className="font-heading font-bold text-[13px] uppercase tracking-[0.2em] text-[#0A1E4F]">
+                  {item.tag}
+                </p>
+                <p className="mt-2 text-[0.95rem] text-[#6B7280]">
+                  <span className="text-[#E31B23]">— </span>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Closing statement */}
+          <motion.p
+            {...fade(0.15)}
+            className="mx-auto mt-16 md:mt-24 max-w-3xl text-center text-[1.05rem] sm:text-[1.2rem] font-heading font-semibold text-[#0A1E4F] leading-relaxed"
+          >
+            We believe sport is more than physical activity. It can help
+            children develop health, confidence, discipline, teamwork and a
+            stronger sense of belonging.
+          </motion.p>
+
+          {/* Subtle divider */}
+          <div className="mt-12 h-px w-full bg-[#E7EBF3]" />
+
+          {/* Outcomes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 mt-14">
+            {OUTCOMES.map((o, i) => (
+              <motion.div key={o.tag} {...fade(0.05 * i)} className="text-center">
+                <p className="font-heading font-bold text-[13px] uppercase tracking-[0.2em] text-[#165DFF]">
+                  {o.tag}
+                </p>
+                <p className="mt-3 text-[1.05rem] font-heading font-semibold text-[#0A1E4F] leading-snug">
+                  {o.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   OUR IMPACT — Transforming school sports
+   ══════════════════════════════════════════════════════════════ */
+
+const TRANSFORMATION_STEPS = [
+  {
+    num: "01",
+    title: "Before",
+    caption: "Limited Opportunity",
+    image: "/images/Ground img.png",
+    alt: "A school sports ground with basic infrastructure and limited facilities",
+  },
+  {
+    num: "02",
+    title: "Marcos Quay Transformation",
+    caption: "Building Change",
+    image: "/images/solutions/transformation.jpg",
+    alt: "Coaches and children during a structured sports development programme",
+  },
+  {
+    num: "03",
+    title: "After",
+    caption: "Active School Sports",
+    image: "/images/hero-sports-1.jpg",
+    alt: "School children playing organised football during a structured session",
+  },
+];
+
+const IMPACT_OUTCOMES = [
+  {
+    num: "01",
+    title: "Better Spaces to Play",
+    desc: "Schools gain safer, better-designed grounds where children can practise and participate regularly.",
+  },
+  {
+    num: "02",
+    title: "Grassroots Sport Introduced",
+    desc: "Structured, age-appropriate sporting programmes become part of everyday school life.",
+  },
+  {
+    num: "03",
+    title: "Coaches & Teachers Empowered",
+    desc: "Coaches and teachers receive training, practical resources and continued support.",
+  },
+  {
+    num: "04",
+    title: "More Children Participating",
+    desc: "Schools move from occasional sports activities towards wider participation and engagement.",
+  },
+  {
+    num: "05",
+    title: "Pathways to Opportunity",
+    desc: "Children gain access to competitions, sporting experiences and opportunities beyond the school playground.",
+  },
+];
+
+function OurImpact() {
+  return (
+    <section id="impact" className="relative bg-white py-16 md:py-24">
+      <div className="container">
+        {/* Header */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-start mb-16 md:mb-24">
+          <motion.div {...fade(0)}>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23] mb-5">
+              Our Impact
+            </p>
+            <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2rem] sm:text-[2.8rem] lg:text-[3.2rem] text-[#0A1E4F] leading-[1.1] mb-7">
+              Transforming School Sports,
+              <br />
+              <span className="relative inline-block text-[#E31B23]">
+                One Ground at a Time
+                <svg
+                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
+                    stroke="#E31B23"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h2>
+            <p className="text-[#6B7280] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-xl">
+              Marcos Quay Foundation has helped schools move from limited
+              sports infrastructure and participation to active, inclusive and
+              structured sporting environments. By improving grounds,
+              introducing grassroots programmes, training coaches and creating
+              opportunities for children, we help schools build a stronger
+              sporting culture.
+            </p>
+          </motion.div>
+
+          {/* Quote box */}
+          <motion.div {...fade(0.1)}>
+            <div className="relative rounded-[18px] border border-[#165DFF]/10 bg-[#F4F8FF] p-8 sm:p-10">
+              <span className="text-[2.8rem] leading-none font-heading font-bold text-[#165DFF]/30 select-none">
+                “
+              </span>
+              <p className="mt-1 text-[1.1rem] sm:text-[1.25rem] font-heading font-semibold text-[#0A1E4F] leading-relaxed">
+                When schools invest in sport, children invest in themselves.
+              </p>
+              <div className="mt-8 h-px w-10 bg-[#E31B23]" />
+              <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9AA5B8]">
+                Marcos Quay Foundation
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Main visual story — three connected panels */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
+          {TRANSFORMATION_STEPS.map((step, i) => (
+            <motion.div key={step.num} {...fade(0.08 * i)} className="relative">
+              {/* Meta row */}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-[12px] font-bold text-[#E31B23]">
+                  {step.num}
+                </span>
+                <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-[#0A1E4F]">
+                  {step.title}
+                </span>
+              </div>
+
+              {/* Photo + caption overlay */}
+              <div className="relative overflow-hidden rounded-[16px] border border-[#E7EBF3]">
+                <img
+                  src={step.image}
+                  alt={step.alt}
+                  loading="lazy"
+                  className="w-full h-[240px] sm:h-[300px] object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-[#0A1E4F]/85 px-5 py-3.5">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+                    {step.caption}
+                  </p>
+                </div>
+              </div>
+
+              {/* Circular arrow indicator between panels */}
+              {i < TRANSFORMATION_STEPS.length - 1 && (
+                <span className="hidden md:flex absolute top-[148px] sm:top-[168px] -right-[23px] z-10 h-11 w-11 items-center justify-center rounded-full bg-[#0A1E4F] text-white shadow-[0_10px_24px_-10px_rgba(10,30,79,0.55)]">
+                  <ArrowRight className="h-4.5 w-4.5" />
+                </span>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Impact outcomes */}
+        <motion.div {...fade(0.1)} className="mt-24 mb-10 text-center">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23]">
+            Impact Outcomes
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {IMPACT_OUTCOMES.map((o, i) => (
+            <motion.div
+              key={o.num}
+              {...fade(0.05 * i)}
+              className="rounded-[16px] border border-[#E7EBF3] bg-white p-7"
+            >
+              <p className="text-[13px] font-bold text-[#E31B23]">{o.num}</p>
+              <h4 className="mt-5 font-heading font-bold text-[15px] text-[#0A1E4F] leading-snug">
+                {o.title}
+              </h4>
+              <p className="mt-3 text-[0.88rem] leading-relaxed text-[#6B7280]">
+                {o.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -112,6 +482,30 @@ function OurStory() {
       </div>
 
       <div className="container relative z-10">
+        {/* Section heading */}
+        <motion.div {...fade(0)} className="text-center mb-12 md:mb-16">
+          <h2 className="heading-2 text-[#0A1E4F]">
+            Our{" "}
+            <span className="relative inline-block text-[#E31B23]">
+              Story
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3"
+                viewBox="0 0 170 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8 C 28 2, 52 10, 84 6 C 118 2, 140 9, 167 5"
+                  stroke="#165DFF"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </h2>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left — Image */}
           <motion.div {...fade(0)} className="relative">
@@ -132,15 +526,9 @@ function OurStory() {
           {/* Right — Content */}
           <div>
             <motion.div {...fade(0.1)}>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
-                Our Story
-              </p>
-              <h2
-                className="text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-tight mb-6"
-                style={{ fontFamily: SERIF }}
-              >
+              <h3 className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-tight mb-6">
                 A Movement Born on School Grounds
-              </h2>
+              </h3>
             </motion.div>
 
             <motion.div {...fade(0.15)}>
@@ -168,10 +556,7 @@ function OurStory() {
               {IMPACT_NUMBERS.map((n, i) => (
                 <div key={n.label} className="flex items-center">
                   <div className="px-5 sm:px-7">
-                    <p
-                      className="text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#165DFF] leading-none"
-                      style={{ fontFamily: SERIF }}
-                    >
+                    <p className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#165DFF] leading-none">
                       {n.value}
                     </p>
                     <p className="text-[12px] font-semibold text-[#6B7280] mt-1.5">
@@ -203,11 +588,11 @@ function MissionVision() {
         <div className="absolute -top-32 -left-32 w-[450px] h-[450px] bg-[#165DFF]/[0.05] rounded-full blur-[100px]" />
         <div className="absolute -bottom-28 -right-28 w-[380px] h-[380px] bg-[#3F7CFF]/[0.04] rounded-full blur-[90px]" />
         {/* Faint large "MISSION" text — left */}
-        <span className="absolute top-[18%] left-[-2%] text-[6rem] sm:text-[8rem] lg:text-[10rem] font-extrabold uppercase text-[#165DFF]/[0.03] leading-none select-none pointer-events-none" style={{ fontFamily: SERIF }}>
+        <span className="absolute top-[18%] left-[-2%] text-[6rem] sm:text-[8rem] lg:text-[10rem] font-heading font-extrabold uppercase text-[#165DFF]/[0.03] leading-none select-none pointer-events-none">
           Mission
         </span>
         {/* Faint large "VISION" text — right */}
-        <span className="absolute bottom-[18%] right-[-2%] text-[6rem] sm:text-[8rem] lg:text-[10rem] font-extrabold uppercase text-[#165DFF]/[0.03] leading-none select-none pointer-events-none text-right" style={{ fontFamily: SERIF }}>
+        <span className="absolute bottom-[18%] right-[-2%] text-[6rem] sm:text-[8rem] lg:text-[10rem] font-heading font-extrabold uppercase text-[#165DFF]/[0.03] leading-none select-none pointer-events-none text-right">
           Vision
         </span>
         {/* Dotted pattern — top right */}
@@ -238,10 +623,7 @@ function MissionVision() {
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
             Purpose &amp; Direction
           </p>
-          <h2
-            className="text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] text-[#0A1E4F]"
-            style={{ fontFamily: SERIF }}
-          >
+          <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2rem] sm:text-[2.6rem] lg:text-[3.2rem] text-[#0A1E4F]">
             Mission &amp; Vision
           </h2>
         </motion.div>
@@ -260,10 +642,7 @@ function MissionVision() {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
                 Mission
               </p>
-              <h3
-                className="text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-[1.1] mb-6"
-                style={{ fontFamily: SERIF }}
-              >
+              <h3 className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-[1.1] mb-6">
                 Every child. Every school.
                 <br />
                 The joy of sport.
@@ -310,10 +689,7 @@ function MissionVision() {
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
                 Vision
               </p>
-              <h3
-                className="text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-[1.1] mb-6"
-                style={{ fontFamily: SERIF }}
-              >
+              <h3 className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-[1.1] mb-6">
                 A stronger, healthier India
                 <br />
                 through structured sports education.
@@ -400,10 +776,7 @@ function Values() {
           <p className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-2">
             What We Stand For
           </p>
-          <h2
-            className="text-[2.4rem] sm:text-[3rem] lg:text-[3.8rem] text-[#0A1E4F] mb-3"
-            style={{ fontFamily: SERIF }}
-          >
+          <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2.4rem] sm:text-[3rem] lg:text-[3.8rem] text-[#0A1E4F] mb-3">
             Our Values
           </h2>
           <p className="text-[#6B7280] text-[1.05rem] md:text-[1.15rem] leading-relaxed max-w-2xl mx-auto">
@@ -419,8 +792,7 @@ function Values() {
               <div className="group py-6 md:py-7 border-t border-[#165DFF]/[0.12] last:border-b sm:[&:nth-last-child(-n+2)]:border-b">
                 <div className="flex items-start gap-4 md:gap-5">
                   <span
-                    className="text-[3.2rem] md:text-[3.8rem] text-[#165DFF]/[0.15] leading-none shrink-0 pt-0.5"
-                    style={{ fontFamily: SERIF }}
+                    className="font-heading font-extrabold text-[3.2rem] md:text-[3.8rem] text-[#165DFF]/[0.15] leading-none shrink-0 pt-0.5"
                   >
                     {v.num}
                   </span>
@@ -429,10 +801,7 @@ function Values() {
                       <v.icon className="w-5 h-5 text-[#165DFF]" />
                     </div>
                     <div>
-                      <h3
-                        className="text-[1.2rem] md:text-[1.4rem] text-[#0A1E4F] mb-1"
-                        style={{ fontFamily: SERIF }}
-                      >
+                      <h3 className="font-heading font-bold tracking-[-0.01em] text-[1.2rem] md:text-[1.4rem] text-[#0A1E4F] mb-1">
                         {v.title}
                       </h3>
                       <p className="text-[0.9rem] md:text-[1rem] text-[#6B7280] leading-relaxed max-w-sm">
@@ -479,10 +848,7 @@ function Approach() {
           <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
             Our Approach
           </p>
-          <h2
-            className="text-[2.4rem] sm:text-[3rem] lg:text-[3.8rem] text-[#0A1E4F]"
-            style={{ fontFamily: SERIF }}
-          >
+          <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2.4rem] sm:text-[3rem] lg:text-[3.8rem] text-[#0A1E4F]">
             A Visual Journey
           </h2>
         </motion.div>
@@ -534,6 +900,117 @@ function Approach() {
 }
 
 /* ══════════════════════════════════════════════════════════════
+   OUR FOUNDER
+   ══════════════════════════════════════════════════════════════ */
+
+function Founder() {
+  return (
+    <section id="founder" className="relative overflow-hidden bg-[#FDFDFB] py-16 md:py-24">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-[380px] h-[380px] bg-[#165DFF]/[0.04] rounded-full blur-[90px]" />
+        <div className="absolute bottom-0 -left-28 w-[350px] h-[350px] bg-[#E31B23]/[0.03] rounded-full blur-[90px]" />
+      </div>
+
+      <div className="container relative z-10">
+        {/* Section heading */}
+        <motion.div {...fade(0)} className="text-center mb-12 md:mb-16">
+          <h2 className="heading-2 text-[#0A1E4F]">
+            Our{" "}
+            <span className="relative inline-block text-[#E31B23]">
+              Founder
+              <svg
+                className="absolute -bottom-2 left-0 w-full h-3"
+                viewBox="0 0 170 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8 C 28 2, 52 10, 84 6 C 118 2, 140 9, 167 5"
+                  stroke="#165DFF"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left — Image */}
+          <motion.div {...fade(0)} className="relative max-w-[360px] sm:max-w-[440px] w-full mx-auto">
+            <div
+              className={`absolute -left-7 -top-7 w-28 h-28 rounded-full border border-[#165DFF]/15`}
+            />
+            <div
+              className={`absolute -right-6 -bottom-6 w-32 h-32 rounded-full border border-[#E31B23]/15`}
+            />
+            <div className="relative overflow-hidden rounded-[20px] sm:rounded-[28px]">
+              <img
+                src="/images/about/founder-1.png"
+                alt="Raahil Dhruva, Founder of Marcos Quay"
+                className="w-full aspect-[652/735] object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/20 via-transparent to-transparent" />
+            </div>
+          </motion.div>
+
+          {/* Right — Content */}
+          <div>
+            <motion.div {...fade(0.1)}>
+              <h3 className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-tight mb-6">
+                Raahil Dhruva
+              </h3>
+            </motion.div>
+
+            <motion.div {...fade(0.15)} className="space-y-4">
+              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed">
+                Born in Mumbai, Raahil was an active child from a young age —
+                competing at inter-school, inter-district and inter-state
+                level, and excelling across tennis, football, running,
+                swimming and more. After moving to the UK at age ten, he
+                continued to pursue tennis, thriving with the support of
+                strong school programmes, and later trained at the Sutton
+                Tennis Academy in pursuit of representing India at world
+                tournaments.
+              </p>
+              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed">
+                Following multiple victories, Raahil wanted the same
+                opportunities made available to more students in India. He
+                studied BSc. Entrepreneurship with a minor in Corporate
+                Communications and Finance at Queens University, Charlotte, on
+                a tennis scholarship — representing his university across the
+                USA and achieving a ranking of 12 in doubles in the NCAA
+                tournaments.
+              </p>
+              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed">
+                Raahil has always believed in a balance between education and
+                an active lifestyle, a value he now instils in every school he
+                collaborates with. Marcos Quay was founded on his vision to
+                make every student an active participant in their day, in
+                society, and throughout their lives.
+              </p>
+            </motion.div>
+
+            <motion.div {...fade(0.2)} className="mt-8 flex items-center gap-4">
+              <div className="h-px w-10 bg-[#E31B23]" />
+              <div>
+                <p className="font-heading font-bold text-[16px] text-[#0A1E4F]">
+                  Raahil Dhruva
+                </p>
+                <p className="text-[13px] font-semibold text-[#6B7280] mt-0.5">
+                  Director | Marcos Quay
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
    FINAL CTA — Navy with integrated photo
    ══════════════════════════════════════════════════════════════ */
 
@@ -560,10 +1037,7 @@ function FinalCta() {
           <div className="relative grid grid-cols-1 lg:grid-cols-2 min-h-[400px] sm:min-h-[480px]">
             {/* Left — Text */}
             <motion.div {...fade(0)} className="flex flex-col justify-center px-8 py-12 sm:px-12 lg:px-16">
-              <h2
-                className="text-[2rem] sm:text-[2.6rem] lg:text-[3rem] text-white leading-tight mb-6"
-                style={{ fontFamily: SERIF }}
-              >
+              <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2rem] sm:text-[2.6rem] lg:text-[3rem] text-white leading-tight mb-6">
                 Stronger Schools.
                 <br />
                 Healthier Children.
@@ -619,11 +1093,14 @@ export default function About() {
   return (
     <div className="min-h-screen pt-20 pb-20">
       <Hero />
+      <WhatIsMarcosQuay />
+      <OurImpact />
       <OurStory />
-      <MissionVision />
-      <Values />
-      <Approach />
-      <TrustedNetwork />
+      {/* <MissionVision /> */}
+      {/* <Values /> */}
+      {/* <Approach /> */}
+      {/* <TrustedNetwork /> */}
+      <Founder />
       <FinalCta />
     </div>
   );

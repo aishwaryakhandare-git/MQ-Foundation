@@ -32,6 +32,16 @@ const SUBJECTS = [
   "Other",
 ];
 
+const ROLES = [
+  "School Principal or Administrator",
+  "Teacher or Coach",
+  "Parent",
+  "CSR / Corporate Partner",
+  "Government Official",
+  "Job Applicant",
+  "Other",
+];
+
 const CONTACT_DETAILS = [
   {
     icon: MapPin,
@@ -86,13 +96,14 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
+    role: "",
     subject: "",
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", role: "", subject: "", message: "" });
   };
 
   return (
@@ -133,11 +144,15 @@ export default function Contact() {
 
             {/* Serif heading */}
             <h1
-              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] leading-[0.95] tracking-[-0.02em] text-[#0A1E4F] mb-6"
+              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] leading-[0.95] tracking-[-0.02em] text-[#0A1E4F] mb-5"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
               Contact Us
             </h1>
+
+            <div className="flex justify-center mb-6">
+              <div className="w-14 h-[2px] bg-[#E31B23]" />
+            </div>
 
             <p className="text-[0.95rem] sm:text-[1.05rem] text-[#6B7280] leading-relaxed max-w-xl mx-auto">
               Have a question or need support? Simply submit a ticket and we&apos;ll get
@@ -229,6 +244,28 @@ export default function Contact() {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 rounded-[10px] border border-[#E0E5EF] bg-white text-[#0A1E4F] text-[0.9rem] placeholder:text-[#9CA3AF] outline-none transition-all duration-300 focus:border-[#165DFF] focus:ring-2 focus:ring-[#165DFF]/10"
                     />
+                  </div>
+                </div>
+
+                {/* Role */}
+                <div>
+                  <label htmlFor="role" className="block text-[13px] font-semibold text-[#0A1E4F] mb-1.5">
+                    Role <span className="text-[#165DFF]">*</span>
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="role"
+                      required
+                      value={formData.role}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      className="w-full px-4 py-3 rounded-[10px] border border-[#E0E5EF] bg-white text-[#0A1E4F] text-[0.9rem] outline-none appearance-none transition-all duration-300 focus:border-[#165DFF] focus:ring-2 focus:ring-[#165DFF]/10"
+                    >
+                      <option value="" disabled>Select your role</option>
+                      {ROLES.map((r) => (
+                        <option key={r} value={r}>{r}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF] pointer-events-none" />
                   </div>
                 </div>
 

@@ -123,6 +123,14 @@
     padding-right: 1rem;
   }
 
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (min-width: 640px) {
     .container {
       padding-left: 1.5rem;
