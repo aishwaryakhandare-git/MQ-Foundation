@@ -583,9 +583,9 @@ function NumbersBand() {
               src="/images/sport-brighter-tomorrow.jpg"
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover grayscale"
+              className="absolute inset-0 h-full w-full object-cover"
               style={{
-                opacity: 0.16,
+                opacity: 0.8,
                 maskImage:
                   "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
                 WebkitMaskImage:
@@ -593,7 +593,7 @@ function NumbersBand() {
               }}
             />
             <div
-              className="absolute inset-0 bg-[#0A1E4F]/[0.04]"
+              className="absolute inset-0 bg-[#0A1E4F]/[0.02]"
               style={{
                 maskImage:
                   "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
