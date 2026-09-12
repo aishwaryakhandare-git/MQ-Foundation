@@ -144,17 +144,50 @@ export default function Contact() {
 
             {/* Serif heading */}
             <h1
-              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] leading-[0.95] tracking-[-0.02em] text-[#0A1E4F] mb-5"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
+              className="
+                relative inline-block
+                font-serif italic
+                font-bold
+                text-[3.5rem]
+                sm:text-[4.5rem]
+                md:text-[5.2rem]
+                lg:text-[5.8rem]
+                leading-[0.9]
+                tracking-[-0.04em]
+                text-[#0A1E4F]
+                mb-6
+              "
             >
               Contact Us
+
+              {/* Red underline */}
+              <svg
+                className="
+                  absolute
+                  -bottom-3
+                  left-0
+                  w-full
+                  h-3
+                "
+                viewBox="0 0 260 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 256 5"
+                  stroke="#E31B23"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
             </h1>
 
             <div className="flex justify-center mb-6">
               <div className="w-14 h-[2px] bg-[#E31B23]" />
             </div>
 
-            <p className="text-[0.95rem] sm:text-[1.05rem] text-[#6B7280] leading-relaxed max-w-xl mx-auto">
+            <p className="text-[0.95rem] sm:text-[1.05rem] text-[#000000] leading-relaxed max-w-xl mx-auto">
               Have a question or need support? Simply submit a ticket and we&apos;ll get
               back to you as soon as possible.
             </p>
@@ -187,14 +220,22 @@ export default function Contact() {
             {/* ═══ LEFT — Send us a Message ═══ */}
             <motion.div {...fade(0)} className="lg:col-span-5">
               <div className="mb-5">
-                <h2
-                  className="text-[1.8rem] sm:text-[2.1rem] text-[#0A1E4F] leading-tight mb-3"
-                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                <h3
+                  className="
+                    font-heading
+                    font-extrabold
+                    text-[1.5rem]
+                    sm:text-[1.7rem]
+                    text-[#0A1E4F]
+                    leading-tight
+                    tracking-[-0.02em]
+                    mb-3
+                  "
                 >
                   Send us a Message
-                </h2>
+                </h3>
                 <div className="w-10 h-[2.5px] rounded-full bg-[#165DFF] mb-4" />
-                <p className="text-[#6B7280] text-[0.9rem] leading-relaxed">
+                <p className="text-[#000000] text-[0.9rem] leading-relaxed">
                   Fill out the form below and our team will respond within 24 hours.
                 </p>
               </div>
@@ -322,8 +363,16 @@ export default function Contact() {
             <motion.div {...fade(0.1)} className="lg:col-span-3">
               <div className="mb-8">
                 <h3
-                  className="text-[1.4rem] text-[#0A1E4F] leading-tight mb-3"
-                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                  className="
+                    font-heading
+                    font-extrabold
+                    text-[1.5rem]
+                    sm:text-[1.7rem]
+                    text-[#0A1E4F]
+                    leading-tight
+                    tracking-[-0.02em]
+                    mb-3
+                  "
                 >
                   Get in Touch
                 </h3>
@@ -337,7 +386,7 @@ export default function Contact() {
                       <item.icon className="w-[18px] h-[18px] text-[#165DFF]" />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold text-[#9CA3AF] uppercase tracking-wider mb-0.5">
+                      <p className="text-[11px] font-semibold text-[#E31B23] uppercase tracking-wider mb-0.5">
                         {item.label}
                       </p>
                       {item.href ? (
@@ -352,7 +401,7 @@ export default function Contact() {
                           {item.value}
                         </p>
                       )}
-                      <p className="text-[0.78rem] text-[#6B7280] mt-0.5">
+                      <p className="text-[0.78rem] text-[#165DFF] mt-0.5">
                         {item.sub}
                       </p>
                     </div>
@@ -456,13 +505,21 @@ export default function Contact() {
             </div>
 
             <h3
-              className="text-[1.6rem] sm:text-[1.9rem] text-[#0A1E4F] leading-snug mb-3"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
+              className="
+                font-heading
+                font-extrabold
+                text-[1.5rem]
+                sm:text-[1.7rem]
+                text-[#0A1E4F]
+                leading-tight
+                tracking-[-0.02em]
+                mb-3
+              "
             >
-              Our team typically responds within 24 hours.
+              Get in Touch
             </h3>
 
-            <p className="text-[#6B7280] text-[0.9rem] leading-relaxed mb-8 max-w-lg mx-auto">
+            <p className="text-[#000000] text-[0.9rem] leading-relaxed mb-8 max-w-lg mx-auto">
               Whether you&apos;re a school administrator, CSR professional, or parent —
               we&apos;re ready to assist you with any questions about our programmes.
             </p>

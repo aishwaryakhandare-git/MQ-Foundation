@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="container relative z-10 pt-36 pb-16 lg:pt-52 lg:pb-16">
         <div className="grid grid-cols-1 gap-10 lg:gap-16 items-center">
           {/* ── Headline + paragraph ── */}
-          <div className="text-left -translate-y-20 lg:-translate-y-28">
+          <div className="text-left -translate-y-20 lg:-translate-y-38">
             {/* ── Headline ── */}
             <motion.h1
               {...fade(0)}

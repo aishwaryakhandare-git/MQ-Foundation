@@ -192,7 +192,7 @@ function Hero() {
               className="
                 mt-7
                 max-w-[590px]
-                text-[#64748B]
+                text-[#000000]
                 text-[15px]
                 sm:text-[16px]
                 lg:text-[17px]
@@ -209,7 +209,7 @@ function Hero() {
             <div className="mt-8 flex items-center gap-4">
               <div className="h-px w-10 bg-[#0A1E4F]/20" />
 
-              <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#0A1E4F]/50">
+              <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#000000]/70">
                 Turning barriers into opportunity
               </p>
             </div>
@@ -525,7 +525,7 @@ function ChallengeGrid() {
               </svg>
             </span>
           </h2>
-          <p className="mt-6 max-w-[590px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#6B7280] font-medium">
+          <p className="mt-6 max-w-[590px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#000000] font-medium">
             Real barriers, answered with practical solutions.
           </p>
         </motion.div>
@@ -575,7 +575,7 @@ function Transformation() {
               </svg>
             </span>
           </h2>
-          <p className="mt-6 max-w-[590px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#6B7280] font-medium">
+          <p className="mt-6 max-w-[590px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#000000] font-medium">
             Three moments in a school&apos;s journey — from an idle ground to
             a daily rhythm of coaching, play and progress.
           </p>
@@ -654,7 +654,7 @@ function Impact() {
               </svg>
             </span>
           </h2>
-          <p className="text-[#6B7280] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto mt-6">
+          <p className="text-[#000000] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto mt-6">
             By addressing real challenges with practical solutions, Marcos Quay
             Foundation helps schools build active, inclusive and high-quality
             sporting environments — where every child has the opportunity to

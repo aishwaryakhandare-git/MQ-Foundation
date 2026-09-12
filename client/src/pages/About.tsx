@@ -73,7 +73,7 @@ function Hero() {
             </span>
             , Stronger India Through Sport
           </h1>
-          <p className="text-[0.95rem] sm:text-[1.05rem] text-[#6B7280] leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[0.95rem] sm:text-[1.05rem] text-[#000000] leading-relaxed max-w-2xl mx-auto">
             We partner with schools to build stronger sports programmes through
             infrastructure, skilled coaching and consistent practice.
           </p>
@@ -167,7 +167,7 @@ function WhatIsMarcosQuay() {
               </svg>
             </span>.
           </h2>
-          <p className="text-[#6B7280] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto">
+          <p className="text-[#000000] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto">
             Marcos Quay Foundation works with schools to make structured,
             quality sports education accessible to more children across India.
           </p>
@@ -187,7 +187,7 @@ function WhatIsMarcosQuay() {
           <h3 className="mt-6 font-heading font-bold text-[15px] tracking-[0.14em] text-[#0A1E4F]">
             WHAT WE DO
           </h3>
-          <p className="mt-4 text-[0.95rem] leading-relaxed text-[#4B5563]">
+          <p className="mt-4 text-[0.95rem] leading-relaxed text-[#000000]">
             We help schools build stronger sports programmes through structured
             curriculum, skilled coaching and consistent opportunities to play.
           </p>
@@ -205,7 +205,7 @@ function WhatIsMarcosQuay() {
           <h3 className="mt-6 font-heading font-bold text-[15px] tracking-[0.14em] text-[#0A1E4F]">
             WHY WE EXIST
           </h3>
-          <p className="mt-4 text-[0.95rem] leading-relaxed text-[#4B5563]">
+          <p className="mt-4 text-[0.95rem] leading-relaxed text-[#000000]">
             For many children, access to sport is limited by a lack of
             infrastructure, trained coaches and regular programmes. We work
             with schools to remove these barriers and create environments
@@ -369,7 +369,7 @@ function OurImpact() {
                 </svg>
               </span>
             </h2>
-            <p className="text-[#6B7280] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-xl">
+            <p className="text-[#000000] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-xl">
               Marcos Quay Foundation has helped schools move from limited
               sports infrastructure and participation to active, inclusive and
               structured sporting environments. By improving grounds,
@@ -532,19 +532,19 @@ function OurStory() {
             </motion.div>
 
             <motion.div {...fade(0.15)}>
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed mb-4">
+              <p className="text-[#000000] text-[0.95rem] leading-relaxed mb-4">
                 Marcos Quay Foundation began with a simple observation — India
                 celebrates its sporting heroes, yet most school children never
                 get to experience structured sport. Grounds sit idle, PE time
                 goes unstructured, and potential goes undiscovered.
               </p>
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed mb-4">
+              <p className="text-[#000000] text-[0.95rem] leading-relaxed mb-4">
                 Instead of building academies, we chose a harder, more lasting
                 path: transforming schools themselves into centres of sporting
                 excellence — with certified coaches, structured curricula, and
                 programmes that run through the school week, not around it.
               </p>
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed mb-8">
+              <p className="text-[#000000] text-[0.95rem] leading-relaxed mb-8">
                 Today that choice has reached schools and children across
                 multiple cities — proof that when schools change, communities
                 change with them.
@@ -964,7 +964,7 @@ function Founder() {
             </motion.div>
 
             <motion.div {...fade(0.15)} className="space-y-4">
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed">
+              <p className="text-[#000000] text-[0.95rem] leading-relaxed">
                 Born in Mumbai, Raahil was an active child from a young age —
                 competing at inter-school, inter-district and inter-state
                 level, and excelling across tennis, football, running,
@@ -974,7 +974,7 @@ function Founder() {
                 Tennis Academy in pursuit of representing India at world
                 tournaments.
               </p>
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed">
+              <p className="text-[#000000] text-[0.95rem] leading-relaxed">
                 Following multiple victories, Raahil wanted the same
                 opportunities made available to more students in India. He
                 studied BSc. Entrepreneurship with a minor in Corporate
@@ -983,7 +983,7 @@ function Founder() {
                 USA and achieving a ranking of 12 in doubles in the NCAA
                 tournaments.
               </p>
-              <p className="text-[#6B7280] text-[0.95rem] leading-relaxed">
+              <p className="text-[#000000] text-[0.95rem] leading-relaxed">
                 Raahil has always believed in a balance between education and
                 an active lifestyle, a value he now instils in every school he
                 collaborates with. Marcos Quay was founded on his vision to
@@ -998,7 +998,7 @@ function Founder() {
                 <p className="font-heading font-bold text-[16px] text-[#0A1E4F]">
                   Raahil Dhruva
                 </p>
-                <p className="text-[13px] font-semibold text-[#6B7280] mt-0.5">
+                <p className="text-[13px] font-semibold text-[#000000] mt-0.5">
                   Director | Marcos Quay
                 </p>
               </div>
