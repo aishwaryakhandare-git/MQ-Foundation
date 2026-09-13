@@ -113,27 +113,22 @@ export default function Footer() {
 
                 <div className="space-y-3 text-[14px] text-white/75">
                   <p className="leading-[1.6]">
-                    18008913830,
-                    <br />
-                    080- 41538054
+                    +91 75068 43435
                   </p>
 
                   <p className="leading-[1.6]">
-                    foundation@sportzvillage.com
+                    www.marcosquay.org
                   </p>
 
                   <p className="leading-[1.7]">
                     Head Office &amp; Registered Office
                     <br />
-                    Sportz Village Foundation
+                    3rd Floor, 24, N S Rd No. 9, 
                     <br />
-                    1st Floor, No. 147/L, 10th Cross, 12th Main,
+                    Nutan Laxmi Society, JVPD Scheme, 
                     <br />
-                    3rd Block, Koramangala, Bangalore,
-                    <br />
-                    Karnataka- 560034
-                    <br />
-                    CIN: 92100KA2017NPL106705.
+                    Vile Parle West, Mumbai 400049
+                    
                   </p>
                 </div>
               </div>
@@ -276,7 +271,7 @@ export default function Footer() {
               "
             >
               <p className="text-[11px] text-white/55 text-center md:text-left">
-                © 2026 Sportz Village Foundation. All Rights Reserved
+                © 2026 Marcos Quay . All Rights Reserved
               </p>
             </div>
           </div>

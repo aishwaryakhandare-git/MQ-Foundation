@@ -199,7 +199,7 @@ const ECOSYSTEM_VOICES = [
   },
   {
     quote:
-      "Through Sports for Change, our partnership with Sportz Village Foundation has shown how sport can create opportunity, social mobility and pathways from grassroots participation to higher competition.",
+      "Through Sports for Change, our partnership with Marcos Quay Foundation has shown how sport can create opportunity, social mobility and pathways from grassroots participation to higher competition.",
     name: "Shubham Nautiyal",
     role: "Senior Program Officer, HCL Foundation",
   },
