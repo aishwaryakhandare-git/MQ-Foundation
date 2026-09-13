@@ -121,7 +121,7 @@ export default function Footer() {
                   </p>
 
                   <p className="leading-[1.7]">
-                    Head Office &amp; Registered Office
+                    Head Office &amp; Registered Office:
                     <br />
                     3rd Floor, 24, N S Rd No. 9, 
                     <br />
