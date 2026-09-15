@@ -32,17 +32,19 @@ function HandLine({ color = "#E31B23" }: { color?: string }) {
   );
 }
 
-function Eyebrow({ children, center = false }: { children: ReactNode; center?: boolean }) {
+function Eyebrow({ children, center = false, tone = "dark" }: { children: ReactNode; center?: boolean; tone?: "dark" | "light" }) {
+  const light = tone === "light";
   return (
     <p
       className={cn(
-        "flex items-center gap-4 font-heading text-[13px] font-extrabold uppercase tracking-[0.2em] text-[#E31B23]",
+        "flex items-center gap-4 font-heading text-[13px] font-extrabold uppercase tracking-[0.2em]",
+        light ? "text-white" : "text-[#E31B23]",
         center && "justify-center",
       )}
     >
-      <span className="h-px w-10 bg-[#E31B23]" />
+      <span className={cn("h-px w-10", light ? "bg-white/70" : "bg-[#E31B23]")} />
       {children}
-      {center && <span className="h-px w-10 bg-[#E31B23]" />}
+      {center && <span className={cn("h-px w-10", light ? "bg-white/70" : "bg-[#E31B23]")} />}
     </p>
   );
 }
@@ -234,7 +236,7 @@ function Hero() {
 
       <div className="container relative z-10">
         <motion.div {...fade(0)} className="mx-auto max-w-3xl text-center">
-          <Eyebrow center>Our Impact</Eyebrow>
+          <Eyebrow center tone="light">Our Impact</Eyebrow>
 
           <h1 className="mt-6 font-heading font-extrabold leading-none tracking-[-0.03em] text-white text-6xl sm:text-7xl lg:text-8xl">
             125,000+
@@ -277,12 +279,114 @@ function Hero() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   2 · IMPACT BY NUMBERS — horizontal statistics strip
+   2 · WHAT WE SAW — storytelling opener (Sport was there. Opportunity wasn't.)
+   ══════════════════════════════════════════════════════════════ */
+
+const WAS_CARDS = [
+  {
+    label: "Limited infrastructure",
+    caption: "Basic, poorly equipped school sports grounds.",
+    img: "/images/Limiteds_Infra.png",
+    alt: "Basic, poorly equipped school sports ground",
+  },
+  {
+    label: "Inconsistent coaching",
+    caption: "Children waiting for structured, consistent instruction.",
+    img: "/images/Inconsistent Coaching.png",
+    alt: "Children waiting without structured sports instruction",
+  },
+  {
+    label: "Few opportunities to grow",
+    caption: "Basic equipment, but limited pathways to development.",
+    img: "/images/Few_Oppurtunities.png",
+    alt: "Child with basic sports equipment and limited pathways",
+  },
+];
+
+function WhatWeSaw() {
+  return (
+    <section className="relative overflow-hidden bg-white pt-12 lg:pt-16 pb-8 lg:pb-10">
+      {/* Background image with overlay */}
+      <div className="absolute inset-x-0 top-0 h-[95%] pointer-events-none">
+        <img
+          src="/images/WhatWeSaw.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+        
+      </div>
+      <div className="container relative">
+        <div className="lg:ml-auto lg:max-w-[70%]">
+          {/* Text — above the images, left-aligned */}
+          <motion.div {...fade(0)}>
+            <Eyebrow>What We Saw</Eyebrow>
+
+            <h2 className="mt-3 font-heading font-extrabold tracking-[-0.02em] text-[1.9rem] sm:text-[2.3rem] lg:text-[2.8rem] leading-[1.1] text-[#0A1E4F]">
+              Sport was there.{" "}
+              <span className="text-[#E31B23]">Opportunity wasn&apos;t.</span>
+            </h2>
+
+            <p className="mt-3 font-heading font-semibold text-[16px] sm:text-[17px] leading-[1.6] text-[#0A1E4F] max-w-2xl">
+              In many Indian schools, the children are ready to play.
+            </p>
+            <p className="mt-2 text-[14px] sm:text-[14.5px] leading-[1.7] text-black max-w-2xl">
+              But too often the trained coaches, structured programs, suitable
+              playing spaces and consistent opportunities to develop simply
+              aren&apos;t there. The willingness exists — the system around it
+              doesn&apos;t yet.
+            </p>
+          </motion.div>
+
+          {/* Three equal documentary photo cards — shifted lower, right side */}
+          <motion.div {...fade(0.1)} className="mt-3 lg:mt-6">
+            <div className="grid grid-cols-3 gap-4 sm:gap-5">
+              {WAS_CARDS.map((card, i) => (
+                <motion.div key={card.label} {...fade(0.1 + i * 0.08)}>
+                  <div className="rounded-[16px] border border-[#E7EBF3] bg-white p-2 shadow-[0_18px_40px_-26px_rgba(10,30,79,0.3)]">
+                    <img
+                      src={card.img}
+                      alt={card.alt}
+                      loading="lazy"
+                      className="h-[180px] sm:h-[200px] w-full rounded-[12px] object-cover"
+                    />
+                  </div>
+                  <p className="mt-2.5 font-heading font-extrabold text-[12px] sm:text-[13px] leading-snug tracking-[-0.01em] text-[#0A1E4F]">
+                    {card.label}
+                  </p>
+                  <p className="mt-1 text-[12px] sm:text-[12.5px] leading-relaxed text-[#4B5563]">
+                    {card.caption}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Handwritten accent — far right */}
+            <motion.div {...fade(0.35)} className="mt-6 flex justify-end">
+              <div className="text-right">
+                <p className="font-serif italic text-[1.25rem] sm:text-[1.4rem] leading-[1.4] text-[#0A1E4F]">
+                  Same Schools.
+                  <br />
+                  <span className="text-[#165DFF]">Different Possibilities.</span>
+                </p>
+                <div className="mt-2 ml-auto h-[2px] w-[60%] rounded-full bg-[#E31B23]" />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   3 · IMPACT BY NUMBERS — horizontal statistics strip
    ══════════════════════════════════════════════════════════════ */
 
 function StatsStrip() {
   return (
-    <section className="bg-white py-14 lg:py-16">
+    <section className="bg-white pt-16 lg:pt-24 pb-14 lg:pb-16">
       <div className="container">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-[20px] border border-[#E7EBF3] bg-[#E7EBF3]">
           {STATS_STRIP.map((s) => (
@@ -670,8 +774,19 @@ function Scoreboard() {
 
 function Journey() {
   return (
-    <section className="bg-[#F3F7FC] py-16 lg:py-24">
-      <div className="container">
+    <section className="relative overflow-hidden bg-white py-16 lg:py-24">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img
+          src="/images/TheStudentJourney.png"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="h-full w-full object-cover"
+        />
+        
+      </div>
+      <div className="container relative">
         <SectionHeader
           eyebrow="The Student Journey"
           intro="A structured journey that helps every child find their potential through sport."
@@ -692,7 +807,7 @@ function Journey() {
                 {...fade(0.06 * i)}
                 className="relative flex flex-col items-center px-2 text-center"
               >
-                <span className="relative z-10 mt-[20px] hidden h-[14px] w-[14px] rounded-full border-2 border-[#E31B23] bg-[#F3F7FC] lg:block" />
+                <span className="relative z-10 mt-[20px] hidden h-[14px] w-[14px] rounded-full border-2 border-[#E31B23] bg-white lg:block" />
                 <p className="mt-0 font-heading text-[15px] font-extrabold text-[#E31B23] lg:mt-6">
                   {step.num}
                 </p>
@@ -977,6 +1092,7 @@ export default function ImpactPage() {
     <main className="min-h-screen bg-white pt-[76px] lg:pt-20">
       <Hero />
       <StatsStrip />
+      <WhatWeSaw />
       <Effect />
       <Grounds />
       <NumbersBand />

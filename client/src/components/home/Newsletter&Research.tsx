@@ -136,7 +136,7 @@ export function NewsletterSection() {
                 type="email"
                 placeholder="Enter your email address"
                 aria-label="Email address"
-                className="h-[58px] flex-1 rounded-[9px] border border-[#AEBED8] bg-white px-5 text-[15px] text-[#0A1E4F] outline-none transition-all placeholder:text-[#9AA5B8] focus:border-[#165DFF] focus:ring-2 focus:ring-[#165DFF]/10"
+                className="h-[58px] flex-1 rounded-[9px] border border-[#000000] bg-white px-5 text-[15px] text-[#0A1E4F] outline-none transition-all placeholder:text-[#9AA5B8] focus:border-[#165DFF] focus:ring-2 focus:ring-[#165DFF]/10"
               />
 
               <button

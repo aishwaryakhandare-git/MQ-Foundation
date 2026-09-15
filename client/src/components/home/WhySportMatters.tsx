@@ -142,7 +142,7 @@ export default function WhySportMatters() {
               Why Sport Matters
             </motion.p>
 
-            <motion.h2 {...fade(0.1, "right")} className="heading-2 text-[#0A1E4F] font-extrabold leading-[1.08] tracking-tight">
+            <motion.h2 {...fade(0.1, "right")} className="heading-2 text-[40px] text-[#0A1E4F] font-extrabold leading-[1.08] tracking-tight">
               From watching the game to playing it
               <br />
               Development Through{" "}
@@ -165,17 +165,63 @@ export default function WhySportMatters() {
               </span>
             </motion.h2>
 
-            <motion.p {...fade(0.15, "right")} className="mt-5 text-[13px] sm:text-base lg:text-[16px] leading-[1.55] text-[#111827] font-semibold">
-              For too many children, sport begins and ends with simply watching. At Marcos Quay Foundation, we believe every child deserves the opportunity to step onto the field, learn the game and discover how far they can go.
-
-              Our journey starts at the grassroots—creating safe, structured spaces where children can move, play and build a foundation in sport. But the journey doesn't stop there. As children grow and their interests and abilities emerge, we help take them from basic grassroots play to more structured and sport-specific training environments.
+            <motion.p
+              {...fade(0.15, "right")}
+              className="mt-5 text-[13px] sm:text-[15px] lg:text-[16px] leading-[1.55] text-[#111827] font-medium"
+            >
+              For too many children, sport begins and ends with simply watching from
+              the sidelines. We believe every child deserves the opportunity to step
+              onto the field, learn the game, and discover how far their passion can
+              take them.
             </motion.p>
 
-            <motion.p {...fade(0.2, "right")} className="mt-4 text-[13px] sm:text-base lg:text-[16px] leading-[1.55] text-[#111827] font-semibold">
-              What begins as a first experience on the ground can become a pathway. A child who once played simply for fun can develop discipline, confidence and competitive skills—and begin to see themselves not just as a participant, but as an athlete.
+            <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
 
-              Through our work with schools and communities, we have seen students find their sport, develop their abilities and rise through the levels of participation. The goal is not to make every child a professional athlete. It is to make sure every child gets the opportunity to play, improve and discover their potential.
-            </motion.p>
+              {/* 1 — Blue */}
+              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
+                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
+                  Grassroots Foundations
+                </h3>
+                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
+                  Creating safe, structured spaces where young children move freely,
+                  play with joy, and build essential physical literacy.
+                </p>
+              </div>
+
+              {/* 4 — Blue */}
+              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
+                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
+                  Pathway to Development
+                </h3>
+                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
+                  Seamlessly progressing from casual introductory play into
+                  disciplined, sport-specific skill training.
+                </p>
+              </div>
+
+             {/* 4 — Blue */}
+              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
+                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
+                  Character & Athlete Mindset
+                </h3>
+                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
+                  Cultivating confidence, teamwork, grit, and competitive spirit —
+                  helping every child grow through sport.
+                </p>
+              </div>
+
+              {/* 1 — Blue */}
+              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
+                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
+                  Potential over Perfection
+                </h3>
+                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
+                  Our measure isn't exclusively grooming professional elite —
+                  it's giving every child a chance to explore and thrive.
+                </p>
+              </div>
+
+            </div>
 
             <motion.div {...fade(0.3, "right")} className="mt-8">
               <Link

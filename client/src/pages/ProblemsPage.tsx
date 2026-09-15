@@ -417,6 +417,7 @@ function ColumnHead({
       <p className="mt-1.5 text-[13px] text-[#9AA5B8] font-medium">{sub}</p>
     </div>
   );
+  
 }
 
 function PairBlock({ index }: { index: number }) {
@@ -426,7 +427,7 @@ function PairBlock({ index }: { index: number }) {
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_64px_1fr] gap-5 lg:gap-2 items-stretch">
       {/* Challenge */}
       <motion.div {...fade(0)}>
-        <div className="h-full overflow-hidden rounded-[16px] border border-[#F0E2DE] bg-[#FCFAF9]">
+        <div className="h-full overflow-hidden rounded-[16px] border-2 border-[#E31B23] bg-[#FCFAF9]">
           <div className="flex flex-col sm:flex-row h-full">
             <div className="sm:w-[40%] sm:flex-none relative">
               <img
@@ -470,7 +471,7 @@ function PairBlock({ index }: { index: number }) {
 
       {/* Solution */}
       <motion.div {...fade(0.08)}>
-        <div className="h-full overflow-hidden rounded-[16px] border border-[#E3EDFB] bg-[#F3F7FC]">
+        <div className="h-full overflow-hidden rounded-[16px] border-2 border-[#165DFF] bg-[#F3F7FC]">
           <div className="flex flex-col sm:flex-row h-full">
             <div className="sm:w-[40%] sm:flex-none relative">
               <img

@@ -5,7 +5,9 @@
 
 import Hero from "@/components/home/Hero";
 import WhySportMatters from "@/components/home/WhySportMatters";
+import OurApproach from "@/components/home/OurApproach";
 import OurFocus from "@/components/home/OurFocus";
+import QualitySystem from "@/components/home/QualitySystem";
 import ImpactSection from "@/components/home/ImpactSection";
 import SuccessStories from "@/components/home/SuccessStories";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -21,7 +23,11 @@ export default function Home() {
 
       <WhySportMatters />
 
+      <OurApproach />
+
       <OurFocus />
+
+      <QualitySystem />
 
       <ImpactSection />
 

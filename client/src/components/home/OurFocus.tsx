@@ -247,24 +247,9 @@ export default function OurFocus() {
           {...fade(0)}
           className="max-w-[850px] mx-auto mb-16 sm:mb-20 lg:mb-24 text-center"
         >
-          <p className="font-heading font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.22em] text-[#E31B23] mb-5">
-            Our Focus Areas
-          </p>
-
-          <h2
-            className="
-              heading-2
-              text-[#0A1E4F]
-              font-extrabold
-              leading-[1.03]
-              tracking-tight
-            "
-          >
-            From the first opportunity
-            <br className="hidden sm:block" />
-            to play, to{" "}
+          <h2 className="heading-2 text-[#0A1E4F] font-extrabold leading-[1.03] tracking-tight">
             <span className="relative inline-block text-[#E31B23]">
-              sporting potential
+              Our Focus Areas
               <Underline />
             </span>
           </h2>

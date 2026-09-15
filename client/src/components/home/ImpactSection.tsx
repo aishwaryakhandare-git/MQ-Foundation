@@ -21,24 +21,23 @@ const STATS = [
 
 export default function ImpactSection() {
   return (
-    <section id="impact" className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section id="impact" className="relative overflow-x-hidden bg-white py-16 sm:py-20 lg:py-24">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-14 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-14 lg:gap-16 items-center">
           {/* ── LEFT — India map (≈40% width, ~85% height) ── */}
           <motion.div {...fade(0)} className="relative order-2 lg:order-1">
             <IndiaImpactMap />
           </motion.div>
 
           {/* ── RIGHT — header, description, statistics, closing statement ── */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 min-w-0">
             {/* Eyebrow */}
-            <motion.p {...fade(0)} className="font-heading font-bold text-sm tracking-[0.22em] uppercase text-[#0A1E4F] mb-5">
+            <motion.p {...fade(0)} className="font-heading font-extrabold text-[20px] sm:text-[22px] lg:text-[24px] sm:tracking-[0.18em] tracking-[0.16em] uppercase text-[#0066B3] mb-5">
               Our Impact
             </motion.p>
 
             {/* Main heading */}
             <motion.h2 {...fade(0.05)} className="heading-2 text-[#0A1E4F] font-extrabold text-[40px] sm:text-[52px] lg:text-[60px] xl:text-[66px] leading-[1.02] tracking-tight">
-              Our Impact{" "}
               <span className="relative inline-block text-[#E31B23]">
                 Across India
                 <svg
@@ -65,11 +64,11 @@ export default function ImpactSection() {
             </motion.p>
 
             {/* ── Statistics — 3 × 2 grid ── */}
-            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5">
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 min-w-0">
               {STATS.map((s, i) => (
                 <motion.div key={s.label} {...fade(0.12 + i * 0.05)} className="h-full">
-                  <div className="group h-full bg-white rounded-[20px] border border-[#E7EBF3] px-5 py-6 sm:px-6 sm:py-7 shadow-[0_12px_30px_-18px_rgba(15,40,80,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-20px_rgba(15,40,80,0.25)]">
-                    <p className="font-heading font-extrabold text-[26px] sm:text-3xl lg:text-[32px] leading-none tracking-tight text-[#0A1E4F]">
+                  <div className="group h-full bg-white rounded-[20px] border border-[#165DFF]/25 px-5 py-6 sm:px-6 sm:py-7 shadow-[0_12px_30px_-18px_rgba(15,40,80,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_44px_-20px_rgba(15,40,80,0.25)]">
+                    <p className="font-heading font-extrabold text-[22px] sm:text-[24px] lg:text-[26px] leading-none tracking-tight text-[#0A1E4F]">
                       <Counter to={s.value} suffix={s.suffix} />
                     </p>
                     <p className="mt-2.5 text-[12.5px] sm:text-[13px] font-bold text-[#0A1E4F]/75">

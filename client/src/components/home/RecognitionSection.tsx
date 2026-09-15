@@ -2,19 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const AWARDS = [
+type Award = { image: string; caption: string; position?: string; textColor?: string; width?: string };
+
+const AWARDS: Award[] = [
   {
-    image: "/images/awards/k12-award.jpg",
+    image: "/images/awards/Award1.png",
     caption:
-      "Sports Education Program Provider in Sport at the Eldrok India K-12 Summit",
+      "I AM Game Awards 2026: Persistent Commitment To Indian Sports",
+    textColor: "#000000",
   },
   {
-    image: "/images/awards/karnataka-csr.jpg",
-    caption: "Karnataka CSR Leadership Awards 2020",
+    image: "/images/awards/Award5.png",
+    caption: "EGN India: Best Integration of Life-skills in Physical Education & Sports",
+    textColor: "#000000",
   },
   {
-    image: "/images/awards/cii-ficci-niti.jpg",
-    caption: "Empaneled with CII, FICCI & NITI Aayog",
+    image: "/images/awards/Award3.png",
+    caption: "EGangaram Prakashan : The Beacon of Excellence Award 2023",
+    position: "center 22%",
+    textColor: "#000000",
   },
   {
     image: "/images/awards/dalmia-bharat.jpg",
@@ -291,6 +297,10 @@ export default function RecognitionSection() {
                     <img
                       src={award.image}
                       alt={award.caption}
+                      style={{
+                        ...(award.position ? { objectPosition: award.position } : {}),
+                        ...(award.width ? { width: award.width, marginInline: "auto" } : {}),
+                      }}
                       className="
                         w-full
                         h-full
@@ -310,8 +320,8 @@ export default function RecognitionSection() {
                       leading-[1.4]
                       italic
                       font-medium
-                      text-[#4A4A4A]
                     "
+                    style={award.textColor ? { color: award.textColor } : undefined}
                   >
                     {award.caption}
                   </p>

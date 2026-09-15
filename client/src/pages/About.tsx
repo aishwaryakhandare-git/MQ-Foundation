@@ -178,7 +178,7 @@ function WhatIsMarcosQuay() {
         {/* Card 01 — What we do */}
         <motion.div
           {...fade(0.08)}
-          className="rounded-[18px] border border-[#165DFF]/10 bg-[#F4F8FF] p-8 sm:p-12"
+          className="rounded-[18px] border-2 border-[#165DFF]/30 bg-[#F4F8FF] p-8 sm:p-12"
         >
           <p className="text-[13px] font-bold tracking-[0.18em] text-[#E31B23]">
             01
@@ -196,7 +196,7 @@ function WhatIsMarcosQuay() {
         {/* Card 02 — Why we exist */}
         <motion.div
           {...fade(0.14)}
-          className="rounded-[18px] border border-[#E31B23]/10 bg-[#FFF7F6] p-8 sm:p-12"
+          className="rounded-[18px] border-2 border-[#E31B23]/30 bg-[#FFF7F6] p-8 sm:p-12"
         >
           <p className="text-[13px] font-bold tracking-[0.18em] text-[#E31B23]">
             02
@@ -447,7 +447,7 @@ function OurImpact() {
             <motion.div
               key={o.num}
               {...fade(0.05 * i)}
-              className="rounded-[16px] border border-[#E7EBF3] bg-white p-7"
+              className="rounded-[16px] border-2 border-[#A1B2D0] bg-white p-7"
             >
               <p className="text-[13px] font-bold text-[#E31B23]">{o.num}</p>
               <h4 className="mt-5 font-heading font-bold text-[15px] text-[#0A1E4F] leading-snug">
@@ -636,9 +636,9 @@ function MissionVision() {
             <line x1="580" y1="2" x2="1000" y2="2" stroke="#165DFF" strokeWidth="1" opacity="0.15" />
           </svg>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 md:gap-0 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-10 md:gap-8 items-center">
             {/* Mission — Left */}
-            <motion.div {...fade(0.1)} className="text-left">
+            <motion.div {...fade(0.1)} className="text-left bg-white rounded-[24px] border-2 border-[#D5DFF0] shadow-[0_24px_60px_-40px_rgba(10,30,79,0.35)] p-8 sm:p-10">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
                 Mission
               </p>
@@ -685,7 +685,7 @@ function MissionVision() {
             </motion.div>
 
             {/* Vision — Right */}
-            <motion.div {...fade(0.2)} className="text-left md:text-right">
+            <motion.div {...fade(0.2)} className="text-left md:text-right bg-white rounded-[24px] border-2 border-[#D5DFF0] shadow-[0_24px_60px_-40px_rgba(10,30,79,0.35)] p-8 sm:p-10">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#165DFF] mb-4">
                 Vision
               </p>
