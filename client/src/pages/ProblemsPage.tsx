@@ -1,5 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
 
 const fade = (delay = 0) => ({
   initial: { y: 30 },
@@ -620,7 +621,209 @@ function Transformation() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   4 · IMPACT
+   4 · BENEFITS THROUGH THE PARTNERSHIP
+   ══════════════════════════════════════════════════════════════ */
+
+const BENEFITS = [
+  {
+    num: "01",
+    title: "School's Branding and Positioning",
+    desc: "Clear message from management for the holistic development of every student.",
+  },
+  {
+    num: "02",
+    title: "Management Impact Report",
+    desc: "How the school's PE programme has impacted the children's fitness.",
+  },
+  {
+    num: "03",
+    title: "Create a Sports Buzz in Schools",
+    desc: "Through regular events for all the stakeholders (parents, teachers & students).",
+  },
+  {
+    num: "04",
+    title: "Potential Revenue Generation for Schools",
+    desc: "Through our events and programmes and academy.",
+  },
+  {
+    num: "05",
+    title: "Exposure and Media Branding",
+    desc: "Students get to compete with various schools within the Marcos Quay network.",
+  },
+  {
+    num: "06",
+    title: "Knowledge Sharing",
+    desc: "Best practices and learnings from our partner schools (Example: Dad's League).",
+  },
+  {
+    num: "07",
+    title: "Programme Driven Culture",
+    desc: "Shift from manpower dependency to system dependency.",
+  },
+  {
+    num: "08",
+    title: "No Proxy Period",
+    desc: "Children will not miss out on the sessions – equally qualified replacement.",
+  },
+];
+
+const BENEFIT_GAP = 20;
+const BENEFIT_AUTOPLAY_MS = 4000;
+
+function BenefitsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(4);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const measure = () => {
+      const el = viewportRef.current;
+      if (!el) return;
+      const w = el.offsetWidth;
+      let cols = 1;
+      if (window.matchMedia("(min-width: 1024px)").matches) cols = 4;
+      else if (window.matchMedia("(min-width: 640px)").matches) cols = 2;
+      setVisible(cols);
+      setCardWidth((w - BENEFIT_GAP * (cols - 1)) / cols);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const maxIndex = Math.max(0, BENEFITS.length - visible);
+
+  useEffect(() => {
+    if (paused || !cardWidth) return;
+    const id = window.setInterval(
+      () => setCurrent((p) => (p >= maxIndex ? 0 : p + 1)),
+      BENEFIT_AUTOPLAY_MS,
+    );
+    return () => window.clearInterval(id);
+  }, [paused, cardWidth, maxIndex]);
+
+  const next = () => setCurrent((p) => (p >= maxIndex ? 0 : p + 1));
+  const previous = () => setCurrent((p) => (p <= 0 ? maxIndex : p - 1));
+
+  const advance = cardWidth + BENEFIT_GAP;
+  const x = -(current * advance);
+  const slides = BENEFITS;
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div ref={viewportRef} className="relative overflow-hidden pt-3 pb-2">
+        <motion.div
+          className="flex"
+          style={{ gap: BENEFIT_GAP }}
+          animate={{ x }}
+          transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+        >
+          {slides.map((b, i) => (
+            <div
+              key={`${b.num}-${i}`}
+              style={{ width: cardWidth ? `${cardWidth}px` : undefined }}
+              className="group w-[280px] shrink-0 sm:w-[320px]"
+            >
+              <div className="relative h-full overflow-hidden rounded-[18px] border border-[#F2DAD6] bg-gradient-to-br from-white via-[#FFF9F8] to-[#FFF0ED] p-6 sm:p-7 shadow-[0_16px_38px_-24px_rgba(10,30,79,0.3)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#E31B23]/40 hover:shadow-[0_30px_56px_-24px_rgba(227,27,35,0.45)]">
+                {/* Top accent */}
+                <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#E31B23] via-[#165DFF] to-[#3F7CFF]" />
+                {/* Corner glow */}
+                <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#165DFF]/[0.1] blur-2xl transition-opacity duration-300 group-hover:opacity-100 opacity-70" />
+                {/* Number watermark */}
+                <span className="pointer-events-none absolute right-4 bottom-1 select-none font-heading font-extrabold text-[4.5rem] leading-none text-[#165DFF]/[0.08]">
+                  {b.num}
+                </span>
+
+                <span className="relative flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#E31B23] to-[#165DFF] font-heading font-extrabold text-[13px] text-white shadow-[0_10px_22px_-10px_rgba(22,93,255,0.75)]">
+                  {b.num}
+                </span>
+                <h3 className="relative mt-4 font-heading font-bold tracking-[-0.01em] text-[1.1rem] sm:text-[1.2rem] text-[#0A1E4F] leading-snug">
+                  {b.title}
+                </h3>
+                <div className="relative mt-2.5 h-px w-10 bg-gradient-to-r from-[#E31B23] to-[#165DFF]" />
+                <p className="relative mt-3 text-[0.88rem] leading-relaxed text-[#6B7280]">
+                  {b.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Left arrow */}
+      <button
+        type="button"
+        aria-label="Previous benefits"
+        onClick={previous}
+        className="absolute -left-2 sm:-left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#E7EBF3] bg-white text-[#0A1E4F] shadow-[0_12px_28px_-10px_rgba(10,30,79,0.35)] transition hover:text-[#E31B23]"
+      >
+        <ChevronLeft className="h-5 w-5" strokeWidth={2} />
+      </button>
+
+      {/* Right arrow */}
+      <button
+        type="button"
+        aria-label="Next benefits"
+        onClick={next}
+        className="absolute -right-2 sm:-right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#E7EBF3] bg-white text-[#0A1E4F] shadow-[0_12px_28px_-10px_rgba(10,30,79,0.35)] transition hover:text-[#E31B23]"
+      >
+        <ChevronRight className="h-5 w-5" strokeWidth={2} />
+      </button>
+    </div>
+  );
+}
+
+function Benefits() {
+  return (
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
+      <div className="container">
+        <motion.div {...fade(0)} className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23] mb-5">
+            Why Partner With Marcos Quay
+          </p>
+          <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[1.25rem] sm:text-[2rem] lg:text-[3rem] xl:text-[3.25rem] text-[#0A1E4F] leading-tight whitespace-nowrap">
+            Benefits Through the{" "}
+            <span className="relative inline-block text-[#E31B23]">
+              Partnership
+              <svg
+                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                viewBox="0 0 200 12"
+                preserveAspectRatio="none"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
+                  stroke="#E31B23"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </h2>
+          <p className="mt-6 max-w-[640px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#000000] font-medium">
+            What schools gain when they partner with Marcos Quay — beyond
+            coaching, beyond the field.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Stepped carousel — starts at card 01 */}
+      <div className="container">
+        <BenefitsCarousel />
+      </div>
+    </section>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5 · IMPACT
    ══════════════════════════════════════════════════════════════ */
 
 function Impact() {
@@ -729,6 +932,7 @@ export default function ProblemsPage() {
       <Hero />
       <ChallengeGrid />
       <Transformation />
+      <Benefits />
       <Impact />
     </main>
   );

@@ -42,40 +42,17 @@ function Hero() {
       </div>
 
       <div className="container relative z-10">
-        <motion.div {...fade(0)} className="max-w-4xl mx-auto text-center mb-10 lg:mb-14">
+        <motion.div {...fade(0)} className="mx-auto text-center mb-10 lg:mb-14">
           <div className="flex justify-center mb-5">
             <div className="w-10 h-[2.5px] rounded-full bg-[#E31B23]" />
           </div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23] mb-4">
-            About Marcos Quay
-          </p>
-          <h1 className="font-heading font-extrabold tracking-[-0.03em] text-[2.4rem] sm:text-[3.2rem] md:text-[4rem] lg:text-[4.8rem] leading-[1.02] text-[#0A1E4F] mb-6">
-            Building a{" "}
-            <span
-              className="relative inline-block text-[#E31B23] leading-none text-[1.45em] italic"
-              style={{ fontFamily: "'DM Serif Display', serif" }}
-            >
-              Healthier
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 140 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 28 2, 55 10, 82 6 C 105 3, 120 8, 136 5"
-                  stroke="#165DFF"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-            , Stronger India Through Sport
+          
+          <h1 className="font-heading font-extrabold tracking-[-0.05em] text-[0.8rem] sm:text-[1.45rem] md:text-[1.75rem] lg:text-[2.35rem] xl:text-[3rem] leading-[1.02] text-[#0A1E4F] mb-6 whitespace-nowrap -translate-x-[4%]">
+            Conceptualising <span className="text-[#0A1E4F]">|</span> Curating{" "}
+            <span className="text-[#0A1E4F]">|</span> Executing
           </h1>
           <p className="text-[0.95rem] sm:text-[1.05rem] text-[#000000] leading-relaxed max-w-2xl mx-auto">
-            We partner with schools to build stronger sports programmes through
-            infrastructure, skilled coaching and consistent practice.
+            Complete School Sports Solution.
           </p>
         </motion.div>
 
@@ -86,11 +63,11 @@ function Hero() {
           transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="relative max-w-6xl mx-auto"
         >
-          <div className="relative rounded-t-[24px] sm:rounded-t-[32px] overflow-hidden">
+          <div className="relative rounded-[24px] sm:rounded-[32px] overflow-hidden">
             <img
-              src="/images/hero-sports.jpg"
+              src="/images/about/About-Hero.jpeg"
               alt="Students playing football on a professional school ground"
-              className="w-full h-[300px] sm:h-[400px] lg:h-[480px] object-cover"
+              className="w-full h-[360px] sm:h-[480px] lg:h-[560px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/20 via-transparent to-transparent" />
           </div>
@@ -465,29 +442,23 @@ function OurImpact() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   OUR STORY
+   OUR GAME PLAN
    ══════════════════════════════════════════════════════════════ */
-
-const IMPACT_NUMBERS = [
-  { value: "450+", label: "Schools" },
-  { value: "50,000+", label: "Students" },
-  { value: "25+", label: "Cities" },
-];
 
 function OurStory() {
   return (
-    <section id="story" className="relative overflow-hidden bg-white py-16 md:py-24">
+    <section id="story" className="relative overflow-hidden bg-white h-screen max-h-[900px]">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 -right-28 w-[350px] h-[350px] bg-[#165DFF]/[0.04] rounded-full blur-[80px]" />
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 h-full flex flex-col justify-center py-10">
         {/* Section heading */}
-        <motion.div {...fade(0)} className="text-center mb-12 md:mb-16">
+        <motion.div {...fade(0)} className="text-center mb-8 md:mb-10">
           <h2 className="heading-2 text-[#0A1E4F]">
             Our{" "}
             <span className="relative inline-block text-[#E31B23]">
-              Story
+              Game Plan
               <svg
                 className="absolute -bottom-2 left-0 w-full h-3"
                 viewBox="0 0 170 12"
@@ -506,72 +477,140 @@ function OurStory() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left — Image */}
-          <motion.div {...fade(0)} className="relative">
-            <div className="relative rounded-[20px] sm:rounded-[28px] overflow-hidden">
-              <img
-                src="/images/solutions/curriculum.jpg"
-                alt="Coach interacting with students on a school playground"
-                className="w-full h-[340px] sm:h-[420px] lg:h-[480px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E4F]/15 to-transparent" />
-            </div>
-            {/* Floating accent */}
-            <div className="absolute -bottom-4 -right-4 sm:bottom-6 sm:-right-6 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#165DFF]/10 border-2 border-[#165DFF]/15 flex items-center justify-center">
-              <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-[#165DFF]" />
-            </div>
-          </motion.div>
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
+          {/* Left — Copy */}
+          <div className="relative flex flex-col">
+            {/* Pull quote */}
+            <motion.div {...fade(0)}>
+              <div className="relative border-l-4 border-[#165DFF] pl-5 sm:pl-6 py-1">
+                <p
+                  className="font-heading text-[#0A1E4F] text-[1.6rem] sm:text-[2rem] lg:text-[2.4rem] leading-[1.1]"
+                  style={{ fontFamily: "'DM Serif Display', serif" }}
+                >
+                  "Health is a Habit"
+                </p>
+              </div>
+              <p className="mt-4 text-[#000000] text-[0.9rem] leading-relaxed">
+                To be fit and healthy, we have to inculcate health as a habit.
+                Marcos Quay believes that creating active and healthy children
+                will lead to active and healthy adults.
+              </p>
+            </motion.div>
 
-          {/* Right — Content */}
-          <div>
             <motion.div {...fade(0.1)}>
-              <h3 className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#0A1E4F] leading-tight mb-6">
-                A Movement Born on School Grounds
-              </h3>
+              <p className="mt-4 text-[#000000] text-[0.9rem] leading-relaxed">
+                Marcos Quay aims to promote this culture of fitness through
+                scientifically researched and result-driven programmes with a
+                curriculum that is exciting and engaging every student.
+              </p>
             </motion.div>
 
+            {/* Stats */}
             <motion.div {...fade(0.15)}>
-              <p className="text-[#000000] text-[0.95rem] leading-relaxed mb-4">
-                Marcos Quay Foundation began with a simple observation — India
-                celebrates its sporting heroes, yet most school children never
-                get to experience structured sport. Grounds sit idle, PE time
-                goes unstructured, and potential goes undiscovered.
-              </p>
-              <p className="text-[#000000] text-[0.95rem] leading-relaxed mb-4">
-                Instead of building academies, we chose a harder, more lasting
-                path: transforming schools themselves into centres of sporting
-                excellence — with certified coaches, structured curricula, and
-                programmes that run through the school week, not around it.
-              </p>
-              <p className="text-[#000000] text-[0.95rem] leading-relaxed mb-8">
-                Today that choice has reached schools and children across
-                multiple cities — proof that when schools change, communities
-                change with them.
-              </p>
+              <div className="mt-7">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-7 sm:gap-y-0 sm:divide-x sm:divide-[#165DFF]/15">
+                  {[
+                    { value: "14+", label: "Years of Experience" },
+                    { value: "128+", label: "Schools Partnered" },
+                    { value: "152105+", label: "Students Impacted" },
+                  ].map((stat, i) => (
+                    <div key={stat.label} className="sm:px-6 text-center">
+                      {i > 0 && <span className="sm:hidden mx-auto block h-[2px] w-10 rounded-full bg-[#165DFF]/15 my-4" />}
+                      <p
+                        className="font-heading text-[2.4rem] sm:text-[2.8rem] lg:text-[3.2rem] leading-none text-[#0A1E4F] tracking-tight"
+                        style={{ fontFamily: "'DM Serif Display', serif" }}
+                      >
+                        {stat.value}
+                      </p>
+                      <span className="mt-3 block h-[2px] w-8 rounded-full bg-[#165DFF]" />
+                      <p className="mt-3 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.12em] text-[#4B5563] leading-tight">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
-            {/* Impact numbers — large serif, separated by thin lines */}
-            <motion.div {...fade(0.2)} className="flex items-center gap-0">
-              {IMPACT_NUMBERS.map((n, i) => (
-                <div key={n.label} className="flex items-center">
-                  <div className="px-5 sm:px-7">
-                    <p className="font-heading font-extrabold tracking-[-0.02em] text-[1.8rem] sm:text-[2.2rem] lg:text-[2.6rem] text-[#165DFF] leading-none">
-                      {n.value}
-                    </p>
-                    <p className="text-[12px] font-semibold text-[#6B7280] mt-1.5">
-                      {n.label}
-                    </p>
-                  </div>
-                  {i < IMPACT_NUMBERS.length - 1 && (
-                    <div className="w-[1px] h-14 bg-[#E0E5EF]" />
-                  )}
+            {/* Watermark tagline — below stats */}
+            <div
+              aria-hidden="true"
+              className="mt-12 select-none pointer-events-none rotate-[-3deg] text-left"
+            >
+              <p
+                className="inline-block leading-snug font-semibold text-[#0D3BB8] opacity-[0.45] text-[1.7rem] sm:text-[2rem] lg:text-[2.3rem]"
+                style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 600 }}
+              >
+                Building a Healthier, Stronger Tomorrow
+              </p>
+              <svg
+                className="block w-full max-w-[26ch] mr-auto h-3 mt-1"
+                viewBox="0 0 200 12"
+                preserveAspectRatio="none"
+                fill="none"
+              >
+                <path
+                  d="M4 8 C 40 2, 90 10, 150 5 S 185 7, 196 4"
+                  stroke="#0D3BB8"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  opacity="0.8"
+                />
+              </svg>
+            </div>
+          </div>
+
+          {/* Right — Founder message */}
+          <motion.div {...fade(0.1)}>
+            <div className="relative rounded-[28px] bg-[#0A1E4F] overflow-hidden p-6 sm:p-8 shadow-[0_30px_60px_-30px_rgba(10,30,79,0.55)]">
+              {/* Decor */}
+              <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-[#165DFF]/[0.18] blur-[70px]" />
+              <div className="absolute bottom-8 right-8 text-[8rem] leading-none font-heading text-[#3F7CFF]/[0.08] select-none pointer-events-none">
+                "
+              </div>
+
+              <p className="relative text-[11px] font-bold uppercase tracking-[0.22em] text-[#3F7CFF] mb-5">
+                Message from our Founder
+              </p>
+
+              <blockquote
+                className="relative text-white/85 text-[1.02rem] sm:text-[1.12rem] leading-[1.55]"
+                style={{ fontFamily: "'DM Serif Display', serif" }}
+              >
+                &ldquo;As a Tennis professional, I always felt that there was
+                tremendous opportunity to develop sports in Indian Schools from
+                the grassroots. My vision is to bridge this gap by bringing
+                Marcos Quay to India, and drawing upon the excellence of
+                professional players for structured and scientific training
+                content. The experiences we offer through various programmes
+                will enable young ones to discover the power of sports and the
+                difference it can make in their lives.&rdquo;
+              </blockquote>
+
+              <div className="relative mt-6 h-[2px] w-14 rounded-full bg-[#3F7CFF]" />
+
+              <div className="relative mt-5 flex items-center gap-4">
+                <span className="w-12 h-12 rounded-full bg-gradient-to-br from-[#165DFF] to-[#3F7CFF] border-2 border-white/20 flex items-center justify-center font-heading font-extrabold text-base text-white shrink-0">
+                  RD
+                </span>
+                <div>
+                  <p className="font-heading font-extrabold text-white text-[1.05rem] leading-tight">
+                    Raahil Dhruva
+                  </p>
+                  <p className="text-[13px] text-[#165DFF] font-bold mt-0.5">
+                    Founder, Marcos Quay Sporting Excellence
+                  </p>
                 </div>
-              ))}
+              </div>
+
+              <p className="relative mt-4 text-[12px] leading-[1.6] text-white/60">
+                Tennis professional — represented India internationally, played
+                Tennis for Queen&apos;s University of Charlotte, USA.
+              </p>
+            </div>
             </motion.div>
           </div>
         </div>
-      </div>
     </section>
   );
 }
@@ -1069,7 +1108,7 @@ function FinalCta() {
               </div>
               <div className="absolute inset-0 pl-16 pt-8 pb-8 pr-8">
                 <img
-                  src="/images/solutions/multisport.jpg"
+                  src="/images/Home/Sports_Development.jpeg"
                   alt="Students in blue sports uniforms playing together"
                   className="w-full h-full object-cover rounded-[16px]"
                 />

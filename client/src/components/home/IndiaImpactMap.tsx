@@ -16,8 +16,7 @@ const STATES = indiaStates as State[];
 
 /* ── Deep royal blue — states where the organisation has an active presence ── */
 const ACTIVE_IDS = new Set([
-  "up", "br", "mh", "dl", "ka", "tn", "ap", "tg", "gj", "rj",
-  "mp", "wb", "pb", "hr", "kl", "or", "as", "jh",
+  "gj", "mh", "mp", "ka", "hp",
 ]);
 
 const PRESENCE = "#0066B3";
@@ -210,7 +209,7 @@ export default function IndiaImpactMap() {
       </div>
 
       {/* ── Minimal horizontal legend ── */}
-      <div className="relative z-10 mt-4 flex items-center gap-5 sm:gap-6 justify-center lg:justify-start text-[11px] font-bold text-[#0A1E4F]">
+      <div className="relative z-10 mt-4 flex items-center gap-5 sm:gap-6 justify-center lg:justify-end lg:absolute lg:top-[86%] lg:right-0 lg:mt-0 text-[11px] font-bold text-[#0A1E4F]">
         <span className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full" style={{ background: PRESENCE }} />
           Our Presence

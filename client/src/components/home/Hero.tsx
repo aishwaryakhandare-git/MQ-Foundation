@@ -78,8 +78,8 @@ export default function Hero() {
 
             {/* ── Supporting paragraph ── */}
             <motion.p {...fade(0.2)} className="mt-7 max-w-[620px] text-white text-[16px] sm:text-[17px] lg:text-[19px] leading-[1.75] font-medium">
-              Transforming schools through structured sports education that
-              improves health, participation, life skills and school culture.
+              Join our Mission in transforming India from a <br/>
+              SPORTS WATCHING to a SPORTS PLAYING NATION.
             </motion.p>
           </div>
         </div>

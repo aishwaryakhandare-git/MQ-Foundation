@@ -198,7 +198,7 @@ export function NewsletterSection() {
             {/* Main image */}
             <div className="relative overflow-hidden rounded-[28px]">
               <img
-                src="/images/Newslettering.png"
+                src="/images/Home/Sports_Development.jpeg"
                 alt="Children participating in sport"
                 className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 />

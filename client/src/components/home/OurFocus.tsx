@@ -43,7 +43,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description:
       "Creating safe, joyful spaces where every child gets their first real opportunity to play — building the foundation of health, confidence and belonging from the very start.",
     support: "Where every child's sporting journey begins",
-    image: "/images/hero-sports-1.jpg",
+    image: "/images/Home/GrassrootPlay.jpeg",
     alt: "Children playing sports at grassroots level",
   },
   {
@@ -53,7 +53,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description:
       "Structured coaching and NEP-aligned curricula that turn play into progress — developing fitness, skill, discipline and teamwork in every child who steps onto the field.",
     support: "Turning play into measurable progress",
-    image: "/images/solutions/curriculum.jpg",
+    image: "/images/Home/Sports_Development.jpeg",
     alt: "Coach guiding sports development training",
   },
   {
@@ -63,7 +63,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description:
       "Focused pathways that help children discover and pursue their sporting potential — identifying talent early and giving young athletes a clear route to grow, compete and excel.",
     support: "Discovering and nurturing young potential",
-    image: "/images/solutions/multisport.jpg",
+    image: "/images/Home/Sports_Specific_Pathways.png",
     alt: "Young athlete practicing a specific sport",
   },
   {
@@ -73,7 +73,7 @@ const FOCUS_AREAS: FocusArea[] = [
     description:
       "Sport as a force for change beyond the field — bringing schools and communities together, including girls and marginalized groups, and creating healthier, more inclusive environments.",
     support: "Sport that transforms schools and communities",
-    image: "/images/solutions/transformation.jpg",
+    image: "/images/Home/Community_Impact.jpeg",
     alt: "Community celebrating together through sport",
   },
 ];
@@ -131,7 +131,7 @@ function FocusImage({
             shadow-[0_25px_55px_-28px_rgba(10,30,79,0.35)]
           "
         >
-          <div className="aspect-[1.08/0.92]">
+          <div className={index === 1 ? "aspect-[1367/899]" : "aspect-[1.08/0.92]"}>
             <img
               src={src}
               alt={alt}

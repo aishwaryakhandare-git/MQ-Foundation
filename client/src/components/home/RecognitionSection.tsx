@@ -12,8 +12,9 @@ const AWARDS: Award[] = [
     textColor: "#000000",
   },
   {
-    image: "/images/awards/Award5.png",
+    image: "/images/awards/Award6.png",
     caption: "EGN India: Best Integration of Life-skills in Physical Education & Sports",
+    position: "top center",
     textColor: "#000000",
   },
   {
@@ -358,7 +359,7 @@ export default function RecognitionSection() {
             "
           >
             <ChevronLeft
-              className="h-7 w-7 text-[#FFFFFF]"
+              className="h-7 w-7 text-[#000000]"
               strokeWidth={2}
             />
           </button>
@@ -391,7 +392,7 @@ export default function RecognitionSection() {
             "
           >
             <ChevronRight
-              className="h-7 w-7 text-[#FFFFFF]"
+              className="h-7 w-7 text-[#000000]"
               strokeWidth={2}
             />
           </button>

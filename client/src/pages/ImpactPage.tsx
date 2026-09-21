@@ -68,16 +68,9 @@ function SectionHeader({ eyebrow, children, intro }: { eyebrow: string; children
 /* ─── Data ─── */
 
 const STATS_STRIP = [
-  { value: "450+", label: "Schools Transformed" },
-  { value: "125,000+", label: "Students Impacted" },
-  { value: "96%", label: "School Satisfaction" },
-  { value: "100%", label: "Safety Compliant" },
-];
-
-const BAND_STATS = [
-  { value: "125,000+", label: "Students Impacted" },
-  { value: "450+", label: "Schools Transformed" },
-  { value: "96%", label: "School Satisfaction" },
+  { value: "14+", label: "Years of Experience" },
+  { value: "128+", label: "Schools Partnered" },
+  { value: "152105+", label: "Students Impacted" },
   { value: "100%", label: "Safety Compliant" },
 ];
 
@@ -151,10 +144,10 @@ const TRANSFORM_AREAS = [
 ];
 
 const SCOREBOARD_CARDS = [
-  { label: "Health", img: "/images/solutions/fitness.jpg", desc: "More active children and better physical fitness." },
-  { label: "Confidence", img: "/images/solutions/multisport.jpg", desc: "Sport gives students the confidence to participate, compete and lead." },
-  { label: "Discipline", img: "/images/solutions/curriculum.jpg", desc: "Regular practice builds consistency, responsibility and teamwork." },
-  { label: "Opportunity", img: "/images/solutions/transformation.jpg", desc: "More children get the chance to discover what they can do through sport." },
+  { label: "Health", img: "/images/Home/GrassrootPlay.jpeg", desc: "More active children and better physical fitness." },
+  { label: "Confidence", img: "/images/WhySportsMatter/Image_1.jpeg", desc: "Sport gives students the confidence to participate, compete and lead." },
+  { label: "Discipline", img: "/images/Home/Sports_Development.jpeg", desc: "Regular practice builds consistency, responsibility and teamwork." },
+  { label: "Opportunity", img: "/images/Home/Community_Impact.jpeg", desc: "More children get the chance to discover what they can do through sport." },
 ];
 
 const JOURNEY = [
@@ -239,7 +232,7 @@ function Hero() {
           <Eyebrow center tone="light">Our Impact</Eyebrow>
 
           <h1 className="mt-6 font-heading font-extrabold leading-none tracking-[-0.03em] text-white text-6xl sm:text-7xl lg:text-8xl">
-            125,000+
+            152105+
           </h1>
           <p className="mt-3 font-heading font-extrabold tracking-[-0.02em] text-[2rem] sm:text-[2.6rem] lg:text-[3rem] leading-[1.1] text-white">
             Students Impacted
@@ -282,24 +275,24 @@ function Hero() {
    2 · WHAT WE SAW — storytelling opener (Sport was there. Opportunity wasn't.)
    ══════════════════════════════════════════════════════════════ */
 
-const WAS_CARDS = [
+const WAS_STEPS = [
   {
-    label: "Limited infrastructure",
-    caption: "Basic, poorly equipped school sports grounds.",
-    img: "/images/Limiteds_Infra.png",
-    alt: "Basic, poorly equipped school sports ground",
+    num: "01",
+    label: "Conceptualising",
+    title: "Understanding the Need.",
+    desc: "We assess each school's existing sports ecosystem, identify gaps in infrastructure, participation, coaching and curriculum, and create a clear sports strategy aligned with the school's goals and students' needs.",
   },
   {
-    label: "Inconsistent coaching",
-    caption: "Children waiting for structured, consistent instruction.",
-    img: "/images/Inconsistent Coaching.png",
-    alt: "Children waiting without structured sports instruction",
+    num: "02",
+    label: "Curating",
+    title: "Designing the Right Experience.",
+    desc: "We curate age-appropriate, scientifically researched programmes, certified coaches, suitable equipment and structured curricula across sports—creating meaningful opportunities for every student to participate and progress.",
   },
   {
-    label: "Few opportunities to grow",
-    caption: "Basic equipment, but limited pathways to development.",
-    img: "/images/Few_Oppurtunities.png",
-    alt: "Child with basic sports equipment and limited pathways",
+    num: "03",
+    label: "Executing",
+    title: "Turning the Plan Into Practice.",
+    desc: "We bring the programme to life through consistent, timetable-driven sessions, professional coaching, infrastructure support, fitness tracking, reporting and continuous monitoring—ensuring that sport becomes a sustained part of school life.",
   },
 ];
 
@@ -339,25 +332,29 @@ function WhatWeSaw() {
             </p>
           </motion.div>
 
-          {/* Three equal documentary photo cards — shifted lower, right side */}
+          {/* Three process steps */}
           <motion.div {...fade(0.1)} className="mt-3 lg:mt-6">
-            <div className="grid grid-cols-3 gap-4 sm:gap-5">
-              {WAS_CARDS.map((card, i) => (
-                <motion.div key={card.label} {...fade(0.1 + i * 0.08)}>
-                  <div className="rounded-[16px] border border-[#E7EBF3] bg-white p-2 shadow-[0_18px_40px_-26px_rgba(10,30,79,0.3)]">
-                    <img
-                      src={card.img}
-                      alt={card.alt}
-                      loading="lazy"
-                      className="h-[180px] sm:h-[200px] w-full rounded-[12px] object-cover"
-                    />
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+              {WAS_STEPS.map((step, i) => (
+                <motion.div key={step.num} {...fade(0.1 + i * 0.08)}>
+                  <div className="relative h-full overflow-hidden rounded-[16px] border border-[#E7EBF3] bg-white p-5 sm:p-6 shadow-[0_18px_40px_-26px_rgba(10,30,79,0.3)]">
+                    <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#E31B23] via-[#165DFF] to-[#3F7CFF]" />
+                    <div className="flex items-baseline gap-2">
+                      <span className="font-heading font-extrabold text-[1.5rem] leading-none text-[#165DFF]">
+                        {step.num}
+                      </span>
+                      <span className="font-heading font-bold uppercase tracking-[0.16em] text-[11px] text-[#E31B23]">
+                        {step.label}
+                      </span>
+                    </div>
+                    <h3 className="mt-3 font-heading font-extrabold text-[15px] sm:text-[16px] leading-snug tracking-[-0.01em] text-[#0A1E4F]">
+                      {step.title}
+                    </h3>
+                    <div className="mt-2.5 h-px w-10 bg-gradient-to-r from-[#E31B23] to-[#165DFF]" />
+                    <p className="mt-3 text-[12.5px] sm:text-[13px] leading-relaxed text-black">
+                      {step.desc}
+                    </p>
                   </div>
-                  <p className="mt-2.5 font-heading font-extrabold text-[12px] sm:text-[13px] leading-snug tracking-[-0.01em] text-[#0A1E4F]">
-                    {card.label}
-                  </p>
-                  <p className="mt-1 text-[12px] sm:text-[12.5px] leading-relaxed text-[#4B5563]">
-                    {card.caption}
-                  </p>
                 </motion.div>
               ))}
             </div>
@@ -599,7 +596,7 @@ function Grounds() {
           {/* Left — photo with navy overlay */}
           <motion.div {...fade(0)} className="relative min-h-[420px] lg:min-h-[560px] overflow-hidden rounded-[18px]">
             <img
-              src="/images/hero-sports-1.jpg"
+              src="/images/Home/Community_Impact.jpeg"
               alt="Students playing on a transformed school football ground"
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -635,83 +632,6 @@ function Grounds() {
                   </div>
                 </div>
               ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════════════════════════════════════════════
-   5 · IMPACT BY THE NUMBERS — pale-blue band + handwritten tail
-   ══════════════════════════════════════════════════════════════ */
-
-function NumbersBand() {
-  return (
-    <section className="relative overflow-hidden bg-[#F3F7FC] py-16 lg:py-24">
-      <div className="container relative z-10">
-        <SectionHeader eyebrow="Our Impact — By the Numbers">
-          Impact, by the{" "}
-          <span className="relative inline-block text-[#E31B23]">
-            numbers
-            <HandLine />
-          </span>
-        </SectionHeader>
-
-        <div className="mt-14 grid grid-cols-1 lg:grid-cols-12 items-center gap-12 lg:gap-16">
-          <motion.div {...fade(0)} className="lg:col-span-7">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-9">
-              {BAND_STATS.map((s, i) => (
-                <div
-                  key={s.label}
-                  className={cn("pl-6 border-l-[3px]", i % 2 === 0 ? "border-[#E31B23]" : "border-[#0A1E4F]")}
-                >
-                  <p className="font-heading font-extrabold tracking-[-0.02em] text-[2.6rem] sm:text-[3rem] leading-none text-[#0A1E4F]">
-                    {s.value}
-                  </p>
-                  <p className="mt-2 font-heading text-[11px] font-bold uppercase tracking-[0.18em] text-[#0A1E4F]/80">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Faded monochrome + handwritten phrase */}
-          <motion.div
-            {...fade(0.15)}
-            className="relative flex h-[300px] items-center justify-center lg:col-span-5 sm:h-[360px] lg:h-[420px]"
-          >
-            <img
-              src="/images/sport-brighter-tomorrow.jpg"
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{
-                opacity: 0.8,
-                maskImage:
-                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
-              }}
-            />
-            <div
-              className="absolute inset-0 bg-[#0A1E4F]/[0.02]"
-              style={{
-                maskImage:
-                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 74% 70% at 52% 48%, black 12%, rgba(0,0,0,.75) 42%, transparent 78%)",
-              }}
-            />
-            <div className="relative z-10 flex flex-col items-center">
-              <p className="font-serif text-center italic text-[1.8rem] sm:text-[2.1rem] leading-[1.3] text-[#0A1E4F]">
-                More Than
-                <br />
-                A Game
-              </p>
-              <div className="mt-4 h-[2px] w-24 rounded-full bg-[#E31B23]" />
             </div>
           </motion.div>
         </div>
@@ -1095,7 +1015,6 @@ export default function ImpactPage() {
       <WhatWeSaw />
       <Effect />
       <Grounds />
-      <NumbersBand />
       <Scoreboard />
       <Journey />
       <Outcomes />

@@ -16,22 +16,12 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [overHero, setOverHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 24);
-      if (location === "/") {
-        const hero = document.getElementById("home-hero");
-        if (hero) {
-          const rect = hero.getBoundingClientRect();
-          setOverHero(rect.bottom > 60);
-        }
-      } else {
-        setOverHero(false);
-      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -40,7 +30,7 @@ export default function Navbar() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [location]);
+  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -52,12 +42,10 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-colors duration-500",
-        overHero
-          ? "bg-transparent"
-          : scrolled
-            ? "bg-white border-b border-[#E7EBF3] shadow-[0_10px_40px_-18px_rgba(10,30,79,0.18)]"
-            : "bg-white border-b border-transparent",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        scrolled
+          ? "bg-white border-b border-[#E7EBF3] shadow-[0_10px_40px_-18px_rgba(10,30,79,0.18)]"
+          : "bg-white border-b border-transparent",
       )}
     >
       <div className="container flex items-center justify-between h-[76px] lg:h-20">
@@ -75,10 +63,8 @@ export default function Navbar() {
               className={cn(
                 "relative font-heading font-semibold text-[14px] transition-colors duration-300 py-2",
                 isActive(link.href)
-                  ? overHero ? "text-white" : "text-[#FF6B35]"
-                  : overHero
-                    ? "text-white hover:text-white/80"
-                    : "text-[#0A1E4F] hover:text-[#FF6B35]",
+                  ? "text-[#FF6B35]"
+                  : "text-[#0A1E4F] hover:text-[#FF6B35]",
               )}
             >
               {link.label}
@@ -114,8 +100,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           className={cn(
-            "lg:hidden p-2 rounded-xl transition-colors",
-            overHero ? "text-white" : "text-[#0A1E4F] hover:bg-[#FFF9E9]",
+            "lg:hidden p-2 rounded-xl transition-colors text-[#0A1E4F] hover:bg-[#FFF9E9]",
           )}
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"

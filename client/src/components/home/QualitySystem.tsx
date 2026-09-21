@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Search, Users, Building2, Target, Sparkles, Globe } from "lucide-react";
 
 const fade = (delay: number, from: "left" | "right" | "up" = "up") => {
   const offset = from === "left" ? { x: -36 } : from === "right" ? { x: 36 } : { y: 26 };
@@ -33,178 +33,136 @@ function Underline() {
 type QualityStage = {
   num: string;
   title: string;
-  accent: string;
-  image: string;
-  alt: string;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   description: string;
 };
 
 const QUALITY_STAGES: QualityStage[] = [
   {
     num: "01",
-    title: "Coaches",
-    accent: "Trained",
-    image: "/images/solutions/curriculum.jpg",
-    alt: "Professional coach training school children in a structured session",
+    title: "Discovery & Planning",
+    icon: Search,
     description:
-      "Coaches receive structured training covering age-appropriate sports, safety, physical education and effective session delivery.",
+      "Tailored Sports Strategy with a Structured UK-Based Curriculum aligned to your School's Goals.",
   },
   {
     num: "02",
-    title: "Coaches",
-    accent: "Assigned",
-    image: "/images/power-of-play.jpg",
-    alt: "Coach working closely with a small group of school children on a sports field",
+    title: "Coach Deployment",
+    icon: Users,
     description:
-      "Dedicated coaches are assigned to schools by Marcos Quay to ensure consistency and quality.",
+      "Trained, Certified & Background Verified Coaches.",
   },
   {
     num: "03",
-    title: "Schools",
-    accent: "Checked",
-    image: "/images/solutions/reporting.jpg",
-    alt: "Marcos Quay coordinator observing and evaluating a children's sports session",
+    title: "Infrastructure Support",
+    icon: Building2,
     description:
-      "Regular school visits and assessments check coaching quality, sessions, facilities, attendance and implementation standards.",
+      "Guidance on Facility Setup & Equipment Provisioning.",
   },
   {
     num: "04",
-    title: "Children",
-    accent: "Grow",
-    image: "/images/sport-brighter-tomorrow.jpg",
-    alt: "Energetic school children training together with confidence",
+    title: "Execution",
+    icon: Target,
     description:
-      "Consistent coaching helps children develop sporting skills, fitness, confidence and progress toward competitive opportunities.",
+      "Smooth and Engaging Implementation across all Grades and Sports.",
   },
-];
-
-const QUALITY_METRICS = [
-  { value: "650+", label: "Certified & Trained Coaches" },
-  { value: "450+", label: "Regular School Assessments" },
-  { value: "125,000+", label: "Children on Structured Pathways" },
+  {
+    num: "05",
+    title: "Tech & AI Integration",
+    icon: Sparkles,
+    description:
+      "Delivering Quality Sports Programs at scale through Real-time Monitoring, Reporting, and Insights.",
+  },
+  {
+    num: "06",
+    title: "Marcos Quay Ecosystem",
+    icon: Globe,
+    description:
+      "Leverage the strength of the Marcos Quay Network through Competitions, Exposure Tours, and Collaborative Sporting Experiences.",
+  },
 ];
 
 export default function QualitySystem() {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative h-screen max-h-[880px] overflow-hidden bg-white">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.025]"
         style={{ backgroundImage: "radial-gradient(#0A1E4F 1px, transparent 1px)", backgroundSize: "30px 30px" }}
       />
 
-      <div className="container relative py-20 sm:py-24 lg:py-32">
+      <div className="container relative z-10 h-full flex flex-col justify-center py-10 md:py-12">
         {/* ── Header ── */}
-        <motion.div {...fade(0)} className="lg:flex lg:items-end lg:justify-between lg:gap-14">
-          <div className="max-w-[760px] text-center lg:text-left mx-auto lg:mx-0">
-            <p className="font-heading font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.22em] text-[#E31B23] mb-5">
+        <motion.div {...fade(0)} className="mb-8 lg:mb-10">
+          <div className="max-w-[820px] text-center mx-auto">
+            <p className="font-heading font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-[#165DFF] mb-3">
               Our Quality System
             </p>
 
-            <h2 className="heading-2 text-[#0A1E4F] font-extrabold leading-[1.03] tracking-tight">
-              Built for Better Coaching.
+            <h2 className="heading-2 text-[#0A1E4F] font-extrabold leading-[1.03] tracking-tight text-[1.5rem] sm:text-[2rem] lg:text-[2.2rem]">
+              We Own The Process
               <br className="hidden sm:block" />
-              Built for{" "}
+              You See The{" "}
               <span className="relative inline-block text-[#E31B23]">
-                Better Athletes.
+                Progress
                 <Underline />
               </span>
             </h2>
 
-            <p className="mt-6 mx-auto lg:mx-0 max-w-[680px] text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#6B7280] font-medium">
-              Marcos Quay trains coaches, assigns them to schools, regularly
-              checks sessions and monitors every child&apos;s development — so
-              quality is guaranteed at every step of the sporting journey.
-            </p>
-          </div>
-
-          {/* Watermark — right of the header */}
-          <div className="hidden lg:block shrink-0 pointer-events-none select-none text-right pb-1" aria-hidden="true">
-            <p className="font-heading font-extrabold text-[3.4rem] leading-[0.95] tracking-tight text-[#0A1E4F]/[0.16]">
-              Better coaches.
-              <br />
-              Better sessions.
-              <br />
-              <span className="text-[#E31B23]/[0.18]">Better athletes.</span>
+            <p className="mt-4 mx-auto max-w-[680px] text-[14px] sm:text-[15px] lg:text-[15px] leading-[1.6] text-[#6B7280] font-medium">
+              From planning to execution, Marcos Quay runs the entire sporting
+              journey end-to-end — so your school sees measurable, verifiable
+              progress at every single step.
             </p>
           </div>
         </motion.div>
 
-        {/* ── 4-stage process ── */}
-        <div className="relative mt-16 sm:mt-20 lg:mt-24">
+        {/* ── 6-stage process — one row on desktop ── */}
+        <div className="relative">
           {/* Connecting line + arrows (desktop) */}
-          <div className="hidden lg:block absolute left-[5%] right-[5%] top-[7.1rem] h-px bg-[#165DFF]/25" />
-          {["25%", "50%", "75%"].map((left) => (
+          <div className="hidden lg:block absolute left-[8%] right-[8%] top-[1.5rem] h-px bg-[#165DFF]/25" />
+          {["16.67%", "33.33%", "50%", "66.67%", "83.33%"].map((left) => (
             <span
               key={left}
-              className="hidden lg:flex absolute top-[6.1rem] -translate-x-1/2 w-8 h-8 rounded-full bg-white border border-[#165DFF]/30 text-[#165DFF] items-center justify-center z-10"
+              className="hidden lg:flex absolute top-[1.5rem] -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-[#165DFF]/30 text-[#165DFF] items-center justify-center z-10"
               style={{ left }}
             >
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3 h-3" />
             </span>
           ))}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 lg:gap-y-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-x-6 gap-y-10 lg:gap-y-0">
             {QUALITY_STAGES.map((stage, i) => (
-              <motion.div key={stage.num} {...fade(0.08 * i)} className="relative">
-                {/* Large blue number */}
-                <p className="font-heading font-extrabold text-[3.4rem] leading-none text-[#165DFF]">
-                  {stage.num}
-                </p>
+              <motion.div
+                key={stage.num}
+                {...fade(0.08 * i)}
+                className="relative flex flex-col items-center text-center"
+              >
+                {/* Icon */}
+                <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white border border-[#165DFF]/25 shadow-[0_10px_24px_-14px_rgba(10,30,79,0.5)]">
+                  <stage.icon className="h-5 w-5 text-[#165DFF]" strokeWidth={2} />
+                </span>
 
-                {/* Heading */}
-                <h3 className="mt-3 font-heading font-extrabold text-[1.9rem] sm:text-[2.1rem] text-[#0A1E4F] leading-[1.08] tracking-tight">
-                  {stage.title}{" "}
-                  <span className="relative inline-block text-[#E31B23]">
-                    {stage.accent}
-                    <Underline />
-                  </span>
+                {/* Number */}
+                <span className="mt-3 font-heading font-extrabold text-[0.78rem] tracking-[0.2em] text-[#165DFF]">
+                  {stage.num}
+                </span>
+
+                {/* Title */}
+                <h3 className="mt-2 font-heading font-extrabold text-[0.95rem] sm:text-[1.05rem] text-[#0A1E4F] leading-[1.15] tracking-tight">
+                  {stage.title}
                 </h3>
 
-                {/* Landscape photo */}
-                <div className="mt-6 overflow-hidden rounded-[18px] bg-[#EEF3FB] shadow-[0_22px_46px_-26px_rgba(10,30,79,0.35)]">
-                  <div className="aspect-[4/3]">
-                    <img
-                      src={stage.image}
-                      alt={stage.alt}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                </div>
-
                 {/* Subtle blue underline */}
-                <div className="mt-5 h-[3px] w-14 rounded-full bg-[#165DFF]/70" />
+                <div className="mt-3 h-[2px] w-10 rounded-full bg-[#165DFF]/60" />
 
                 {/* Description */}
-                <p className="mt-4 text-[14px] sm:text-[15px] leading-[1.7] text-[#4B5563] font-medium">
+                <p className="mt-3 text-[12px] sm:text-[12.5px] leading-[1.55] text-black font-medium">
                   {stage.description}
                 </p>
               </motion.div>
             ))}
           </div>
         </div>
-
-        {/* ── Impact metrics ── */}
-        <motion.div {...fade(0.12)} className="mt-8 sm:mt-10">
-          <div className="rounded-[28px] border border-[#165DFF]/15 bg-[#EAF3FF] px-6 py-10 sm:py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6">
-              {QUALITY_METRICS.map((metric, i) => (
-                <div
-                  key={metric.label}
-                  className={`flex flex-col items-center text-center ${i > 0 ? "sm:border-l sm:border-[#165DFF]/15" : ""}`}
-                >
-                  <p className="font-heading font-extrabold text-[2.4rem] sm:text-[2.8rem] lg:text-[3.2rem] leading-none text-[#0A1E4F] tracking-tight">
-                    {metric.value}
-                  </p>
-                  <span className="mt-3 h-[2px] w-10 rounded-full bg-[#E31B23]" />
-                  <p className="mt-3 font-heading font-bold text-[13px] sm:text-[14px] text-[#0A1E4F] leading-snug">
-                    {metric.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

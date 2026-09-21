@@ -1,5 +1,19 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  Apple,
+  BookOpen,
+  CalendarDays,
+  ClipboardList,
+  Dumbbell,
+  HeartPulse,
+  LineChart,
+  Sprout,
+  Target,
+  Trophy,
+  Users,
+} from "lucide-react";
 import { Link } from "wouter";
 
 const fade = (delay: number, from: "left" | "right" = "left") => ({
@@ -43,7 +57,7 @@ export default function WhySportMatters() {
               "
             >
               <img
-                src="/images/hero-sports.jpg"
+                src="/images/WhySportsMatter/Image_1.jpeg"
                 alt="Children playing sports together"
                 className="w-full h-full object-cover object-center"
               />
@@ -66,7 +80,7 @@ export default function WhySportMatters() {
               "
             >
               <img
-                src="/images/solutions/curriculum.jpg"
+                src="images/WhySportsMatter/Image2.jpeg"
                 alt="Coach leading a sports class"
                 className="w-full h-full object-cover object-center"
               />
@@ -89,7 +103,7 @@ export default function WhySportMatters() {
               "
             >
               <img
-                src="/images/solutions/fitness.jpg"
+                src="images/WhySportsMatter/Image3.jpeg"
                 alt="Students in fitness training"
                 className="w-full h-full object-cover object-center"
               />
@@ -127,27 +141,21 @@ export default function WhySportMatters() {
               "
             >
               <span className="block font-heading font-extrabold text-[28px] leading-none text-[#FF6B35]">
-                20+
+                14+
               </span>
 
               <span className="block text-[11px] font-semibold text-[#6B7280] mt-1 whitespace-nowrap">
-                Years of Impact
+                Years of Experience
               </span>
             </div>
           </motion.div>
 
           {/* ── Right: text content ── */}
           <motion.div {...fade(0.1, "right")} className="text-left">
-            <motion.p {...fade(0.05, "right")} className="font-heading font-bold text-sm sm:text-base tracking-wide text-[#FF6B35] mb-4 uppercase">
-              Why Sport Matters
-            </motion.p>
-
-            <motion.h2 {...fade(0.1, "right")} className="heading-2 text-[40px] text-[#0A1E4F] font-extrabold leading-[1.08] tracking-tight">
-              From watching the game to playing it
-              <br />
-              Development Through{" "}
+            <motion.h2 {...fade(0.05, "right")} className="heading-2 text-[40px] sm:text-[44px] text-[#0A1E4F] font-extrabold leading-[1.08] tracking-tight">
+              Why{" "}
               <span className="relative inline-block text-[#E31B23] leading-none text-[1.45em] italic" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                Sport
+                Marcos Quay?
                 <svg
                   className="absolute -bottom-2 sm:-bottom-2.5 left-0 w-full h-3"
                   viewBox="0 0 120 12"
@@ -165,62 +173,30 @@ export default function WhySportMatters() {
               </span>
             </motion.h2>
 
-            <motion.p
-              {...fade(0.15, "right")}
-              className="mt-5 text-[13px] sm:text-[15px] lg:text-[16px] leading-[1.55] text-[#111827] font-medium"
-            >
-              For too many children, sport begins and ends with simply watching from
-              the sidelines. We believe every child deserves the opportunity to step
-              onto the field, learn the game, and discover how far their passion can
-              take them.
-            </motion.p>
-
             <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-              {/* 1 — Blue */}
-              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
-                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
-                  Grassroots Foundations
-                </h3>
-                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
-                  Creating safe, structured spaces where young children move freely,
-                  play with joy, and build essential physical literacy.
-                </p>
-              </div>
-
-              {/* 4 — Blue */}
-              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
-                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
-                  Pathway to Development
-                </h3>
-                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
-                  Seamlessly progressing from casual introductory play into
-                  disciplined, sport-specific skill training.
-                </p>
-              </div>
-
-             {/* 4 — Blue */}
-              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
-                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
-                  Character & Athlete Mindset
-                </h3>
-                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
-                  Cultivating confidence, teamwork, grit, and competitive spirit —
-                  helping every child grow through sport.
-                </p>
-              </div>
-
-              {/* 1 — Blue */}
-              <div className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3.5">
-                <h3 className="font-heading text-[12px] sm:text-[13px] font-bold text-[#0A1E4F]">
-                  Potential over Perfection
-                </h3>
-                <p className="mt-1 text-[10px] sm:text-[11px] leading-[1.45] text-[#64748B]">
-                  Our measure isn't exclusively grooming professional elite —
-                  it's giving every child a chance to explore and thrive.
-                </p>
-              </div>
-
+              {[
+                { label: "Sports Audit & Gap Analysis", icon: ClipboardList },
+                { label: "Sports Vision & Strategy", icon: Target },
+                { label: "Life-Skill Development", icon: Sprout },
+                { label: "UK Based Sports Curriculum", icon: BookOpen },
+                { label: "Certified Coaches", icon: Award },
+                { label: "Nutrition & Sports Psychology Workshops", icon: Apple },
+                { label: "Age Appropriate Equipment", icon: Dumbbell },
+                { label: "PE & Grassroots Sports", icon: HeartPulse },
+                { label: "Parent & Teacher Engagement Programs", icon: Users },
+                { label: "Inter-School & Intra-School Competitions", icon: Trophy },
+                { label: "Annual Sports Day Management", icon: CalendarDays },
+                { label: "Fitness Assessments", icon: LineChart },
+              ].map(({ label, icon: Icon }) => (
+                <div key={label} className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3 flex items-center gap-2.5">
+                  <span className="w-7 h-7 rounded-full bg-[#165DFF]/10 border border-[#165DFF]/20 flex items-center justify-center shrink-0">
+                    <Icon className="w-3.5 h-3.5 text-[#165DFF]" strokeWidth={2.2} />
+                  </span>
+                  <h3 className="font-heading text-[12.5px] sm:text-[13px] font-bold text-[#0A1E4F] leading-snug">
+                    {label}
+                  </h3>
+                </div>
+              ))}
             </div>
 
             <motion.div {...fade(0.3, "right")} className="mt-8">

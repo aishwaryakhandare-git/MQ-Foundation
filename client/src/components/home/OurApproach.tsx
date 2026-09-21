@@ -17,15 +17,6 @@ export default function OurApproach() {
       className="relative overflow-hidden bg-[#0A1E4F]"
       style={{ clipPath: "polygon(0 3.25%, 100% 0, 100% 100%, 0 96.75%)" }}
     >
-      {/* Wide panoramic background */}
-      <img
-        src="/images/power-of-play.jpg"
-        alt="Young athlete walking on a school sports ground"
-        className="absolute inset-0 h-full w-full object-cover object-center"
-      />
-      {/* Subtle dark-blue gradient overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A1E4F]/90 via-[#0A1E4F]/65 to-[#0A1E4F]/90" />
-
       <div className="container relative pt-3 pb-4 sm:pt-4 sm:pb-6 lg:pt-5 lg:pb-7">
         <div className="relative mx-auto max-w-[840px] text-center">
           {/* Eyebrow */}
@@ -43,14 +34,12 @@ export default function OurApproach() {
             {...fade(0.1)}
             className="mt-7 font-heading font-extrabold leading-[1.08] tracking-[-0.02em] text-white text-[2rem] sm:text-[2.7rem] lg:text-[3.4rem]"
           >
-            From the first opportunity to play,
-            <br />
-            to{" "}
+            Health is a{" "}
             <span
               className="relative inline-block text-[#E31B23] leading-none text-[1.18em] italic"
               style={{ fontFamily: "'DM Serif Display', serif" }}
             >
-              sporting potential
+              Habit
               <svg
                 className="absolute -bottom-2 sm:-bottom-2.5 left-0 w-full h-3"
                 viewBox="0 0 200 12"
@@ -73,9 +62,8 @@ export default function OurApproach() {
             {...fade(0.2)}
             className="mx-auto mt-7 max-w-[600px] text-[15px] sm:text-[16px] leading-[1.75] text-white/85"
           >
-            Every child deserves the same field, the same coaching and the same
-            chance to discover how far their sport can take them — from first
-            play to real sporting potential.
+            To be fit and healthy, we have to inculcate heath is a habit. 
+            Marcos Quay believs that craeting active and healthy children will lead to active and healthy adults. 
           </motion.p>
         </div>
 

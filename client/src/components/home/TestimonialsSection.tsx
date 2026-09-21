@@ -5,21 +5,21 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const TESTIMONIALS = [
   {
     quote:
-      "The sports excellence program has helped students perform better while building coordination, commitment, confidence, and leadership skills beyond just winning matches.",
-    name: "Inderpreet Devgun",
-    role: "Associate Director, KPMG India",
+      "Marcos Quay coaches (Irfan, Prabhu, Saif and Simran) are working in good coordination for conducting PE sessions from 23rd June 2020. I am frequently coordinating with all the coaches through online meetings and calls for arranging various workout plans for every week as per the grades. I must acknowledge all the coaches associated with 18/S for their efforts, dedication, punctuality, hard work and coordination for conducting the classes smoothly as per the requirements of the school. Students are showing interest in performing the skills taught to them and even enjoying taking part in challenging activities planned for them. Overall the planning, preparation and delivery of the PE sessions by each coach is commendable. We hope to receive the support and cooperation from MQ team in the future too.",
+    name: "Mr. Gaurav Desai",
+    role: "Sports Coordinator | The Nahar International School- Powai, Mumbai",
   },
   {
     quote:
-      "Together, we are empowering young minds not only to participate in sports but to thrive. Every child has the chance to excel in sports.",
-    name: "Akira Watanabe",
-    role: "Director, Casio India",
+      "This is to put on record, the successful hndling of the event 'Sunny Sunday Sports' Session for parents of STKIIS on 20th Feb'22 by the team of Marccos Quay. A crowd of about 200 people was very well managed by the team, maintaining planned activities, engaging each and every participant and ensuring punctuality and maintaining an atmosphere of true sports spirit. It was a significant Sunday for parents to have come out after the 2 year pandemic crisis. As a whole the team is doing is good job, Waiting for thr school teams to bring laurels to school. Kudos!! ",
+    name: "Ms. Anjali Mahajan",
+    role: "Principal, St Kabir International School-Chapad, Vadodara",
   },
   {
     quote:
-      "The program has created a stronger culture of participation, discipline, teamwork, and confidence among students across the school community.",
-    name: "School Leadership",
-    role: "Education Partner",
+      "Partnering with Marcos Quay has elevated our school's profile and operations. Their innovative sports programs have attracted new students, improved engagement, and allowed us to focus on academics. We've also seen better academic performance and a healthier student body. With their excellent management and training, our sports program consistently excels. I highly recommend their services to any school seeking to enhance sports while prioritizing education.",
+    name: "Dr. Ganesh Kumar Pandidhar",
+    role: "Eduction Society, Nashik",
   },
 ];
 
@@ -114,7 +114,7 @@ function TestimonialCarousel() {
 
   return (
     <div
-      className="relative mt-10 lg:-ml-[145px] lg:w-[calc(100%+145px)]"
+      className="relative mt-6 lg:-ml-[145px] lg:w-[calc(100%+145px)]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -138,23 +138,22 @@ function TestimonialCarousel() {
                 w-full
                 md:w-[calc(50%-8px)]
                 shrink-0
+                flex
               "
             >
               <article
                 className="
                   relative
-                  h-[385px]
-                  sm:h-[400px]
-                  lg:h-[380px]
+                  h-full
+                  min-h-[340px]
                   rounded-[12px]
                   border
                   border-[#165DFF]
                   bg-white
-                  px-6
-                  sm:px-7
-                  lg:px-6
-                  py-7
-                  sm:py-8
+                  px-5
+                  sm:px-6
+                  py-4
+                  sm:py-5
                   flex
                   flex-col
                 "
@@ -162,10 +161,10 @@ function TestimonialCarousel() {
                 {/* Quote mark */}
                 <Quote
                   className="
-                    w-10
-                    h-10
+                    w-7
+                    h-7
                     text-[#165DFF]
-                    mb-5
+                    mb-3
                   "
                   strokeWidth={1.5}
                 />
@@ -173,24 +172,22 @@ function TestimonialCarousel() {
                 {/* Testimonial */}
                 <p
                   className="
-                    text-[15px]
-                    sm:text-[16px]
-                    lg:text-[15px]
-                    leading-[1.55]
+                    text-[12.5px]
+                    sm:text-[13px]
+                    leading-[1.45]
                     text-[#3F3F3F]
                     font-medium
-                    max-w-[390px]
                   "
                 >
                   {testimonial.quote}
                 </p>
 
                 {/* Bottom author */}
-                <div className="mt-auto">
+                <div className="mt-auto pt-3">
                   <p
                     className="
-                      text-[18px]
-                      sm:text-[19px]
+                      text-[15px]
+                      sm:text-[16px]
                       font-bold
                       text-[#005BAC]
                     "
@@ -200,9 +197,10 @@ function TestimonialCarousel() {
 
                   <p
                     className="
-                      mt-1
-                      text-[14px]
-                      sm:text-[15px]
+                      mt-0.5
+                      text-[12px]
+                      sm:text-[12.5px]
+                      leading-snug
                       text-[#444]
                     "
                   >
@@ -284,12 +282,12 @@ export default function TestimonialsSection() {
       className="
         relative
         bg-white
-        pt-12
-        sm:pt-16
-        lg:pt-14
-        pb-20
-        sm:pb-24
-        lg:pb-28
+        pt-10
+        sm:pt-12
+        lg:pt-10
+        pb-14
+        sm:pb-16
+        lg:pb-16
         overflow-hidden
       "
     >
@@ -314,13 +312,13 @@ export default function TestimonialsSection() {
               lg:order-1
               overflow-hidden
               rounded-[10px]
-              h-[420px]
-              sm:h-[520px]
-              lg:h-[680px]
+              h-[380px]
+              sm:h-[460px]
+              lg:h-[560px]
             "
           >
             <img
-              src="/images/solutions/multisport.jpg"
+              src="/images/WhySportsMatter/Image_1.jpeg"
               alt="Students playing together on the field"
               className="
                 w-full
@@ -406,24 +404,6 @@ export default function TestimonialsSection() {
                 </svg>
               </span>
             </h2>
-
-            {/* Description */}
-            <p
-              className="
-                mt-8
-                max-w-[780px]
-                text-[16px]
-                sm:text-[17px]
-                leading-[1.65]
-                text-[#222]
-                font-normal
-              "
-            >
-              The true measure of our impact lies in the voices of those
-              we serve and work alongside. These perspectives from across
-              the ecosystem highlight how sport is transforming lives and
-              strengthening communities.
-            </p>
 
             {/* =================================================
                 CARDS
