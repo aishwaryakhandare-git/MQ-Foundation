@@ -67,7 +67,7 @@ function TestimonialCarousel() {
       if (isDesktop) {
         setAdvance((width - GAP) / 2 + GAP);
       } else {
-        setAdvance(width);
+        setAdvance(width + GAP);
       }
     };
 

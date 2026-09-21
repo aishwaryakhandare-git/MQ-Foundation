@@ -1,19 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Award,
-  Apple,
-  BookOpen,
-  CalendarDays,
-  ClipboardList,
-  Dumbbell,
-  HeartPulse,
-  LineChart,
-  Sprout,
-  Target,
-  Trophy,
-  Users,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 const fade = (delay: number, from: "left" | "right" = "left") => ({
@@ -152,9 +138,9 @@ export default function WhySportMatters() {
 
           {/* ── Right: text content ── */}
           <motion.div {...fade(0.1, "right")} className="text-left">
-            <motion.h2 {...fade(0.05, "right")} className="heading-2 text-[40px] sm:text-[44px] text-[#0A1E4F] font-extrabold leading-[1.08] tracking-tight">
-              Why{" "}
-              <span className="relative inline-block text-[#E31B23] leading-none text-[1.45em] italic" style={{ fontFamily: "'DM Serif Display', serif" }}>
+<motion.h2 {...fade(0.05, "right")} className="heading-2 text-[40px] sm:text-[44px] text-[#0A1E4F] font-extrabold leading-[1.08] tracking-tight">
+              <span className="text-[1.1em] font-bold">Why </span>
+              <span className="relative inline-block text-[#E31B23] leading-none text-[1.2em]" style={{ fontFamily: "'DM Serif Display', serif" }}>
                 Marcos Quay?
                 <svg
                   className="absolute -bottom-2 sm:-bottom-2.5 left-0 w-full h-3"
@@ -173,30 +159,33 @@ export default function WhySportMatters() {
               </span>
             </motion.h2>
 
-            <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
               {[
-                { label: "Sports Audit & Gap Analysis", icon: ClipboardList },
-                { label: "Sports Vision & Strategy", icon: Target },
-                { label: "Life-Skill Development", icon: Sprout },
-                { label: "UK Based Sports Curriculum", icon: BookOpen },
-                { label: "Certified Coaches", icon: Award },
-                { label: "Nutrition & Sports Psychology Workshops", icon: Apple },
-                { label: "Age Appropriate Equipment", icon: Dumbbell },
-                { label: "PE & Grassroots Sports", icon: HeartPulse },
-                { label: "Parent & Teacher Engagement Programs", icon: Users },
-                { label: "Inter-School & Intra-School Competitions", icon: Trophy },
-                { label: "Annual Sports Day Management", icon: CalendarDays },
-                { label: "Fitness Assessments", icon: LineChart },
-              ].map(({ label, icon: Icon }) => (
-                <div key={label} className="rounded-[14px] border border-[#165DFF] bg-[#F7FAFE] px-4 py-3 flex items-center gap-2.5">
-                  <span className="w-7 h-7 rounded-full bg-[#165DFF]/10 border border-[#165DFF]/20 flex items-center justify-center shrink-0">
-                    <Icon className="w-3.5 h-3.5 text-[#165DFF]" strokeWidth={2.2} />
-                  </span>
-                  <h3 className="font-heading text-[12.5px] sm:text-[13px] font-bold text-[#0A1E4F] leading-snug">
-                    {label}
-                  </h3>
-                </div>
-              ))}
+                { label: "Sports Audit & Gap Analysis", desc: "Find the gaps first." },
+                { label: "Sports Vision & Strategy", desc: "A long-term sporting roadmap." },
+                { label: "Life-Skill Development", desc: "Confidence built through sport." },
+                { label: "UK Based Sports Curriculum", desc: "Structured, research-driven programming." },
+                { label: "Certified Coaches", desc: "Trained professionals on every field." },
+                { label: "Nutrition & Sports Psychology", desc: "Sharper mind, better performance." },
+                { label: "Age Appropriate Equipment", desc: "The right gear for every age." },
+                { label: "PE & Grassroots Sports", desc: "Sport for every child." },
+                { label: "Parent & Teacher Engagement", desc: "The whole community on board." },
+                { label: "Inter & Intra-School Competitions", desc: "More chances to compete." },
+                { label: "Annual Sports Day Management", desc: "A sports day done right." },
+                { label: "Fitness Assessments", desc: "Real data on real progress." },
+              ].map((item, i) => {
+                const num = String(i + 1).padStart(2, "0");
+                return (
+                  <div key={item.label}>
+                    <h3 className="whitespace-nowrap font-heading font-extrabold text-[16px] sm:text-[17px] leading-snug text-[#165DFF]">
+                      {num}. {item.label}.
+                    </h3>
+                    <p className="mt-1 whitespace-nowrap text-[15px] leading-none text-black">
+                  {item.desc}
+                </p>
+                  </div>
+                );
+              })}
             </div>
 
             <motion.div {...fade(0.3, "right")} className="mt-8">

@@ -447,12 +447,12 @@ function OurImpact() {
 
 function OurStory() {
   return (
-    <section id="story" className="relative overflow-hidden bg-white h-screen max-h-[900px]">
+    <section id="story" className="relative overflow-hidden bg-white py-16 sm:py-20 lg:h-screen lg:max-h-[900px] lg:py-0 lg:flex lg:items-center">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 -right-28 w-[350px] h-[350px] bg-[#165DFF]/[0.04] rounded-full blur-[80px]" />
       </div>
 
-      <div className="container relative z-10 h-full flex flex-col justify-center py-10">
+      <div className="container relative z-10 lg:h-full lg:flex lg:flex-col lg:justify-center">
         {/* Section heading */}
         <motion.div {...fade(0)} className="text-center mb-8 md:mb-10">
           <h2 className="heading-2 text-[#0A1E4F]">

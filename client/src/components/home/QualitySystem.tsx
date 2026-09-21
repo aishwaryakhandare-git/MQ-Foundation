@@ -84,13 +84,13 @@ const QUALITY_STAGES: QualityStage[] = [
 
 export default function QualitySystem() {
   return (
-    <section className="relative h-screen max-h-[880px] overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:h-screen lg:max-h-[880px] lg:py-0 lg:flex lg:items-center">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.025]"
         style={{ backgroundImage: "radial-gradient(#0A1E4F 1px, transparent 1px)", backgroundSize: "30px 30px" }}
       />
 
-      <div className="container relative z-10 h-full flex flex-col justify-center py-10 md:py-12">
+      <div className="container relative z-10 lg:h-full lg:flex lg:flex-col lg:justify-center">
         {/* ── Header ── */}
         <motion.div {...fade(0)} className="mb-8 lg:mb-10">
           <div className="max-w-[820px] text-center mx-auto">

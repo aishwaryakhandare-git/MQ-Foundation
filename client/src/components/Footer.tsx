@@ -88,7 +88,8 @@ export default function Footer() {
                   {[
                     { href: "/", label: "Home" },
                     { href: "/about", label: "About Us" },
-                    { href: "/schools", label: "Our Partners" },
+                    { href: "/problems", label: "The Problem" },
+                    { href: "/impact", label: "Impact" },
                     { href: "/contact", label: "Contact" },
                   ].map((link) => (
                     <li key={link.href}>
@@ -123,7 +124,7 @@ export default function Footer() {
                   </p>
 
                   <p className="leading-[1.7]">
-                    Head Office &amp; Registered Office:
+                    Head Office :
                     <br />
                     3rd Floor, 24, N S Rd No. 9, 
                     <br />
