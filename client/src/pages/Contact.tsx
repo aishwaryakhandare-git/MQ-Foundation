@@ -11,7 +11,7 @@ import {
   MessageCircle,
   Linkedin,
   Instagram,
-  Twitter,
+  Facebook,
   ChevronDown,
 } from "lucide-react";
 
@@ -85,10 +85,10 @@ const CONTACT_DETAILS = [
 ];
 
 const SOCIALS = [
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Twitter, label: "Twitter", href: "#" },
-  { icon: MessageCircle, label: "WhatsApp", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/marcos-quay-sports" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/marcosquay" },
+  { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/marcosquay" },
+  { icon: Mail, label: "Email", href: "mailto:info@marcosquay.com" },
 ];
 
 export default function Contact() {
@@ -419,6 +419,8 @@ export default function Contact() {
                     <a
                       key={s.label}
                       href={s.href}
+                      target={s.href.startsWith("http") ? "_blank" : undefined}
+                      rel={s.href.startsWith("http") ? "noreferrer" : undefined}
                       aria-label={s.label}
                       className="w-9 h-9 rounded-[8px] bg-[#165DFF]/8 flex items-center justify-center text-[#165DFF] hover:bg-[#165DFF] hover:text-white transition-all duration-300"
                     >
@@ -523,20 +525,6 @@ export default function Contact() {
               Whether you&apos;re a school administrator, CSR professional, or parent —
               we&apos;re ready to assist you with any questions about our programmes.
             </p>
-
-            {/* Social icons */}
-            <div className="flex items-center justify-center gap-3">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="w-10 h-10 rounded-full bg-white border border-[#E0E5EF] flex items-center justify-center text-[#165DFF] hover:bg-[#165DFF] hover:text-white hover:border-[#165DFF] transition-all duration-300"
-                >
-                  <s.icon className="w-[18px] h-[18px]" />
-                </a>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>

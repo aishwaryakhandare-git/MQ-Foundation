@@ -3,16 +3,16 @@ import {
   Facebook,
   Linkedin,
   Instagram,
-  Twitter,
+  Mail,
   ArrowUpRight,
 } from "lucide-react";
 import Logo from "./Logo";
 
 const SOCIALS = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Twitter, label: "X / Twitter" },
-  { icon: Linkedin, label: "LinkedIn" },
-  { icon: Instagram, label: "Instagram" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/marcos-quay-sports" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/marcosquay" },
+  { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/marcosquay" },
+  { icon: Mail, label: "Email", href: "mailto:info@marcosquay.com" },
 ];
 
 export default function Footer() {
@@ -55,7 +55,9 @@ export default function Footer() {
                   return (
                     <a
                       key={social.label}
-                      href="#"
+                      href={social.href}
+                      target={social.href.startsWith("http") ? "_blank" : undefined}
+                      rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                       aria-label={social.label}
                       className="
                         w-10 h-10
