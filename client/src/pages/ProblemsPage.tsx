@@ -19,96 +19,99 @@ const PAIRS: {
 }[] = [
   {
     problem: {
-      title: "Limited Sports Infrastructure",
-      desc: "Many schools lack well-maintained playing surfaces, appropriate equipment and safe spaces for regular sports practice.",
-      photo: "/images/Ground img.png",
-      alt: "An underused school sports ground with a basic, uneven playing surface",
+      title: "Students Struggle to Participate",
+      desc: "Many students do not get enough opportunities to take part in regular sports, limiting their physical activity and overall development.",
+      photo: "/images/problems/Challenge_1.png",
+      alt: "Students participating in a school sports activity",
     },
     solution: {
-      title: "Modern Sports Infrastructure",
-      desc: "We design and upgrade sports grounds and play spaces that are safe, functional and suited to each school's needs.",
-      photo: "/images/solutions/transformation.jpg",
-      alt: "A redesigned school sports ground prepared for structured play",
+      title: "Inclusive Sports Programmes",
+      desc: "We create structured and inclusive programmes that give every student regular opportunities to participate, play and develop.",
+      photo: "/images/problems/Solution_1.png",
+      alt: "Students taking part in a structured sports programme",
     },
   },
+
   {
     problem: {
-      title: "Lack of Equipment",
-      desc: "Schools often do not have access to quality sports equipment, limiting the range of activities children can try.",
-      photo: "/images/sports-insights-infrastructure.jpg",
-      alt: "A school with limited sports equipment and play resources",
+      title: "Students Lack Confidence",
+      desc: "Some students hesitate to participate in sports because they lack confidence in their abilities or feel uncomfortable trying new activities.",
+      photo: "/images/problems/Challenge_2.png",
+      alt: "Students developing confidence through sports participation",
     },
     solution: {
-      title: "Access to Quality Resources",
-      desc: "We provide age-appropriate equipment and resources to help schools run structured, multi-sport programmes.",
-      photo: "/images/solutions/multisport.jpg",
-      alt: "Children playing together using Marcos Quay multi-sport equipment",
+      title: "Confidence Through Sport",
+      desc: "Our supportive coaching approach helps students build confidence through regular practice, encouragement and positive sporting experiences.",
+      photo: "/images/problems/Solution_2.png",
+      alt: "Students participating confidently in sports activities",
     },
   },
+
   {
     problem: {
-      title: "Limited Coaching Support",
-      desc: "Many schools have limited access to trained coaches and rely on teachers with little or no sports training.",
-      photo: "/images/problems/nep.jpg",
-      alt: "A school teacher taking on PE duties without formal coaching training",
+      title: "Limited Sports Exposure",
+      desc: "Students may have limited opportunities to discover different sports, explore their interests and develop a broader range of physical skills.",
+      photo: "/images/problems/Challenge_3.png",
+      alt: "Students exploring different sports activities",
     },
     solution: {
-      title: "Certified & Skilled Coaches",
-      desc: "We bring certified professionals with multi-sport expertise into schools and provide training and capacity-building.",
-      photo: "/images/solutions/curriculum.jpg",
-      alt: "A Marcos Quay coach leading a structured session with students",
+      title: "Multi-Sport Opportunities",
+      desc: "We introduce students to a range of sports, helping them explore their interests while developing diverse physical and sporting skills.",
+      photo: "/images/problems/Solution_3.png",
+      alt: "Students participating in a multi-sport programme",
     },
   },
+
   {
     problem: {
-      title: "Low Student Participation",
-      desc: "Without structured programmes, many children do not get enough chances to participate, explore different sports or build confidence.",
-      photo: "/images/problems/low-participation.jpg",
-      alt: "Students drifting apart during a school break while PE fails to engage them",
+      title: "Skills Are Not Developed Consistently",
+      desc: "Without structured practice and guidance, students may struggle to build and improve fundamental sports skills over time.",
+      photo: "/images/problems/Challenge_4.png",
+      alt: "Students practising and developing sports skills",
     },
     solution: {
-      title: "Engaging, Consistent Practice",
-      desc: "We introduce structured, inclusive programmes that make regular participation part of everyday school life.",
-      photo: "/images/solutions/fitness.jpg",
-      alt: "A student training on the running track during a structured session",
+      title: "Structured Skill Development",
+      desc: "We follow progressive coaching programmes that help students develop sport-specific skills through regular practice and guided learning.",
+      photo: "/images/problems/Solution-4.png",
+      alt: "Students developing skills through structured sports practice",
     },
   },
+
   {
     problem: {
-      title: "No Clear Measurement of Progress",
-      desc: "Without tracking, schools have limited visibility into how students are progressing in skills, fitness and participation.",
+      title: "Student Progress Goes Untracked",
+      desc: "Without regular assessment, students and schools have limited visibility into improvements in fitness, skills and sporting performance.",
       photo: "/images/problems/parents.jpg",
-      alt: "A parent and student facing uncertainty about school sports outcomes",
+      alt: "A student and parent reviewing sports development",
     },
     solution: {
-      title: "Performance & Student Growth",
-      desc: "We use data-driven insights to track progress, helping schools understand student development and measure programme impact.",
-      photo: "/images/solutions/reporting.jpg",
-      alt: "A coach reviewing a student's sports progress alongside a parent",
+      title: "Performance & Growth Tracking",
+      desc: "We use structured assessments and data-driven insights to track student development and provide a clear view of progress over time.",
+      photo: "/images/problems/Solution_5.png",
+      alt: "A coach reviewing student sports performance data",
     },
   },
 ];
-
 const TRANSFORMATION = [
   {
     num: "01",
     title: "Before",
     caption: "Limited Opportunity",
-    photo: "/images/Ground img.png",
+    photo: "/images/Few_Oppurtunities.png",
     alt: "An Indian school sports ground that is basic and underused",
   },
   {
     num: "02",
     title: "Marcos Quay Transformation",
     caption: "Building Change Together",
-    photo: "/images/solutions/transformation.jpg",
+    photo: "/images/hero-sports.jpg",
     alt: "Coaches, workers and children improving a school sports ground with new equipment",
   },
   {
     num: "03",
     title: "After",
     caption: "Active School Sports",
-    photo: "/images/hero-sports-1.jpg",
+    photo: "/images/solutions/fitness.jpg",
     alt: "Indian school children playing organised football on a well-maintained ground with a coach",
   },
 ];
@@ -164,10 +167,10 @@ function Hero() {
                 leading-[0.98]
               "
             >
-              From Challenges
+              Sports as a Tool 
               <br />
 
-              to{" "}
+              for{" "}
               <span className="relative inline-block text-[#E31B23]">
                 Brighter
                 <svg
@@ -200,10 +203,7 @@ function Hero() {
                 leading-[1.75]
               "
             >
-              Many schools have the potential to be centres of sporting
-              excellence, but face real barriers. Marcos Quay Foundation works
-              with schools to overcome these challenges and create lasting
-              change through practical, on-ground support.
+              Sport has the power to shape more than athletes — it can shape confident, capable and healthier young people. Marcos Quay works with schools to harness that power, creating stronger sporting environments and brighter futures, one child, one school, one community at a time.
             </p>
 
             {/* Small supporting statement */}
@@ -435,7 +435,9 @@ function PairBlock({ index }: { index: number }) {
                 src={pair.problem.photo}
                 alt={pair.problem.alt}
                 loading="lazy"
-                className="w-full h-40 sm:h-full object-cover"
+                className={`w-full h-40 sm:h-full object-cover ${
+                  index === 2 ? "object-left" : ""
+                }`}
               />
             </div>
             <div className="flex-1 p-6 sm:p-7">
@@ -446,7 +448,7 @@ function PairBlock({ index }: { index: number }) {
                 {pair.problem.title}
               </h3>
               <div className="mt-3 h-px w-10 bg-[#E31B23]" />
-              <p className="mt-4 text-[0.9rem] leading-relaxed text-[#6B7280]">
+              <p className="mt-4 text-[0.9rem] leading-relaxed text-black">
                 {pair.problem.desc}
               </p>
             </div>
@@ -479,7 +481,9 @@ function PairBlock({ index }: { index: number }) {
                 src={pair.solution.photo}
                 alt={pair.solution.alt}
                 loading="lazy"
-                className="w-full h-40 sm:h-full object-cover"
+                className={`w-full h-40 sm:h-full object-cover ${
+                  index === 2 ? "object-left" : ""
+                }`}
               />
             </div>
             <div className="flex-1 p-6 sm:p-7">
@@ -668,7 +672,7 @@ const BENEFITS = [
 ];
 
 const BENEFIT_GAP = 20;
-const BENEFIT_AUTOPLAY_MS = 4000;
+const BENEFIT_AUTOPLAY_MS = 7000;
 
 function BenefitsCarousel() {
   const [current, setCurrent] = useState(0);

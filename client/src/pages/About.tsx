@@ -268,7 +268,7 @@ const TRANSFORMATION_STEPS = [
     num: "01",
     title: "Before",
     caption: "Limited Opportunity",
-    image: "/images/Ground img.png",
+    image: "/images/Limiteds_Infra.png",
     alt: "A school sports ground with basic infrastructure and limited facilities",
   },
   {
@@ -282,7 +282,7 @@ const TRANSFORMATION_STEPS = [
     num: "03",
     title: "After",
     caption: "Active School Sports",
-    image: "/images/hero-sports-1.jpg",
+    image: "/images/Home/Sports_Development.jpeg",
     alt: "School children playing organised football during a structured session",
   },
 ];
@@ -317,21 +317,21 @@ const IMPACT_OUTCOMES = [
 
 function OurImpact() {
   return (
-    <section id="impact" className="relative bg-white py-16 md:py-24">
+    <section id="impact" className="relative bg-white py-10 md:py-14">
       <div className="container">
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-start mb-16 md:mb-24">
+        <div className="mb-10 grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14 md:mb-12">
           <motion.div {...fade(0)}>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23] mb-5">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23]">
               Our Impact
             </p>
-            <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2rem] sm:text-[2.8rem] lg:text-[3.2rem] text-[#0A1E4F] leading-[1.1] mb-7">
+            <h2 className="mb-4 font-heading font-extrabold tracking-[-0.02em] text-[#0A1E4F] leading-[1.1] text-[1.8rem] sm:text-[2.4rem] lg:text-[2.75rem]">
               Transforming School Sports,
               <br />
               <span className="relative inline-block text-[#E31B23]">
                 One Ground at a Time
                 <svg
-                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
+                  className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3"
                   viewBox="0 0 200 12"
                   preserveAspectRatio="none"
                   fill="none"
@@ -346,7 +346,7 @@ function OurImpact() {
                 </svg>
               </span>
             </h2>
-            <p className="text-[#000000] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-xl">
+            <p className="max-w-xl text-[#000000] text-[0.9rem] sm:text-[0.98rem] leading-relaxed">
               Marcos Quay Foundation has helped schools move from limited
               sports infrastructure and participation to active, inclusive and
               structured sporting environments. By improving grounds,
@@ -358,15 +358,15 @@ function OurImpact() {
 
           {/* Quote box */}
           <motion.div {...fade(0.1)}>
-            <div className="relative rounded-[18px] border border-[#165DFF]/10 bg-[#F4F8FF] p-8 sm:p-10">
-              <span className="text-[2.8rem] leading-none font-heading font-bold text-[#165DFF]/30 select-none">
+            <div className="relative rounded-[18px] border border-[#165DFF]/10 bg-[#F4F8FF] p-6 sm:p-7">
+              <span className="text-[2rem] leading-none font-heading font-bold text-[#165DFF]/30 select-none">
                 “
               </span>
-              <p className="mt-1 text-[1.1rem] sm:text-[1.25rem] font-heading font-semibold text-[#0A1E4F] leading-relaxed">
+              <p className="mt-1 font-heading text-[1rem] sm:text-[1.12rem] font-semibold text-[#0A1E4F] leading-relaxed">
                 When schools invest in sport, children invest in themselves.
               </p>
-              <div className="mt-8 h-px w-10 bg-[#E31B23]" />
-              <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9AA5B8]">
+              <div className="mt-4 h-px w-10 bg-[#E31B23]" />
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9AA5B8]">
                 Marcos Quay Foundation
               </p>
             </div>
@@ -374,11 +374,11 @@ function OurImpact() {
         </div>
 
         {/* Main visual story — three connected panels */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {TRANSFORMATION_STEPS.map((step, i) => (
             <motion.div key={step.num} {...fade(0.08 * i)} className="relative">
               {/* Meta row */}
-              <div className="flex items-center gap-3 mb-4">
+              <div className="mb-2 flex items-center gap-3">
                 <span className="text-[12px] font-bold text-[#E31B23]">
                   {step.num}
                 </span>
@@ -393,9 +393,9 @@ function OurImpact() {
                   src={step.image}
                   alt={step.alt}
                   loading="lazy"
-                  className="w-full h-[240px] sm:h-[300px] object-cover"
+                  className="w-full h-[190px] sm:h-[220px] object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-[#0A1E4F]/85 px-5 py-3.5">
+                <div className="absolute bottom-0 left-0 right-0 bg-[#0A1E4F]/85 px-5 py-3">
                   <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
                     {step.caption}
                   </p>
@@ -404,7 +404,7 @@ function OurImpact() {
 
               {/* Circular arrow indicator between panels */}
               {i < TRANSFORMATION_STEPS.length - 1 && (
-                <span className="hidden md:flex absolute top-[148px] sm:top-[168px] -right-[23px] z-10 h-11 w-11 items-center justify-center rounded-full bg-[#0A1E4F] text-white shadow-[0_10px_24px_-10px_rgba(10,30,79,0.55)]">
+                <span className="hidden md:flex absolute top-[118px] sm:top-[132px] -right-[23px] z-10 h-11 w-11 items-center justify-center rounded-full bg-[#0A1E4F] text-white shadow-[0_10px_24px_-10px_rgba(10,30,79,0.55)]">
                   <ArrowRight className="h-4.5 w-4.5" />
                 </span>
               )}
@@ -413,24 +413,24 @@ function OurImpact() {
         </div>
 
         {/* Impact outcomes */}
-        <motion.div {...fade(0.1)} className="mt-24 mb-10 text-center">
+        <motion.div {...fade(0.1)} className="mt-10 mb-5 text-center">
           <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#E31B23]">
             Impact Outcomes
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {IMPACT_OUTCOMES.map((o, i) => (
             <motion.div
               key={o.num}
               {...fade(0.05 * i)}
-              className="rounded-[16px] border-2 border-[#A1B2D0] bg-white p-7"
+              className="rounded-[16px] border-2 border-[#A1B2D0] bg-white p-5"
             >
               <p className="text-[13px] font-bold text-[#E31B23]">{o.num}</p>
-              <h4 className="mt-5 font-heading font-bold text-[15px] text-[#0A1E4F] leading-snug">
+              <h4 className="mt-3 font-heading font-bold text-[14px] text-[#0A1E4F] leading-snug">
                 {o.title}
               </h4>
-              <p className="mt-3 text-[0.88rem] leading-relaxed text-[#6B7280]">
+              <p className="mt-2 text-[0.8rem] leading-relaxed text-[#6B7280]">
                 {o.desc}
               </p>
             </motion.div>

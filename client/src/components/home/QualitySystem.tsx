@@ -1,27 +1,93 @@
+import { type ComponentType } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Search, Users, Building2, Target, Sparkles, Globe } from "lucide-react";
+import { Link } from "wouter";
+import {
+  Search,
+  GraduationCap,
+  BarChart3,
+  Trophy,
+  RefreshCcw,
+  Globe,
+  ArrowRight,
+} from "lucide-react";
 
-const fade = (delay: number, from: "left" | "right" | "up" = "up") => {
-  const offset = from === "left" ? { x: -36 } : from === "right" ? { x: 36 } : { y: 26 };
-  return {
-    initial: { opacity: 0, ...offset },
-    whileInView: { opacity: 1, x: 0, y: 0 },
-    viewport: { once: true, margin: "-80px" },
-    transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] as const },
-  };
+type QualityStage = {
+  num: string;
+  title: string;
+  icon: ComponentType<{
+    className?: string;
+    strokeWidth?: number;
+  }>;
+  description: string;
+  image: string;
 };
+
+const QUALITY_STAGES: QualityStage[] = [
+  {
+    num: "01",
+    title: "Discover & Plan",
+    icon: Search,
+    description:
+      "Understand the existing sporting landscape and build a strategy aligned to the school's goals.",
+    image: "/images/Home/Community_Impact.jpeg",
+  },
+  {
+    num: "02",
+    title: "Coach Development",
+    icon: GraduationCap,
+    description:
+      "Continuously develop certified coaches to deliver consistent, high-quality and age-appropriate sessions.",
+    image: "/images/Home/GrassrootPlay.jpeg",
+  },
+  {
+    num: "03",
+    title: "Assess & Track",
+    icon: BarChart3,
+    description:
+      "Capture measurable data on participation, skill development, and fitness through structured assessments.",
+    image: "/images/Card 05.png",
+  },
+  {
+    num: "04",
+    title: "Play & Compete",
+    icon: Trophy,
+    description:
+      "Apply development through PE, grassroots sport, and structured competitive opportunities.",
+    image: "/images/WhySportsMatter/Image3.jpeg",
+  },
+  {
+    num: "05",
+    title: "Review & Improve",
+    icon: RefreshCcw,
+    description:
+      "Analyse performance insights to refine programmes, set new targets, and continuously raise standards.",
+    image: "/images/Home/Sports_Development.jpeg",
+  },
+  {
+    num: "06",
+    title: "Grow & Expand",
+    icon: Globe,
+    description:
+      "Scale sporting culture through competitions, exposure opportunities, and wider ecosystem experiences.",
+    image: "/images/Student-AfterImg.png",
+  },
+];
+
+/* ---------------------------------------------------------
+   Header underline
+--------------------------------------------------------- */
 
 function Underline() {
   return (
     <svg
-      className="absolute -bottom-2 left-0 w-full h-3"
-      viewBox="0 0 140 12"
+      className="absolute -bottom-3 left-0 h-3 w-full"
+      viewBox="0 0 160 12"
       preserveAspectRatio="none"
       fill="none"
       aria-hidden="true"
     >
       <path
-        d="M4 8 C 30 2, 55 10, 82 6 C 105 3, 120 8, 136 5"
+        d="M3 8 C 28 2, 54 10, 82 6 C 110 2, 135 8, 157 5"
         stroke="#165DFF"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -30,139 +96,193 @@ function Underline() {
   );
 }
 
-type QualityStage = {
-  num: string;
-  title: string;
-  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
-  description: string;
-};
-
-const QUALITY_STAGES: QualityStage[] = [
-  {
-    num: "01",
-    title: "Discovery & Planning",
-    icon: Search,
-    description:
-      "Tailored Sports Strategy with a Structured UK-Based Curriculum aligned to your School's Goals.",
-  },
-  {
-    num: "02",
-    title: "Coach Deployment",
-    icon: Users,
-    description:
-      "Trained, Certified & Background Verified Coaches.",
-  },
-  {
-    num: "03",
-    title: "Infrastructure Support",
-    icon: Building2,
-    description:
-      "Guidance on Facility Setup & Equipment Provisioning.",
-  },
-  {
-    num: "04",
-    title: "Execution",
-    icon: Target,
-    description:
-      "Smooth and Engaging Implementation across all Grades and Sports.",
-  },
-  {
-    num: "05",
-    title: "Tech & AI Integration",
-    icon: Sparkles,
-    description:
-      "Delivering Quality Sports Programs at scale through Real-time Monitoring, Reporting, and Insights.",
-  },
-  {
-    num: "06",
-    title: "Marcos Quay Ecosystem",
-    icon: Globe,
-    description:
-      "Leverage the strength of the Marcos Quay Network through Competitions, Exposure Tours, and Collaborative Sporting Experiences.",
-  },
-];
+/* ---------------------------------------------------------
+   Component
+--------------------------------------------------------- */
 
 export default function QualitySystem() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:h-screen lg:max-h-[880px] lg:py-0 lg:flex lg:items-center">
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{ backgroundImage: "radial-gradient(#0A1E4F 1px, transparent 1px)", backgroundSize: "30px 30px" }}
-      />
+    <section className="relative overflow-hidden bg-white pt-8 pb-20 lg:pt-10 lg:pb-24">
 
-      <div className="container relative z-10 lg:h-full lg:flex lg:flex-col lg:justify-center">
-        {/* ── Header ── */}
-        <motion.div {...fade(0)} className="mb-8 lg:mb-10">
-          <div className="max-w-[820px] text-center mx-auto">
-            <p className="font-heading font-bold text-[11px] sm:text-[12px] uppercase tracking-[0.22em] text-[#165DFF] mb-3">
-              Our Quality System
-            </p>
+      {/* =====================================================
+          BACKGROUND
+      ===================================================== */}
 
-            <h2 className="heading-2 text-[#0A1E4F] font-extrabold leading-[1.03] tracking-tight text-[1.5rem] sm:text-[2rem] lg:text-[2.2rem]">
-              We Own The Process
-              <br className="hidden sm:block" />
-              You See The{" "}
-              <span className="relative inline-block text-[#E31B23]">
-                Progress
-                <Underline />
-              </span>
-            </h2>
+      <div className="pointer-events-none absolute inset-0">
 
-            <p className="mt-4 mx-auto max-w-[680px] text-[14px] sm:text-[15px] lg:text-[15px] leading-[1.6] text-[#6B7280] font-medium">
-              From planning to execution, Marcos Quay runs the entire sporting
-              journey end-to-end — so your school sees measurable, verifiable
-              progress at every single step.
-            </p>
-          </div>
+        {/* Background image */}
+        <img
+          src="/images/measure-bg.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-left opacity-100"
+        />
+
+        {/* Very subtle dots */}
+        <div
+          className="absolute inset-0 opacity-[0.018]"
+          style={{
+            backgroundImage:
+              "radial-gradient(#0A1E4F 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-10">
+
+        {/* =====================================================
+            SECTION HEADER
+        ===================================================== */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto mb-12 max-w-[900px] text-center lg:mb-14"
+        >
+          <h2 className="heading-2 font-heading font-extrabold leading-[1.05] tracking-tight text-[#0A1E4F] text-[1.6rem] sm:text-[2rem] lg:text-[2.4rem]">
+            How{" "}
+            <span className="relative inline-block text-[#E31B23]">
+              Marcos Quay
+              <Underline />
+            </span>{" "}
+            Measures Sport
+          </h2>
         </motion.div>
 
-        {/* ── 6-stage process — one row on desktop ── */}
-        <div className="relative">
-          {/* Connecting line + arrows (desktop) */}
-          <div className="hidden lg:block absolute left-[8%] right-[8%] top-[1.5rem] h-px bg-[#165DFF]/25" />
-          {["16.67%", "33.33%", "50%", "66.67%", "83.33%"].map((left) => (
-            <span
-              key={left}
-              className="hidden lg:flex absolute top-[1.5rem] -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-[#165DFF]/30 text-[#165DFF] items-center justify-center z-10"
-              style={{ left }}
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
+
+          {/* =====================================================
+              LEFT — CONTENT AREA
+          ===================================================== */}
+
+          <div className="relative">
+
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="relative"
             >
-              <ArrowRight className="w-3 h-3" />
-            </span>
-          ))}
+              <h2 className="heading-2 font-heading font-extrabold leading-[1.02] tracking-tight text-[#0A1E4F] text-[1.8rem] sm:text-[2.4rem] lg:text-[2.9rem]">
+                Measure. Develop.
+                <br />
+                <span className="relative inline-block text-[#E31B23]">
+                  Proven.
+                  <Underline />
+                </span>
+              </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-x-6 gap-y-10 lg:gap-y-0">
-            {QUALITY_STAGES.map((stage, i) => (
-              <motion.div
-                key={stage.num}
-                {...fade(0.08 * i)}
-                className="relative flex flex-col items-center text-center"
+<p className="mt-7 max-w-[520px] text-[15px] leading-[1.7] text-[#4B5563] font-medium lg:text-[16px]">
+                Sport should not be measured only by participation or performance. Marcos Quay looks at the wider sporting journey — how programmes are planned, coaches develop, and students progress.
+
+Through structured assessment, observation, data, and continuous review, Marcos Quay turns sporting activity into measurable development, helping schools understand progress and build stronger sporting environments.
+              </p>
+
+              <Link
+                href="/about"
+                className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-[#0A1E4F] px-7 py-3.5 text-[14px] font-bold text-white shadow-[0_18px_40px_-18px_rgba(10,30,79,0.6)] transition-all duration-300 hover:bg-[#165DFF] hover:shadow-[0_20px_44px_-18px_rgba(22,93,255,0.6)]"
               >
-                {/* Icon */}
-                <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white border border-[#165DFF]/25 shadow-[0_10px_24px_-14px_rgba(10,30,79,0.5)]">
-                  <stage.icon className="h-5 w-5 text-[#165DFF]" strokeWidth={2} />
-                </span>
-
-                {/* Number */}
-                <span className="mt-3 font-heading font-extrabold text-[0.78rem] tracking-[0.2em] text-[#165DFF]">
-                  {stage.num}
-                </span>
-
-                {/* Title */}
-                <h3 className="mt-2 font-heading font-extrabold text-[0.95rem] sm:text-[1.05rem] text-[#0A1E4F] leading-[1.15] tracking-tight">
-                  {stage.title}
-                </h3>
-
-                {/* Subtle blue underline */}
-                <div className="mt-3 h-[2px] w-10 rounded-full bg-[#165DFF]/60" />
-
-                {/* Description */}
-                <p className="mt-3 text-[12px] sm:text-[12.5px] leading-[1.55] text-black font-medium">
-                  {stage.description}
-                </p>
-              </motion.div>
-            ))}
+                Explore Our Approach
+                <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
+              </Link>
+            </motion.div>
           </div>
+
+          {/* =====================================================
+              RIGHT — 6 CARDS (3 × 2)
+          ===================================================== */}
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 sm:mt-6 lg:mt-5"
+          >
+
+            {QUALITY_STAGES.map((stage, index) => (
+              <motion.article
+                key={stage.num}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.06,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="group flex flex-col overflow-hidden rounded-[22px] border border-[#165DFF]/20 bg-white shadow-[0_22px_50px_-28px_rgba(10,30,79,0.3)]"
+              >
+
+                {/* Image */}
+                <div className="relative h-[150px] shrink-0 overflow-hidden">
+                  <img
+                    src={stage.image}
+                    alt={stage.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B45]/60 via-transparent to-transparent" />
+
+                  {/* Concave curved divider */}
+                  <div className="pointer-events-none absolute -bottom-px left-0 right-0 z-[2] h-[26px]">
+                    <svg
+                      className="block h-full w-full"
+                      viewBox="0 0 600 26"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M0 0 C 150 34 450 34 600 0 L600 26 L0 26 Z"
+                        fill="#ffffff"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Number */}
+                  <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-[#E31B23] px-3 py-1.5 text-[11px] font-extrabold tracking-[0.16em] text-white shadow-lg">
+                    <stage.icon className="h-3.5 w-3.5" strokeWidth={2.4} />
+                    {stage.num}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="relative flex flex-1 flex-col bg-white px-4 py-4">
+                  <h3 className="font-heading text-[14px] font-extrabold leading-[1.12] tracking-tight text-[#0A1E4F]">
+                    {stage.title}
+                  </h3>
+
+                  <div className="mt-2 h-[2px] w-8 rounded-full bg-[#165DFF]" />
+
+                  <p className="mt-2 text-[11px] font-medium leading-[1.55] text-[#4B5563]">
+                    {stage.description}
+                  </p>
+                </div>
+
+              </motion.article>
+            ))}
+
+          </motion.div>
         </div>
+
+        {/* =====================================================
+            BOTTOM BRAND STATEMENT
+        ===================================================== */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-16 flex flex-col items-center justify-center text-center"
+        >
+          
+        </motion.div>
+
       </div>
     </section>
   );

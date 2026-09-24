@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 import Counter from "./Counter";
 import IndiaImpactMap from "./IndiaImpactMap";
 
@@ -108,13 +109,13 @@ export default function ImpactSection() {
               </motion.div>
 
               <motion.div {...fade(0.25)}>
-                <a
-                  href="#impact"
+                <Link
+                  href="/impact"
                   className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#0066B3] text-white font-heading font-bold text-[15px] px-9 h-[54px] shadow-[0_18px_34px_-16px_rgba(0,102,179,0.55)] transition-all duration-300 hover:bg-[#E31B23] hover:shadow-[0_22px_40px_-16px_rgba(227,27,35,0.5)] hover:-translate-y-1"
                 >
                   Explore Our Impact
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
+                </Link>
               </motion.div>
             </div>
           </div>

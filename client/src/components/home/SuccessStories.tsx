@@ -1,39 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Play, Quote } from "lucide-react";
+import { ArrowRight, Quote, Trophy } from "lucide-react";
 
-/* ─── Before / After comparison bar ─── */
-function CompareBar({
-  label,
-  before,
-  after,
-  color,
-}: {
-  label: string;
-  before: number;
-  after: number;
-  color: string;
-}) {
-  return (
-    <div>
-      <div className="flex items-center justify-between text-[11px] font-bold mb-1.5">
-        <span className="text-[#64748B] uppercase tracking-[0.1em]">{label}</span>
-        <span className="text-[#9AA5B8]">
-          {before}% → <span style={{ color }} className="font-extrabold">{after}%</span>
-        </span>
-      </div>
-      <div className="flex items-center gap-1.5">
-        <div className="flex-1 h-1.5 rounded-full bg-[#EEF2F7] overflow-hidden">
-          <div className="h-full rounded-full bg-[#C9D2E0] transition-all duration-700" style={{ width: `${before}%` }} />
-        </div>
-        <div className="flex-1 h-1.5 rounded-full bg-[#EEF2F7] overflow-hidden">
-          <div className="h-full rounded-full transition-all duration-700" style={{ width: `${after}%`, background: color }} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ─── Featured school story ─── */
+/* ─── Featured story: MQ National Sports Day Football Cup ─── */
 function FeaturedStory() {
   return (
     <div className="relative overflow-hidden rounded-[28px] bg-white border border-[#EAF1FD] shadow-[0_32px_70px_-38px_rgba(10,30,79,0.45)]">
@@ -45,132 +13,78 @@ function FeaturedStory() {
 
       <div className="grid lg:grid-cols-[1.05fr_1fr]">
         {/* Photo side */}
-        <div className="relative min-h-[280px] sm:min-h-[360px]">
+        <div className="relative min-h-[200px] sm:min-h-[280px]">
           <img
-            src="/images/hero-sports.jpg"
-            alt="Students at St. Xavier's School, Pune"
-            className="absolute inset-0 w-full h-full object-cover"
+            src="/images/Home/success-story-home.jpg"
+            alt="Students competing in the MQ National Sports Day Football Cup"
+            className="absolute inset-0 h-full w-full object-cover"
           />
 
-          {/* Video play button */}
-          <button
-            type="button"
-            aria-label="Play St. Xavier's story"
-            className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm border border-white/40 flex items-center justify-center text-white transition-all duration-300 hover:bg-white/30 hover:scale-105"
-          >
-            <Play className="w-4.5 h-4.5 ml-0.5" fill="white" strokeWidth={1.5} />
-          </button>
-
-          {/* Location badge */}
-          <div className="absolute bottom-5 left-5 flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur px-3.5 py-2 text-[12px] font-bold text-[#1A2333] shadow-sm">
-            <MapPin className="w-3.5 h-3.5 text-[#165DFF]" />
-            Pune, Maharashtra
+          {/* Trophy badge */}
+          <div className="absolute bottom-5 left-5 flex items-center gap-1.5 rounded-full bg-white/90 px-3.5 py-2 text-[12px] font-bold text-[#1A2333] shadow-sm backdrop-blur">
+            <Trophy className="h-3.5 w-3.5 text-[#E31B23]" />
+            MQ National Sports Day Football Cup 2026
           </div>
         </div>
 
         {/* Content side */}
-        <div className="p-7 sm:p-9 lg:p-10">
+        <div className="p-5 sm:p-7 lg:p-8">
           <div className="flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-[#E31B23]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E31B23]" />
-            Featured Story
+            <span className="h-1.5 w-1.5 rounded-full bg-[#E31B23]" />
+            Football
           </div>
-          <h3 className="mt-3 font-heading font-extrabold text-[24px] sm:text-[28px] lg:text-[30px] text-[#0A1E4F] leading-tight">
-            St. Xavier&apos;s High School
+          <h3 className="mt-3 font-heading text-[24px] font-extrabold leading-tight text-[#0A1E4F] sm:text-[27px]">
+            More Than a Football Cup. An Opportunity to Play, Compete and Grow.
           </h3>
-          <p className="mt-1.5 text-[12.5px] font-bold text-[#9AA5B8]">Pune, Maharashtra</p>
+          <p className="mt-1.5 text-[12.5px] font-bold text-[#9AA5B8]">
+            Marcos Quay Foundation · National Sports Day 2026
+          </p>
 
-          {/* Key statistics */}
-          <div className="mt-6 grid grid-cols-2 gap-6 rounded-2xl bg-[#F8FBFF] border border-[#EAF1FD] p-5">
-            <div>
-              <p className="font-heading font-extrabold text-[30px] sm:text-[34px] text-[#165DFF] leading-none">
-                450+
-              </p>
-              <p className="mt-1.5 text-[12px] font-bold text-[#64748B]">
-                students now play daily
-              </p>
-            </div>
-            <div>
-              <p className="font-heading font-extrabold text-[30px] sm:text-[34px] text-[#E31B23] leading-none">
-                3.2×
-              </p>
-              <p className="mt-1.5 text-[12px] font-bold text-[#64748B]">
-                growth in sports admissions
-              </p>
-            </div>
-          </div>
+          <p className="mt-4 text-[15px] font-semibold leading-relaxed text-[#0A1E4F]">
+            The MQ National Sports Day Football Cup 2026 brought 270+ young
+            footballers from 14 schools across Mumbai onto one field.
+          </p>
 
-          {/* Before / After progress */}
-          <div className="mt-5 space-y-4">
-            <CompareBar label="Participation" before={22} after={91} color="#165DFF" />
-            <CompareBar label="Fitness Score" before={38} after={84} color="#E31B23" />
-            <CompareBar label="PE Time / Week" before={40} after={100} color="#0A1E4F" />
-          </div>
-
-          {/* Principal quote */}
-          <div className="relative mt-6 pl-5 border-l-[3px] border-[#165DFF]">
-            <Quote className="absolute -top-2 left-3 w-5 h-5 text-[#165DFF]/40" strokeWidth={2.2} />
-            <p className="text-[14.5px] leading-relaxed font-medium text-[#4B5563] italic">
-              &ldquo;We&apos;ve never seen children this excited about coming to school.
-              The discipline and confidence is visible in the classroom too.&rdquo;
+          <div className="mt-4 space-y-3 text-[13.5px] font-medium leading-[1.7] text-[#4B5563]">
+            <p>
+              For many, it was the first time a school fixture meant a jersey,
+              a crowd and a final whistle - a real platform to play competitive
+              football and learn the values of teamwork, discipline and
+              sportsmanship.
             </p>
-            <p className="mt-2.5 text-[12.5px] font-bold text-[#0A1E4F]">
-              Mrs. Meera Kulkarni <span className="font-semibold text-[#9AA5B8]">— Principal</span>
+            <p>
+              Cosmopolitan School (SSC) lifted the boys&apos; trophy, with Nahar
+              International runners-up, while AVM School, Bandra West, won the
+              girls&apos; category ahead of Nanavati School. Guest of Honour Siya
+              Sawant - who represented India at the Under-12 Championship in
+              Peru - reminded young athletes what disciplined practice can
+              build. Special appreciation went to Ishaan Shahane and Raju Singh
+              for planning and executing the cup.
             </p>
           </div>
+
+          {/* Motto quote */}
+          <div className="relative mt-5 border-l-[3px] border-[#E31B23] pl-5">
+            <Quote
+              className="absolute -top-2 left-3 h-5 w-5 text-[#E31B23]/40"
+              strokeWidth={2.2}
+            />
+            <p className="font-heading text-[15px] font-extrabold italic leading-relaxed text-[#0A1E4F]">
+              One Goal - Ab Sirf Dekhega Nahi, Khelega India.
+            </p>
+          </div>
+
+          {/* Read more */}
+          <a
+            href="/impact#feature-football"
+            className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-[#0A1E4F] px-5 py-2.5 text-[13px] font-bold text-white shadow-[0_14px_30px_-14px_rgba(10,30,79,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#13295C]"
+          >
+            Read More in the Dispatch
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </div>
-  );
-}
-
-/* ─── Supporting school story ─── */
-function MiniStory({
-  school,
-  location,
-  metric,
-  metricLabel,
-  accent,
-  quote,
-}: {
-  school: string;
-  location: string;
-  metric: string;
-  metricLabel: string;
-  accent: string;
-  quote: string;
-  initials: string;
-}) {
-  return (
-    <div className="h-full w-full overflow-hidden rounded-[22px] bg-white border border-[#EAF1FD] shadow-[0_18px_45px_-32px_rgba(10,30,79,0.4)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-34px_rgba(10,30,79,0.5)] hover:border-[#CADCFA]">
-        {/* Accent line */}
-        <div className="h-1 w-full" style={{ background: accent }} aria-hidden="true" />
-
-        <div className="p-6 sm:p-7">
-          {/* Metric */}
-          <div className="flex items-baseline gap-2">
-            <span className="font-heading font-extrabold text-[30px] sm:text-[32px] text-[#0A1E4F] leading-none">
-              {metric}
-            </span>
-            <span className="text-[11px] font-bold text-[#9AA5B8] leading-tight">
-              {metricLabel}
-            </span>
-          </div>
-
-          {/* School */}
-          <h4 className="mt-5 font-heading font-bold text-[16.5px] text-[#0A1E4F] leading-snug">
-            {school}
-          </h4>
-          <p className="mt-1.5 flex items-center gap-1.5 text-[11.5px] font-bold text-[#9AA5B8]">
-            <MapPin className="w-3 h-3" style={{ color: accent }} />
-            {location}
-          </p>
-
-          {/* Quote */}
-          <p className="mt-4 pt-4 border-t border-[#F1F5FB] text-[13px] leading-relaxed font-medium text-[#6B7280] italic">
-            &ldquo;{quote}&rdquo;
-          </p>
-        </div>
-      </div>
   );
 }
 
@@ -181,22 +95,19 @@ const fade = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
-/* ─── Blue / red accents applied per card index ─── */
-const MINI_ACCENTS = ["#165DFF", "#E31B23", "#165DFF", "#E31B23", "#165DFF"];
-
 export default function SuccessStories() {
   return (
-    <section className="relative bg-white pt-16 sm:pt-20 lg:pt-24 pb-20 sm:pb-28 lg:pb-32 overflow-hidden">
+    <section className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-16">
       <div className="container relative lg:max-w-[1300px]">
         {/* ── Header ── */}
-        <motion.div {...fade(0)} className="max-w-2xl mx-auto text-center">
-          <p className="eyebrow justify-center text-[#E31B23] mb-4">Real Impact</p>
+        <motion.div {...fade(0)} className="mx-auto max-w-2xl text-center">
+          <p className="eyebrow mb-3 justify-center text-[#E31B23]">Real Impact</p>
           <h2 className="heading-2 text-[#0A1E4F]">
             Success{" "}
             <span className="relative inline-block text-[#E31B23]">
               Stories
               <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
+                className="absolute -bottom-2 left-0 h-3 w-full"
                 viewBox="0 0 170 12"
                 preserveAspectRatio="none"
                 fill="none"
@@ -211,75 +122,15 @@ export default function SuccessStories() {
               </svg>
             </span>
           </h2>
-          <p className="body-lg mt-6 max-w-[560px] mx-auto">
-            Real schools. Real children. Real change. These are the stories of
-            campuses where sports became a way of life.
+          <p className="body-lg mx-auto mt-4 max-w-[560px]">
+            Real champions. Real schools. Real change. Fresh from the Marcos Quay Dispatch -
+            the stories that made news this term.
           </p>
         </motion.div>
 
         {/* ── Featured story ── */}
-        <motion.div {...fade(0.08)} className="mt-14 sm:mt-16 lg:mt-20">
+        <motion.div {...fade(0.08)} className="mt-8 sm:mt-10">
           <FeaturedStory />
-        </motion.div>
-
-        {/* ── Supporting stories — 5-across row ── */}
-        <div className="mt-8 sm:mt-10 lg:mt-12 flex flex-wrap justify-center gap-6">
-          {[
-            {
-              school: "Green Valley Public School",
-              location: "Jaipur, Rajasthan",
-              metric: "380+",
-              metricLabel: "students active daily",
-              quote: "The morning assemblies feel different now — our kids stand taller.",
-            },
-            {
-              school: "Kendriya Vidyalaya, Bengaluru",
-              location: "Bengaluru, Karnataka",
-              metric: "96%",
-              metricLabel: "PE attendance rate",
-              quote: "Sports used to be a free period. Now it's the highlight of the day.",
-            },
-            {
-              school: "DPS Indirapuram",
-              location: "Ghaziabad, Uttar Pradesh",
-              metric: "2.5×",
-              metricLabel: "more girls in sport",
-              quote: "Our girls' cricket team now competes at state level.",
-            },
-            {
-              school: "Bishop Cotton School",
-              location: "Shimla, Himachal Pradesh",
-              metric: "−31%",
-              metricLabel: "sedentary screen time",
-              quote: "Parents tell us their children sleep better and eat better now.",
-            },
-            {
-              school: "Ryan International",
-              location: "Mumbai, Maharashtra",
-              metric: "14",
-              metricLabel: "new sport teams formed",
-              quote: "We finally have a real structure behind our sports programme.",
-            },
-          ].map((story, i) => (
-            <motion.div key={story.school} {...fade(0.1 + i * 0.06)} className="flex w-full sm:w-[calc(50%-12px)] lg:w-[calc(20%-19.2px)]">
-              <MiniStory
-                {...story}
-                accent={MINI_ACCENTS[i]}
-                initials={story.school.split(" ").map((w) => w[0]).join("")}
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* ── CTA ── */}
-        <motion.div {...fade(0.2)} className="mt-14 sm:mt-16 text-center">
-          <a
-            href="/impact"
-            className="group inline-flex items-center gap-2.5 rounded-full bg-[#0A1E4F] px-7 py-3.5 text-[14px] font-bold text-white shadow-[0_18px_40px_-18px_rgba(10,30,79,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#13295C]"
-          >
-            Explore More Stories
-            <ArrowRight className="w-4.5 h-4.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
         </motion.div>
       </div>
     </section>

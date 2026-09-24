@@ -53,27 +53,33 @@ const NEWSLETTER_POINTS = [
 /* Research                                                                   */
 /* -------------------------------------------------------------------------- */
 
-const INSIGHTS = [
+const DISPATCH_TEASERS = [
   {
-    category: "IMPACT REPORT",
-    title: "Sport for a Brighter Tomorrow",
-    description:
-      "Key findings from our latest impact study across schools and communities.",
-    image: "/images/sport-brighter-tomorrow.jpg",
+    tag: "Field",
+    anchor: "dispatch-field",
+    page: "Page 06",
+    headline: "The Love for Football Is Born in the Mud",
+    excerpt:
+      "No fancy turf, no floodlights - just rain, a muddy ground and kids who would rather play than stay indoors. Because this is where the real game begins.",
+    image: "/images/Inter-school%20Competitions.JPG",
   },
   {
-    category: "RESEARCH BRIEF",
-    title: "The Power of Play",
-    description:
-      "How sport contributes to better learning, health and life skills.",
-    image: "/images/power-of-play.jpg",
+    tag: "People",
+    anchor: "dispatch-people",
+    page: "Page 08",
+    headline: "Great Schools Are Built by Empowered Educators",
+    excerpt:
+      "Encouraging feedback from Ms. Adita Dogra, Principal of Bombay Presidency International School, on the Teacher Engagement Activities conducted by Marcos Quay.",
+    image: "/images/solutions/multisport.jpg",
   },
   {
-    category: "THOUGHT PIECE",
-    title: "Active Communities, Stronger India",
-    description:
-      "Perspectives on the role of sport in building inclusive and resilient communities.",
-    image: "/images/active-communities.png",
+    tag: "Progress",
+    anchor: "dispatch-progress",
+    page: "Page 12",
+    headline: "India Loves Watching Sports - It's Time We Love Playing Them Too",
+    excerpt:
+      "Every child deserves the opportunity to experience the power of sport - not just as a spectator, but as a participant.",
+    image: "/images/solutions/fitness.jpg",
   },
 ];
 
@@ -252,7 +258,7 @@ export function NewsletterSection() {
 
               <div className="mt-4 overflow-hidden rounded-[7px]">
                 <img
-                  src="public/images/Newsletterimg2.png"
+                  src="public/images/Inter-school Competitions.JPG"
                   alt=""
                   className="aspect-[16/8] w-full object-cover"
                 />
@@ -271,15 +277,18 @@ export function NewsletterSection() {
             </motion.div>
 
             {/* Latest Edition Circle */}
-            <motion.div
+            <motion.a
               initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.07 }}
               transition={{
                 duration: 0.5,
                 delay: 0.6,
               }}
-              className="absolute right-[-4%] top-[44%] flex h-[105px] w-[105px] -translate-y-1/2 items-center justify-center rounded-full border-[4px] border-white bg-[#165DFF] text-center text-white shadow-[0_15px_35px_-12px_rgba(22,93,255,0.6)] sm:h-[120px] sm:w-[120px]"
+              href="/impact#dispatch"
+              aria-label="Read the latest edition of The Marcos Quay Dispatch"
+              className="absolute right-[-4%] top-[44%] flex h-[105px] w-[105px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[4px] border-white bg-[#165DFF] text-center text-white shadow-[0_15px_35px_-12px_rgba(22,93,255,0.6)] sm:h-[120px] sm:w-[120px]"
             >
               <div>
                 <p className="font-heading text-[15px] font-medium italic leading-[1.25] sm:text-[17px]">
@@ -290,7 +299,7 @@ export function NewsletterSection() {
 
                 <ArrowRight className="mx-auto mt-2 h-5 w-5" />
               </div>
-            </motion.div>
+            </motion.a>
           </motion.div>
         </div>
       </div>
@@ -352,7 +361,7 @@ export function ResearchInsightsSection() {
             </p>
 
             <a
-              href="#research"
+              href="/impact#dispatch"
               className="mt-8 inline-flex h-[52px] items-center gap-3 rounded-[8px] bg-[#165DFF] px-7 font-heading text-[14px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0A4FD1] hover:shadow-[0_16px_30px_-15px_rgba(22,93,255,0.7)]"
             >
               Explore All Insights
@@ -366,49 +375,60 @@ export function ResearchInsightsSection() {
 
           <div
             id="research"
-            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+            className="flex flex-col gap-5"
           >
-            {INSIGHTS.map((item, index) => (
-              <motion.article
-                key={item.title}
-                {...fade(0.12 + index * 0.08)}
-                className="group overflow-hidden rounded-[9px] border border-[#DDE4EE] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#165DFF]/40 hover:shadow-[0_22px_45px_-30px_rgba(10,30,79,0.4)]"
-              >
-                {/* Image */}
-                <div className="relative overflow-hidden p-3 pb-0">
-                  <div className="overflow-hidden rounded-[5px]">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                    />
+            <div className="flex items-center gap-3">
+              <span className="h-px flex-1 bg-[#E8EDF5]" />
+              <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-[#165DFF]">
+                From the Marcos Quay Dispatch
+              </p>
+              <span className="h-px flex-1 bg-[#E8EDF5]" />
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {DISPATCH_TEASERS.map((item, index) => (
+                <motion.a
+                  key={item.headline}
+                  {...fade(0.12 + index * 0.08)}
+href={`/impact#${item.anchor}`}
+                  className="group flex flex-col overflow-hidden rounded-[9px] border border-[#DDE4EE] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#165DFF]/40 hover:shadow-[0_22px_45px_-30px_rgba(10,30,79,0.4)]"
+                >
+                  {/* Image */}
+                  <div className="relative overflow-hidden p-3 pb-0">
+                    <div className="relative overflow-hidden rounded-[5px]">
+                      <img
+                        src={item.image}
+                        alt={item.headline}
+                        className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                      <span className="absolute left-3 top-3 rounded-[4px] bg-[#E31B23] px-2 py-1 text-[8.5px] font-bold tracking-[0.12em] text-white">
+                        {item.tag}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className="p-4 sm:p-5">
-                  <p className="text-[9px] font-bold tracking-[0.13em] text-[#165DFF]">
-                    {item.category}
-                  </p>
+                  {/* Content */}
+                  <div className="flex flex-1 flex-col p-4 sm:p-5">
+                    <p className="text-[9px] font-bold tracking-[0.13em] text-[#165DFF]">
+                      {item.page}
+                    </p>
 
-                  <h3 className="mt-2 text-[17px] font-bold leading-[1.2] text-[#172033]">
-                    {item.title}
-                  </h3>
+                    <h3 className="mt-2 text-[17px] font-bold leading-[1.2] text-[#172033]">
+                      {item.headline}
+                    </h3>
 
-                  <p className="mt-3 text-[12.5px] font-medium leading-[1.55] text-[#6B7280]">
-                    {item.description}
-                  </p>
+                    <p className="mt-3 flex-1 text-[12.5px] font-medium leading-[1.55] text-[#6B7280]">
+                      {item.excerpt}
+                    </p>
 
-                  <a
-                    href="#"
-                    className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#165DFF] transition-all group-hover:gap-3"
-                  >
-                    Read More
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </motion.article>
-            ))}
+                    <span className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold text-[#165DFF] transition-all group-hover:gap-3">
+                      Read in the Dispatch
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

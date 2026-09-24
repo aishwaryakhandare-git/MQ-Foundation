@@ -9,13 +9,18 @@ const fade = (delay: number) => ({
 export default function Hero() {
   return (
     <section id="home-hero" className="relative min-h-[92vh] flex items-center overflow-hidden bg-white pt-16 lg:pt-54">
-      {/* Full-screen background image */}
+      {/* Full-screen background video */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero-sports.jpg"
-          alt="Indian school children playing sports"
-          className="w-full h-full object-cover object-center opacity-90"
+        <video
+          src="/images/Inter-MQ-for-PL-Website-100MB-HQ.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
         />
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
       <div className="container relative z-10 pt-36 pb-16 lg:pt-52 lg:pb-16">
@@ -28,7 +33,7 @@ export default function Hero() {
               className="
                 heading-1
                 font-extrabold
-                text-white
+                text-[#274F9A]
                 text-[2.7rem]
                 sm:text-[3.4rem]
                 md:text-[4.1rem]
@@ -37,7 +42,8 @@ export default function Hero() {
                 leading-[1.02]
               "
             >
-              Ab Sirf Dekhega Nahi,
+              <span className="text-[#FF9933]">Ab Sirf </span>
+              <span className="text-white">Dekhega Nahi,</span>
               <br />
 
               <span
@@ -45,7 +51,7 @@ export default function Hero() {
                   relative
                   inline-block
                   mt-4
-                  text-[#E31B23]
+                  text-[#138808]
                   whitespace-nowrap
                   leading-none
                 "
@@ -68,7 +74,7 @@ export default function Hero() {
                 >
                   <path
                     d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 256 5"
-                    stroke="#E31B23"
+                    stroke="#138808"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                   />
