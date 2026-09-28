@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote, X } from "lucide-react";
 import BrushUnderline from "./BrushUnderline";
 
 const TESTIMONIALS = [
@@ -9,20 +9,32 @@ const TESTIMONIALS = [
       "Marcos Quay coaches (Irfan, Prabhu, Saif and Simran) are working in good coordination for conducting PE sessions from 23rd June 2020. I am frequently coordinating with all the coaches through online meetings and calls for arranging various workout plans for every week as per the grades. I must acknowledge all the coaches associated with 18/S for their efforts, dedication, punctuality, hard work and coordination for conducting the classes smoothly as per the requirements of the school. Students are showing interest in performing the skills taught to them and even enjoying taking part in challenging activities planned for them. Overall the planning, preparation and delivery of the PE sessions by each coach is commendable. We hope to receive the support and cooperation from MQ team in the future too.",
     name: "Mr. Gaurav Desai",
     role: "Sports Coordinator | The Nahar International School- Powai, Mumbai",
+    avatar: "/images/Principal-Male.png",
   },
   {
     quote:
       "This is to put on record, the successful hndling of the event 'Sunny Sunday Sports' Session for parents of STKIIS on 20th Feb'22 by the team of Marccos Quay. A crowd of about 200 people was very well managed by the team, maintaining planned activities, engaging each and every participant and ensuring punctuality and maintaining an atmosphere of true sports spirit. It was a significant Sunday for parents to have come out after the 2 year pandemic crisis. As a whole the team is doing is good job, Waiting for thr school teams to bring laurels to school. Kudos!! ",
     name: "Ms. Anjali Mahajan",
     role: "Principal, St Kabir International School-Chapad, Vadodara",
+    avatar: "/images/Principal-Female.png",
   },
   {
     quote:
       "Partnering with Marcos Quay has elevated our school's profile and operations. Their innovative sports programs have attracted new students, improved engagement, and allowed us to focus on academics. We've also seen better academic performance and a healthier student body. With their excellent management and training, our sports program consistently excels. I highly recommend their services to any school seeking to enhance sports while prioritizing education.",
     name: "Dr. Ganesh Kumar Pandidhar",
     role: "Eduction Society, Nashik",
+    avatar: "/images/Principal-Male.png",
   },
 ];
+
+function getInitials(name: string) {
+  const letters = name
+    .replace(/\./g, "")
+    .split(" ")
+    .map((part) => part[0])
+    .filter((c) => c && /[A-Za-z]/.test(c));
+  return (letters.slice(0, 2).join("") || "MQ").toUpperCase();
+}
 
 const GAP = 16;
 const AUTOPLAY_MS = 4500;
@@ -46,6 +58,7 @@ function TestimonialCarousel() {
   const [current, setCurrent] = useState(0);
   const [advance, setAdvance] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [zoomSrc, setZoomSrc] = useState<string | null>(null);
 
   const currentRef = useRef(0);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -184,29 +197,81 @@ function TestimonialCarousel() {
                 </p>
 
                 {/* Bottom author */}
-                <div className="mt-auto pt-3">
-                  <p
-                    className="
-                      text-[15px]
-                      sm:text-[16px]
-                      font-bold
-                      text-[#005BAC]
-                    "
-                  >
-                    {testimonial.name}
-                  </p>
+                <div className="mt-auto pt-3 flex items-center gap-3">
+                  {testimonial.avatar ? (
+                    <button
+                      type="button"
+                      onClick={() => setZoomSrc(testimonial.avatar)}
+                      aria-label={`View photo of ${testimonial.name}`}
+                      className="
+                        shrink-0
+                        h-12
+                        w-12
+                        overflow-hidden
+                        rounded-full
+                        border-2
+                        border-white
+                        shadow-[0_6px_16px_-8px_rgba(22,93,255,0.7)]
+                        transition
+                        hover:scale-105
+                        cursor-zoom-in
+                        focus:outline-none
+                        focus:ring-2
+                        focus:ring-[#165DFF]
+                      "
+                    >
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="h-full w-full object-cover"
+                      />
+                    </button>
+                  ) : (
+                    <div
+                      className="
+                        shrink-0
+                        h-12
+                        w-12
+                        rounded-full
+                        bg-gradient-to-br
+                        from-[#165DFF]
+                        to-[#7CB6FF]
+                        flex
+                        items-center
+                        justify-center
+                        text-[14px]
+                        font-bold
+                        text-white
+                      "
+                    >
+                      {getInitials(testimonial.name)}
+                    </div>
+                  )}
 
-                  <p
-                    className="
-                      mt-0.5
-                      text-[12px]
-                      sm:text-[12.5px]
-                      leading-snug
-                      text-[#444]
-                    "
-                  >
-                    {testimonial.role}
-                  </p>
+                  <div className="min-w-0">
+                    <p
+                      className="
+                        text-[15px]
+                        sm:text-[16px]
+                        font-bold
+                        text-[#005BAC]
+                      "
+                    >
+                      {testimonial.name}
+                    </p>
+
+                    <p
+                      className="
+                        mt-0.5
+                        text-[12px]
+                        sm:text-[12.5px]
+                        leading-snug
+                        text-[#444]
+                      "
+                    >
+                      {testimonial.role}
+                    </p>
+                  </div>
                 </div>
               </article>
             </div>
@@ -269,6 +334,76 @@ function TestimonialCarousel() {
           strokeWidth={1.5}
         />
       </button>
+
+      {/* Zoom lightbox */}
+      <AnimatePresence>
+        {zoomSrc && (
+          <motion.div
+            key="zoom"
+            className="
+              fixed
+              inset-0
+              z-[100]
+              flex
+              items-center
+              justify-center
+              bg-black/80
+              p-5
+              sm:p-10
+              cursor-zoom-out
+            "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setZoomSrc(null)}
+          >
+            <motion.img
+              src={zoomSrc}
+              alt="Testimonial photo enlarged"
+              className="
+                max-h-[62vh]
+                max-w-[62vw]
+                rounded-lg
+                object-contain
+                shadow-2xl
+                bg-white
+              "
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{
+                scale: { type: "spring", stiffness: 260, damping: 26 },
+                opacity: { duration: 0.25, ease: "easeOut" as const },
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <button
+              type="button"
+              aria-label="Close photo"
+              onClick={() => setZoomSrc(null)}
+              className="
+                absolute
+                right-4
+                top-4
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-full
+                bg-white/10
+                text-white
+                backdrop-blur
+                transition
+                hover:bg-white/25
+              "
+            >
+              <X className="h-6 w-6" strokeWidth={1.75} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

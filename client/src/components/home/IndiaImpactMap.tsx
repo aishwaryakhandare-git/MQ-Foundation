@@ -19,8 +19,14 @@ const ACTIVE_IDS = new Set([
   "gj", "mh", "mp", "ka", "hp",
 ]);
 
+/* ── Light blue — states marked as launching/coming soon ── */
+const UPCOMING_IDS = new Set([
+  "dl", "up", "rj", "tg", "wb",
+]);
+
 const PRESENCE = "#0066B3";
-const UPCOMING = "#D9E2EC";
+const UPCOMING = "#A8D4F0";
+const NEUTRAL = "#E9EDF3";
 const SELECTED = "#E31B23";
 const PIN = "#165DFF";
 
@@ -92,6 +98,7 @@ export default function IndiaImpactMap() {
 
   const highlightedName = STATES.find((s) => s.id === highlighted)?.name ?? "";
   const isActive = highlighted ? ACTIVE_IDS.has(highlighted) : false;
+  const isUpcoming = highlighted ? UPCOMING_IDS.has(highlighted) : false;
 
   return (
     <div className="relative">
@@ -104,6 +111,7 @@ export default function IndiaImpactMap() {
           {STATES.map((s) => {
             const isHighlight = (hovered ?? selected) === s.id;
             const isActive = ACTIVE_IDS.has(s.id) && !isHighlight;
+            const isUpcoming = UPCOMING_IDS.has(s.id) && !isHighlight;
             return (
               <path
                 key={s.id}
@@ -114,7 +122,13 @@ export default function IndiaImpactMap() {
                 onClick={() => setSelected(s.id === selected ? null : s.id)}
                 className="cursor-pointer transition-[fill] duration-200"
                 style={{
-                  fill: isHighlight ? SELECTED : isActive ? PRESENCE : UPCOMING,
+                  fill: isHighlight
+                    ? SELECTED
+                    : isActive
+                      ? PRESENCE
+                      : isUpcoming
+                        ? UPCOMING
+                        : NEUTRAL,
                   stroke: "#FFFFFF",
                   strokeWidth: 1,
                   strokeLinejoin: "round",
@@ -168,6 +182,39 @@ export default function IndiaImpactMap() {
             );
           })}
 
+          {/* ── State names for states marked as coming soon ── */}
+          {STATES.map((s) => {
+            if (!UPCOMING_IDS.has(s.id)) return null;
+            const c = centroids[s.id];
+            if (!c || s.id === highlighted) return null;
+            const flip = c.x > 460;
+            const labelX = flip ? c.x - 14 : c.x + 14;
+            return (
+              <g key={s.id}>
+                <circle cx={c.x} cy={c.y} r={3} fill="#5A98CC" stroke="#FFFFFF" strokeWidth={1} />
+
+                <text
+                  x={labelX}
+                  y={c.y}
+                  textAnchor={flip ? "end" : "start"}
+                  dominantBaseline="middle"
+                  className="font-heading"
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    fill: "#2E6DA4",
+                    paintOrder: "stroke",
+                    stroke: "#FFFFFF",
+                    strokeWidth: 3,
+                    strokeLinejoin: "round",
+                  }}
+                >
+                  {getShortName(s.name)}
+                </text>
+              </g>
+            );
+          })}
+
             {/* ── Connector + circular location indicator for hovered/selected state ── */}
           {centroid && (
             <>
@@ -202,7 +249,9 @@ export default function IndiaImpactMap() {
             <p className="mt-1.5 text-[11.5px] leading-[1.5] text-[#6B7280] font-medium">
               {isActive
                 ? "Our programme is active here — certified coaches, NEP-aligned curricula and growing schools."
-                : "Our program is launching here soon — check back to watch the impact grow."}
+                : isUpcoming
+                  ? "Coming soon — our programme is launching here, check back to watch the impact grow."
+                  : "This is part of our long-term vision for sport across India."}
             </p>
           </div>
         )}

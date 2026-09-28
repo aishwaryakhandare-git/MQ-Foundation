@@ -126,11 +126,11 @@ export default function Footer() {
                   <p className="leading-[1.7]">
                     Head Office :
                     <br />
-                    3rd Floor, 24, N S Rd No. 9, 
+                    1001B, 10th Floor, 
                     <br />
-                    Nutan Laxmi Society, JVPD Scheme, 
+                    Sri Krishna Building, New Link Road, 
                     <br />
-                    Vile Parle West, Mumbai 400049
+                    Andheri West, Mumbai 400053
                     
                   </p>
                 </div>

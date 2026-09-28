@@ -46,13 +46,13 @@ const ROLES = [
 const CONTACT_DETAILS = [
   {
     icon: MapPin,
-    label: "Head Office",
+    label: "Registered Office",
     value: "3rd Floor, 24, N S Rd No. 9, Nutan Laxmi Society, JVPD Scheme, Vile Parle West, Mumbai 400049",
     sub: "Vile Parle West",
   },
   {
     icon: MapPin,
-    label: "Branch Office",
+    label: "Head Office",
     value: "1001B, 10th Floor, Sri Krishna Building, New Link Road, Andheri West, Mumbai 400053",
     sub: "Andheri West",
   },
@@ -66,9 +66,9 @@ const CONTACT_DETAILS = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "info@marcosquay.org",
+    value: "info@marcosquay.com",
     sub: "We reply within 24 hours",
-    href: "mailto:info@marcosquay.org",
+    href: "mailto:info@marcosquay.com",
   },
   {
     icon: Globe,
