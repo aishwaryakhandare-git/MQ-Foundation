@@ -1280,7 +1280,7 @@ function Newsletter() {
                 </h4>
 
                 <p className="mt-3 border-l-2 border-[#E31B23]/50 pl-3 font-newspaper text-[14.5px] italic leading-[1.6] text-[#4C433A]">
-                  Marcos Quay Foundation honoured with the &ldquo;Persistent
+                  Marcos Quay honoured with the &ldquo;Persistent
                   Commitment to Indian Sports&rdquo; award at the IAMGAME
                   Sports Awards 2026 &mdash; recognition of years of
                   consistency, investment and belief in grassroots sport.
@@ -1296,8 +1296,8 @@ function Newsletter() {
                 >
                   <p className="[&:first-letter]:float-left [&:first-letter]:mt-1 [&:first-letter]:mr-2 [&:first-letter]:font-masthead [&:first-letter]:text-[2.9rem] [&:first-letter]:font-black [&:first-letter]:leading-[0.72] [&:first-letter]:text-[#E31B23]">
                     The stage at the IAMGAME Sports Awards 2026 fell quiet for
-                    a moment, and then the name followed: Marcos Quay
-                    Foundation, recognised for &ldquo;Persistent Commitment to
+                    a moment, and then the name followed: Marcos Quay,
+                    recognised for &ldquo;Persistent Commitment to
                     Indian Sports&rdquo;. It is a proud moment for the
                     organisation &mdash; and a recognition that belongs to
                     every coach, every partner school and every young athlete
@@ -1343,7 +1343,7 @@ function Newsletter() {
                   />
                 </div>
                 <p className="mt-2 text-[10px] italic leading-snug text-[#5C544A]">
-                  Marcos Quay Foundation takes the stage at the IAMGAME Sports
+                  Marcos Quay takes the stage at the IAMGAME Sports
                   Awards 2026 &mdash; honoured for &ldquo;Persistent
                   Commitment to Indian Sports&rdquo;.
                 </p>

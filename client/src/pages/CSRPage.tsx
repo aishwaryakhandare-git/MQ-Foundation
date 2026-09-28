@@ -194,7 +194,7 @@ export default function CSRPage() {
             </h2>
 
             <p className="text-[0.85rem] sm:text-[0.95rem] text-[#6B7280] leading-relaxed max-w-2xl mx-auto">
-              Partner with Marcos Quay Foundation to channel your CSR funds into high-impact
+              Partner with Marcos Quay to channel your CSR funds into high-impact
               sports education programmes that create measurable, lasting change in children's lives.
             </p>
           </motion.div>

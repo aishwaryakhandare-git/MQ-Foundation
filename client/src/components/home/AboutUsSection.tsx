@@ -209,7 +209,7 @@ export default function AboutUsSection() {
             </motion.h2>
 
             <motion.p {...fade(0.2)} className="mt-6 sm:mt-7 text-base sm:text-lg lg:text-xl leading-relaxed text-[#6B7280] max-w-[580px] mx-auto">
-              Marcos Quay Foundation is dedicated to transforming the lives of
+              Marcos Quay is dedicated to transforming the lives of
               children across India through structured sports education. We partner
               with schools to provide certified coaching, NEP-aligned curricula and
               multi-sport programmes — ensuring every child has access to health,
