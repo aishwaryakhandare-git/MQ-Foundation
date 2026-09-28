@@ -144,25 +144,76 @@ export default function WhySportMatters() {
 
           {/* ── Right: text content ── */}
           <motion.div {...fade(0.1, "right")} className="text-left">
-<motion.h2 {...fade(0.05, "right")} className="heading-2 text-[28px] sm:text-[33px] text-[#0A1E4F] font-extrabold leading-[1.1] tracking-tight">
-              <span className="text-[1.1em] font-bold">Why </span>
-              <span className="relative inline-block text-[#E31B23] leading-none text-[1.2em]" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                Marcos Quay?
-                <svg
-                  className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-2.5"
-                  viewBox="0 0 120 12"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 8 C 24 2, 48 10, 72 7 C 90 4.5, 100 7, 116 5"
-                    stroke="#165DFF"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>
+    <motion.h2 {...fade(0.05, "right")} className="heading-2 text-[28px] sm:text-[33px] text-[#0A1E4F] font-extrabold leading-[1.1] tracking-tight">
+                  <span className="text-[1.1em] font-bold">Why </span>
+                  <span
+      className="relative inline-block leading-none text-[#E31B23] text-[1.2em]"
+      style={{ fontFamily: "'DM Serif Display', serif" }}
+    >
+      Marcos Quay?
+
+      {/* Moving paintbrush */}
+      {/* Realistic moving paintbrush */}
+    <motion.img
+      src="/images/realistic-paintbrush.png"
+      alt=""
+      aria-hidden="true"
+      className="pointer-events-none absolute z-20 w-[58px] h-[58px] object-contain"
+      style={{
+        bottom: "-22px",
+        transform: "rotate(-25deg)",
+        transformOrigin: "80% 80%",
+      }}
+      initial={{
+        left: "-10%",
+        opacity: 0,
+      }}
+      whileInView={{
+        left: "92%",
+        opacity: [0, 1, 1, 0],
+      }}
+      viewport={{
+        once: true,
+        margin: "-60px",
+      }}
+      transition={{
+        left: {
+          duration: 1.5,
+          ease: "easeInOut",
+        },
+        opacity: {
+          duration: 1.4,
+          times: [0, 0.1, 0.72, 1],
+        },
+      }}
+    />
+
+  {/* Real painted stroke */}
+  <motion.div
+    className="pointer-events-none absolute -bottom-5 left-0 w-full h-[32px] -rotate-1 z-0"
+    initial={{
+      clipPath: "inset(0 100% 0 0)",
+    }}
+    whileInView={{
+      clipPath: "inset(0 0% 0 0)",
+    }}
+    viewport={{
+      once: true,
+      margin: "-60px",
+    }}
+    transition={{
+      duration: 1.5,
+      ease: "easeInOut",
+    }}
+  >
+    <img
+      src="/images/blue-dry-brush.png"
+      alt=""
+      aria-hidden="true"
+      className="w-full h-full object-fill"
+    />
+  </motion.div>
+</span>
             </motion.h2>
 
             <div className="mt-4 space-y-4 text-justify">

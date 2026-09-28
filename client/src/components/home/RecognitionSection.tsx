@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import BrushUnderline from "./BrushUnderline";
 
 type Award = { image: string; caption: string; position?: string; textColor?: string; width?: string };
 
@@ -174,32 +175,7 @@ export default function RecognitionSection() {
               <span className="relative inline-block">
                 Awards and Accolades
 
-                {/* Hand drawn underline */}
-                <svg
-                  className="
-                    absolute
-                    -bottom-4
-                    left-[-2px]
-                    w-[calc(100%+8px)]
-                    h-[15px]
-                  "
-                  viewBox="0 0 540 15"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="
-                      M4 10
-                      C70 4, 135 12, 210 8
-                      C290 4, 375 11, 450 7
-                      C490 5, 515 7, 535 9
-                    "
-                    stroke="#005BAC"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <BrushUnderline />
               </span>
             </h2>
           </motion.div>

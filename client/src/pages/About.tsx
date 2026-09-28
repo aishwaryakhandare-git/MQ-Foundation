@@ -1,6 +1,7 @@
 ﻿import { motion } from "framer-motion";
 import { Link } from "wouter";
 import TrustedNetwork from "@/components/home/TrustedNetwork";
+import BrushUnderline from "@/components/home/BrushUnderline";
 import {
   ArrowRight,
   Heart,
@@ -111,41 +112,15 @@ function WhatIsMarcosQuay() {
             Sport should be a{" "}
             <span className="relative inline-block text-[#E31B23]">
               starting point
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>,{" "}
-            <span className="relative inline-block text-[#E31B23]">
+            <span className="relative inline-block text-[#0A1E4F]">
               not a privilege
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+              
             </span>.
           </h2>
           <p className="text-[#000000] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto">
-            Marcos Quay Foundation works with schools to make structured,
+            Marcos Quay works with schools to make structured,
             quality sports education accessible to more children across India.
           </p>
         </motion.div>
@@ -347,7 +322,7 @@ function OurImpact() {
               </span>
             </h2>
             <p className="max-w-xl text-[#000000] text-[0.9rem] sm:text-[0.98rem] leading-relaxed">
-              Marcos Quay Foundation has helped schools move from limited
+              Marcos Quay has helped schools move from limited
               sports infrastructure and participation to active, inclusive and
               structured sporting environments. By improving grounds,
               introducing grassroots programmes, training coaches and creating
@@ -367,7 +342,7 @@ function OurImpact() {
               </p>
               <div className="mt-4 h-px w-10 bg-[#E31B23]" />
               <p className="mt-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9AA5B8]">
-                Marcos Quay Foundation
+                Marcos Quay 
               </p>
             </div>
           </motion.div>
@@ -459,20 +434,7 @@ function OurStory() {
             Our{" "}
             <span className="relative inline-block text-[#E31B23]">
               Game Plan
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 170 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 8 C 28 2, 52 10, 84 6 C 118 2, 140 9, 167 5"
-                  stroke="#165DFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
         </motion.div>
@@ -957,20 +919,7 @@ function Founder() {
             Our{" "}
             <span className="relative inline-block text-[#E31B23]">
               Founder
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 170 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 8 C 28 2, 52 10, 84 6 C 118 2, 140 9, 167 5"
-                  stroke="#165DFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
         </motion.div>

@@ -88,7 +88,7 @@ export default function Navbar() {
             See Our Impact
           </Link>
           <a
-            href="/school-brochure.pdf"
+            href="/Marcos Quay- Sports Education.pdf"
             download
             className="inline-flex items-center gap-2 rounded-full bg-[#0066B3] text-white font-heading font-bold text-[13.5px] px-6 py-3 shadow-[0_14px_30px_-12px_rgba(0,102,179,0.55)] transition-all duration-300 hover:bg-[#E31B23] hover:shadow-[0_18px_40px_-12px_rgba(227,27,35,0.45)] hover:-translate-y-0.5"
           >

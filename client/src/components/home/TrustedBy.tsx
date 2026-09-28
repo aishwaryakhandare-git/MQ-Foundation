@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { motion } from "framer-motion";
+import BrushUnderline from "./BrushUnderline";
 
 const LOGOS = [
   "/images/School Logos/DPS School.png",
@@ -33,20 +34,7 @@ export default function TrustedBy() {
             Trusted by{" "}
             <span className="relative inline-block text-[#E31B23]">
               Leading Schools
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 260 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 256 5"
-                  stroke="#165DFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
           <p className="mt-5 text-[15px] sm:text-base lg:text-[17px] text-[#64748B] font-medium">

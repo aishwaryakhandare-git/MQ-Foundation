@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import BrushUnderline from "@/components/home/BrushUnderline";
 import {
   Mail,
   Phone,
@@ -160,27 +161,7 @@ export default function Contact() {
             >
               Contact Us
 
-              {/* Red underline */}
-              <svg
-                className="
-                  absolute
-                  -bottom-3
-                  left-0
-                  w-full
-                  h-3
-                "
-                viewBox="0 0 260 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 256 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </h1>
 
             <div className="flex justify-center mb-6">
@@ -444,7 +425,7 @@ export default function Contact() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Marcos Quay Foundation Location"
+                    title="Marcos Quay Location"
                   />
                 </div>
 
@@ -458,7 +439,7 @@ export default function Contact() {
                         </div>
                         <div>
                           <p className="font-heading font-bold text-[0.85rem] text-[#0A1E4F]">
-                            Marcos Quay Foundation
+                            Marcos Quay 
                           </p>
                           <p className="text-[0.75rem] text-[#6B7280] mt-0.5">
                             Vile Parle West, Mumbai

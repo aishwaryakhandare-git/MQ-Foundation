@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
+import BrushUnderline from "./BrushUnderline";
 import {
   Accordion,
   AccordionContent,
@@ -59,20 +60,7 @@ export default function FAQSection() {
             Frequently Asked{" "}
             <span className="relative inline-block text-[#E31B23]">
               Questions
-              <svg
-                className="absolute -bottom-2 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 8 C 34 2, 62 10, 100 6 C 140 2, 165 9, 197 5"
-                  stroke="#165DFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
           <p className="mt-6 text-[15px] sm:text-[16px] leading-[1.7] text-[#6B7280] font-medium">

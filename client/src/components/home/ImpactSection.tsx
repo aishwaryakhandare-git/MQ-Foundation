@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import Counter from "./Counter";
 import IndiaImpactMap from "./IndiaImpactMap";
+import BrushUnderline from "./BrushUnderline";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
@@ -41,20 +42,7 @@ export default function ImpactSection() {
             <motion.h2 {...fade(0.05)} className="heading-2 text-[#0A1E4F] font-extrabold text-[36px] sm:text-[46px] lg:text-[52px] xl:text-[56px] leading-[1.02] tracking-tight">
               <span className="relative inline-block text-[#E31B23]">
                 Across India
-                <svg
-                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4"
-                  viewBox="0 0 260 14"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 9 C 40 3, 74 12, 112 8 C 152 4, 186 12, 256 6"
-                    stroke="#165DFF"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <BrushUnderline />
               </span>
             </motion.h2>
 

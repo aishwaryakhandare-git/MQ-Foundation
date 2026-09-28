@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
+import BrushUnderline from "@/components/home/BrushUnderline";
 
 const fade = (delay = 0) => ({
   initial: { y: 30 },
@@ -128,6 +129,35 @@ const IMPACT_STATS = [
    ══════════════════════════════════════════════════════════════ */
 
 function Hero() {
+  const wrongWords = ["Limited", "Unequal", "Uncertain"];
+
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isStriking, setIsStriking] = useState(false);
+  const [showFinalWord, setShowFinalWord] = useState(false);
+
+  useEffect(() => {
+    if (showFinalWord) return;
+
+    const strikeTimer = setTimeout(() => {
+      setIsStriking(true);
+    }, 900);
+
+    const nextTimer = setTimeout(() => {
+      setIsStriking(false);
+
+      if (wordIndex < wrongWords.length - 1) {
+        setWordIndex((prev) => prev + 1);
+      } else {
+        setShowFinalWord(true);
+      }
+    }, 1400);
+
+    return () => {
+      clearTimeout(strikeTimer);
+      clearTimeout(nextTimer);
+    };
+  }, [wordIndex, showFinalWord]);
+
   return (
     <section className="relative lg:max-w-[1300px] mx-auto overflow-hidden bg-[#FDFDFB] border-b border-[#E7EBF3]">
       {/* Very subtle background */}
@@ -171,23 +201,77 @@ function Hero() {
               <br />
 
               for{" "}
-              <span className="relative inline-block text-[#E31B23]">
-                Brighter
-                <svg
-                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                  viewBox="0 0 200 12"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
+              <AnimatePresence mode="wait">
+              {!showFinalWord ? (
+                <motion.span
+                  key={wrongWords[wordIndex]}
+                  className="relative inline-block text-[#E31B23]"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <path
-                    d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                    stroke="#E31B23"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>{" "}
+                  {wrongWords[wordIndex]}
+
+                  {/* Straight cancellation line */}
+                  <motion.svg
+                    className="absolute left-0 top-1/2 w-full h-5 pointer-events-none"
+                    viewBox="0 0 200 20"
+                    preserveAspectRatio="none"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <motion.path
+                      d="M3 10 L197 10"
+                      stroke="#E31B23"
+                      strokeWidth="5"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: isStriking ? 1 : 0 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </motion.svg>
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="Brighter"
+                  className="relative inline-block text-[#E31B23]"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  Brighter
+
+                  {/* Final underline */}
+                  <motion.svg
+                    className="absolute -bottom-3 left-0 w-full h-3 pointer-events-none"
+                    viewBox="0 0 200 12"
+                    preserveAspectRatio="none"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <motion.path
+                      d="M3 8 L197 8"
+                      stroke="#165DFF"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "easeOut",
+                      }}
+                    />
+                  </motion.svg>
+                </motion.span>
+              )}
+            </AnimatePresence>{" "}
               Futures
             </h1>
 
@@ -515,20 +599,7 @@ function ChallengeGrid() {
             How We{" "}
             <span className="relative inline-block text-[#E31B23]">
               Respond
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
           <p className="mt-6 max-w-[590px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#000000] font-medium">
@@ -563,22 +634,9 @@ function Transformation() {
         <motion.div {...fade(0)} className="max-w-3xl mx-auto text-center mb-12 md:mb-16">
           <h2 className="font-heading font-extrabold tracking-[-0.02em] text-[2.2rem] sm:text-[2.8rem] lg:text-[3.4rem] text-[#0A1E4F] leading-tight">
             The{" "}
-            <span className="relative inline-block text-[#E31B23]">
-              Transformation
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+<span className="relative inline-block text-[#E31B23]">
+              The Transformation
+              <BrushUnderline />
             </span>
           </h2>
           <p className="mt-6 max-w-[590px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#000000] font-medium">
@@ -795,20 +853,7 @@ function Benefits() {
             Benefits Through the{" "}
             <span className="relative inline-block text-[#E31B23]">
               Partnership
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
           <p className="mt-6 max-w-[640px] mx-auto text-[15px] sm:text-[16px] lg:text-[17px] leading-[1.7] text-[#000000] font-medium">
@@ -846,25 +891,12 @@ function Impact() {
             <br />
             <span className="relative inline-block text-[#E31B23]">
               Thriving Communities.
-              <svg
-                className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3"
-                viewBox="0 0 200 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 8 C 40 2, 72 10, 110 7 C 150 4, 182 10, 196 5"
-                  stroke="#E31B23"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
           <p className="text-[#000000] text-[0.95rem] sm:text-[1.05rem] leading-relaxed max-w-2xl mx-auto mt-6">
             By addressing real challenges with practical solutions, Marcos Quay
-            Foundation helps schools build active, inclusive and high-quality
+            helps schools build active, inclusive and high-quality
             sporting environments — where every child has the opportunity to
             play, learn and grow.
           </p>
@@ -894,13 +926,13 @@ function Impact() {
           <motion.div {...fade(0)} className="relative overflow-hidden rounded-[18px] border border-[#E7EBF3]">
             <img
               src="/images/hero-sports.jpg"
-              alt="Indian school children in Marcos Quay Foundation sports jerseys after training"
+              alt="Indian school children in Marcos Quay sports jerseys after training"
               loading="lazy"
               className="w-full h-[320px] sm:h-[420px] lg:h-full lg:min-h-[460px] object-cover"
             />
             <div className="absolute bottom-0 inset-x-0 bg-[#0A1E4F]/85 px-6 py-4">
               <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
-                Marcos Quay Foundation — After a Training Session
+                Marcos Quay — After a Training Session
               </p>
             </div>
           </motion.div>

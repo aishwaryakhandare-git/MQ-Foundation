@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Quote, Trophy } from "lucide-react";
+import BrushUnderline from "./BrushUnderline";
 
 /* ─── Featured story: MQ National Sports Day Football Cup ─── */
 function FeaturedStory() {
@@ -106,20 +107,7 @@ export default function SuccessStories() {
             Success{" "}
             <span className="relative inline-block text-[#E31B23]">
               Stories
-              <svg
-                className="absolute -bottom-2 left-0 h-3 w-full"
-                viewBox="0 0 170 12"
-                preserveAspectRatio="none"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M3 8 C 28 2, 52 10, 84 6 C 118 2, 140 9, 167 5"
-                  stroke="#165DFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline />
             </span>
           </h2>
           <p className="body-lg mx-auto mt-4 max-w-[560px]">

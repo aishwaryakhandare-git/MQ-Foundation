@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import BrushUnderline from "./BrushUnderline";
 
 const TESTIMONIALS = [
   {
@@ -381,27 +382,7 @@ export default function TestimonialsSection() {
               >
                 Ecosystem
 
-                {/* Hand-drawn underline */}
-                <svg
-                  className="
-                    absolute
-                    left-0
-                    -bottom-3
-                    w-full
-                    h-[13px]
-                  "
-                  viewBox="0 0 190 12"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 8 C 30 2, 58 10, 94 6 C 132 2, 156 9, 187 5"
-                    stroke="#005BAC"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <BrushUnderline />
               </span>
             </h2>
 

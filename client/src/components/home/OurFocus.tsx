@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BrushUnderline from "./BrushUnderline";
 
 const fade = (
   delay: number,
@@ -77,25 +78,6 @@ const FOCUS_AREAS: FocusArea[] = [
     alt: "Community celebrating together through sport",
   },
 ];
-
-function Underline() {
-  return (
-    <svg
-      className="absolute -bottom-2 left-0 w-full h-3"
-      viewBox="0 0 140 12"
-      preserveAspectRatio="none"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 8 C 30 2, 55 10, 82 6 C 105 3, 120 8, 136 5"
-        stroke="#165DFF"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 function FocusImage({
   src,
@@ -250,7 +232,7 @@ export default function OurFocus() {
           <h2 className="heading-2 text-[#0A1E4F] font-extrabold leading-[1.03] tracking-tight">
             <span className="relative inline-block text-[#E31B23]">
               Our Focus Areas
-              <Underline />
+              <BrushUnderline />
             </span>
           </h2>
 
@@ -376,7 +358,7 @@ export default function OurFocus() {
                         {area.title}{" "}
                         <span className="relative inline-block text-[#E31B23]">
                           {area.accent}
-                          <Underline />
+                          <BrushUnderline small />
                         </span>
                       </h3>
 

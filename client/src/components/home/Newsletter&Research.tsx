@@ -5,6 +5,7 @@ import {
   FileText,
   Users,
 } from "lucide-react";
+import BrushUnderline from "./BrushUnderline";
 
 /* -------------------------------------------------------------------------- */
 /* Animation                                                                  */
@@ -107,21 +108,7 @@ export function NewsletterSection() {
               <span className="relative inline-block text-[#E31B23]">
                 That Move Us
 
-                {/* Hand drawn underline */}
-                <svg
-                  className="absolute -bottom-3 left-0 h-3.5 w-full"
-                  viewBox="0 0 400 14"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 9 C 65 4, 115 11, 180 7 C 250 3, 325 10, 397 5"
-                    stroke="#165DFF"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <BrushUnderline />
               </span>
             </h2>
 
@@ -224,7 +211,7 @@ export function NewsletterSection() {
             >
               <div className="flex items-center justify-between">
                 <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#165DFF]">
-                  MQ Foundation
+                  MQ 
                 </span>
 
                 <span className="text-[8px] font-medium text-[#9AA5B8]">
@@ -239,20 +226,9 @@ export function NewsletterSection() {
                 </span>
               </h3>
 
-              <svg
-                className="mt-1 h-3 w-full"
-                viewBox="0 0 250 12"
-                fill="none"
-              >
-                <path
-                  d="M2 8 C 55 2, 110 11, 170 6 C 205 3, 225 9, 248 5"
-                  stroke="#165DFF"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <BrushUnderline small />
 
-              <p className="mt-2 text-[8px] font-bold tracking-[0.16em] text-[#9AA5B8]">
+                <p className="mt-2 text-[8px] font-bold tracking-[0.16em] text-[#9AA5B8]">
                 PEOPLE &nbsp; | &nbsp; PROGRAMS &nbsp; | &nbsp; PROGRESS
               </p>
 
@@ -335,20 +311,7 @@ export function ResearchInsightsSection() {
               <span className="relative inline-block text-[#E31B23]">
                 Evidence
 
-                <svg
-                  className="absolute -bottom-3 left-0 h-3.5 w-full"
-                  viewBox="0 0 250 14"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 9 C 45 3, 80 11, 125 7 C 175 3, 215 10, 247 5"
-                    stroke="#165DFF"
-                    strokeWidth="3.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <BrushUnderline />
               </span>{" "}
               for Sport
             </h2>

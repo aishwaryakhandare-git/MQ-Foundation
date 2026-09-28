@@ -1,5 +1,6 @@
 import { type ComponentType } from "react";
 import { motion } from "framer-motion";
+import BrushUnderline from "./BrushUnderline";
 import { Link } from "wouter";
 import {
   Search,
@@ -74,29 +75,6 @@ const QUALITY_STAGES: QualityStage[] = [
 ];
 
 /* ---------------------------------------------------------
-   Header underline
---------------------------------------------------------- */
-
-function Underline() {
-  return (
-    <svg
-      className="absolute -bottom-3 left-0 h-3 w-full"
-      viewBox="0 0 160 12"
-      preserveAspectRatio="none"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M3 8 C 28 2, 54 10, 82 6 C 110 2, 135 8, 157 5"
-        stroke="#165DFF"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* ---------------------------------------------------------
    Component
 --------------------------------------------------------- */
 
@@ -146,7 +124,7 @@ export default function QualitySystem() {
             How{" "}
             <span className="relative inline-block text-[#E31B23]">
               Marcos Quay
-              <Underline />
+              <BrushUnderline />
             </span>{" "}
             Measures Sport
           </h2>
@@ -172,7 +150,7 @@ export default function QualitySystem() {
                 <br />
                 <span className="relative inline-block text-[#E31B23]">
                   Proven.
-                  <Underline />
+                  <BrushUnderline />
                 </span>
               </h2>
 
